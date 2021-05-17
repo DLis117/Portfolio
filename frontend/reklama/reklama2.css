@@ -1,0 +1,178 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+body
+{
+    overflow: hidden;
+}
+.tlo
+{
+    background: rgb(127,0,255);
+    background: -webkit-gradient(linear, left top, left bottom, from(rgba(127,0,255,1)), to(rgba(0,0,0,1)));
+    background: linear-gradient(180deg, rgba(127,0,255,1) 0%, rgba(0,0,0,1) 100%);
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+img
+{
+    position: absolute;
+    z-index: 3; 
+    overflow: hidden;
+}
+.chmura2
+{
+    height: 400px;
+    bottom: -120px;
+    left: -390px;
+}
+.chmura4
+{
+    height: 400px;
+    bottom: -200px;
+    left: -120px;
+}
+.chmura5
+{
+    height: 400px;
+    bottom: -220px;
+    left: 100px;
+}
+.chmura6
+{
+    height: 400px;
+    bottom: -270px;
+    left: 370px;
+}
+.chmura7
+{
+    height: 400px;
+    bottom: -180px;
+    left: 1200px;
+}
+.chmura8
+{
+    height: 400px;
+    bottom: -280px;
+    left: 800px;
+}
+.rakieta
+{
+    height: 300px;
+    bottom: 0;
+    left: 57%;
+    -webkit-transform: rotate(20deg);
+    transform: rotate(20deg);
+}
+h1
+{
+    position: absolute;
+    left: 10%;
+    top: 10%;
+    display: inline-block;
+    font-family: 'Source Serif Pro',cursive;
+    color: white;
+    font-size: 100px;
+}
+h2
+{
+    position: absolute;
+    left: 13%;
+    top: 25%;
+    display: inline-block;
+    font-family: 'Source Serif Pro',cursive;
+    color: white;
+    font-size: 50px;
+}
+.kreska
+{
+    height: 320px;
+    top: 170px;
+    left: 280px;
+    
+}
+.lapek
+{
+    height: 350px;
+    right: 0px;
+    top: 100px;
+}
+h3
+{
+    color: white;
+    font-family: 'Raleway', sans-serif;
+    margin: 20px auto;
+    margin-left: 200px;
+    font-size: 22px;
+}
+h3:nth-of-type(1)
+{
+    margin: 350px 0 0 200px;
+}
+.html
+{
+    height: 131px;
+    right: 23.9%;
+    top: 34.7%;
+}
+.css
+{
+    height: 100px;
+    right: 14%;
+    top: 48%;
+}
+.gwiazda
+{
+    position: absolute;
+    z-index: 1;
+    top: 3%;
+    height: 100px;
+    left: 37%;
+}
+.gwiazda1
+{
+    position: absolute;
+    z-index: 1;
+    top: 33%;
+    height: 50px;
+    left: 50%;
+}
+.gwiazda2
+{
+    position: absolute;
+    z-index: 1;
+    top: 32%;
+    height: 70px;
+    left: 3%;
+}
+.gwiazda3
+{
+    position: absolute;
+    z-index: 1;
+    top: 70%;
+    height: 60px;
+    right: 19%;
+}
+.gwiazda4
+{
+    position: absolute;
+    z-index: 1;
+    top: 5%;
+    height: 70px;
+    right: 12%;
+}
+.gwiazda5
+{
+    position: absolute;
+    z-index: 1;
+    top: 75%;
+    height: 75px;
+    right: 65%;
+}

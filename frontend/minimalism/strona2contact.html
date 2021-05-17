@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>site2</title>
+        <meta name="description" content="second site">
+        <link rel="stylesheet" href="strona2contact.css">
+        <link href="https://fonts.googleapis.com/css?family=Wire+One&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Bellota+Text&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Barlow+Condensed&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div class="pasek"></div>
+        
+        <h1>minimalism</h1>
+        <div class="kolko"><div class="hamburger"><i class="fa fa-align-justify"></i></div></div>
+        <div class="ramka">
+            <ul>
+            <li><a href="strona2.html">start</a></li>
+            <li><a href="strona2about.html">about</a></li>
+            <li><a href="strona2products.html">products</a></li>
+            <li><a class="klikniete" href="strona2contact.html">contact</a></li>
+            </ul>
+        </div>
+        <article>
+            <div class="mapka"><img data-aos="fade-out"
+    data-aos-easing="ease-in-out-cubic"
+    data-aos-anchor-placement="top-center" src="mymaps-desktop-16x9.png"/></div>
+            <p>adress:</p><p>xxx Avenue, xx-xxx Your City</p><br>
+            <p>telephone:</p><p>xxx-xxx-xxx</p><br>
+            <p>other info:</p><p>lorem ipsum</p><br>
+            <h2>social media:</h2> 
+        </article>
+        <div class="socjale">
+        <img class="facebook" src="facebook-transparent-logo-png-0.png"/>
+            <img class="instagram"  src="instagram.png"/>
+            <img class="youtube" src="youtube.png"/></div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        $(window).scroll(function()
+        {
+         var scroll= $(window).scrollTop();
+          var dh = $(document).height();
+          var wh = $(window).height();
+            
+            value = (scroll/(dh-wh)) *100;
+            $(".pasek").css("width",value + '%');
+        })
+    </script>
+        <script>
+        AOS.init();
+        </script>
+        <script>
+            var pierwszy=true;
+            if(pierwszy==true)
+                {
+                    pierwszy=false;
+                    $(".ramka").css('left',-300);
+                    $(".ramka").css('left',0);
+                }
+            var wlacz=1;
+            $(".kolko").on("click",function()
+            {
+                if(wlacz==1)
+                {
+                    $(".ramka").css('left',-300);
+                    wlacz=0;
+                    console.log("XD");
+                }
+                else
+                {
+                    $(".ramka").css('left',0);
+                    wlacz=1;
+                    console.log("DX");
+                }
+            })
+        </script>
+    </body>
+</html>

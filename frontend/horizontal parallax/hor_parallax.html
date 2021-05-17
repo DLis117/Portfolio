@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>site2</title>
+        <meta name="description" content="second site">
+        <link rel="stylesheet" href="hor_parallax.css">
+    </head>
+    <body>
+        <div id="tlo">
+        
+        </div>
+        <div class="trojkat"></div>
+        <h1 id="texxt">sample Text1</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus. Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis, turpis vel hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci.</p>
+        <div class="ramkanaprzyciski">
+            <div class="przycisk1"></div>
+            <div class="przycisk2"></div>
+            <div class="przycisk3"></div>
+        </div>
+        
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script>
+            
+             var tlo=document.getElementById("tlo");
+             var dlugosc=document.body.clientWidth;
+            var texxt=document.getElementById("texxt");
+            window.addEventListener("scroll",function()
+            {
+                let offset=window.pageXOffset;
+                tlo.style.backgroundPositionX=offset*0.7+"px";
+                console.log($("body").width());
+                if(offset<=(dlugosc/3)*2)
+                {
+                    texxt.textContent="sample Text1";
+                    $('.przycisk1').css('background-color','white')
+                    $('.przycisk2').css('background-color','transparent')
+                    $('.przycisk3').css('background-color','transparent')
+                    
+                }
+                else if(offset>(dlugosc/3)*2&&offset<dlugosc*1.5)
+                {
+                     texxt.textContent="sample Text2";       
+                    $('.przycisk1').css('background-color','transparent')
+                    $('.przycisk2').css('background-color','white')
+                    $('.przycisk3').css('background-color','transparent')
+                }
+                else
+                {
+                    texxt.textContent="sample Text3";
+                    $('.przycisk1').css('background-color','transparent')
+                    $('.przycisk2').css('background-color','transparent')
+                    $('.przycisk3').css('background-color','white')
+                }
+            })
+                
+         
+            
+        </script>
+    </body>
+</html>

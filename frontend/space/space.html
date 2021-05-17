@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>site2</title>
+        <meta name="description" content="second site">
+        <link rel="stylesheet" href="space.css">
+        <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+        <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <nav>
+            <ul>
+                <li><a id="contact">contact</a></li>
+                <li><a id="about">about</a></li>
+                <li><a id="start">start</a></li>
+            </ul>
+        </nav>
+    <div class="all">
+        <div id="strona1">
+            <div class="nadtlo1"></div>
+            <h1>Start the journey!</h1>
+            <img id="slonce" src="sloncetransparent.png"/>
+            <div id="gwiazdy"></div>
+            <img id="rakieta" src="output-onlinepngtools%20(7).png"/>
+        </div>
+    
+        <div id="strona2">
+
+            <div class="artykul1" data-aos="fade-in"
+    data-aos-easing="ease-in-out-cubic"
+    data-aos-anchor-placement="top-center">
+            <p><img id="planeta1" src="planeta1.png"/>Mercury is the smallest and innermost planet in the Solar System. Its orbit around the Sun takes 87.97 days, the shortest of all the planets in the Solar System. It is named after the Roman deity Mercury, the messenger of the gods.</p>
+            </div>
+            
+            <div class="artykul2" data-aos="fade-in"
+    data-aos-easing="ease-in-out-cubic"
+    data-aos-anchor-placement="top-center">
+            <p><img id="planeta2" src="planeta2.png"/>Venus is the second planet from the Sun. It is named after the Roman goddess of love and beauty. As the second-brightest natural object in the night sky after the Moon, Venus can cast shadows and, rarely, is visible to the naked eye in broad daylight.</p>
+            </div>
+            
+            <img id="kometa1" src="kometka.png"/>
+<!--brzydka ta kometa!!!!!!!!!!-->
+            
+            <div class="artykul3">
+                <img id="planeta3" src="planeta3.png"/><p data-aos="fade-in"
+    data-aos-easing="ease-in-out-cubic"
+    data-aos-anchor-placement="top-center">Saturn is the sixth planet from the Sun and the second-largest in the Solar System, after Jupiter. It is a gas giant with an average radius of about nine times that of Earth. It only has one-eighth the average density of Earth; however, with its larger volume, Saturn is over 95 times more massive.</p>
+            </div>
+            
+            <img id="moonsurface" src="output-onlinepngtools%20(17).png"/>
+            <img id="flaga1" src="facebookflaga.png"/>
+            <img id="satelita" src="satelita.png"/>
+            <div id="rakieta2"></div>
+        </div>
+            
+            
+    </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script>
+        var pierwszyscroll=true;
+        var pierwszy=true;
+        var pierwszykometa=true;//
+        var backgrd=document.getElementById("gwiazdy");
+        var strona2=document.getElementById("strona2");
+        var saturn=document.getElementById("planeta3");//
+        var r=180;                                                          //DO NOTATEEEEEEEEEEEEEEEEEEEEEEEEEEEEK
+        var polowa1strony=document.getElementById("strona1").clientHeight/3;
+            var i=0;
+            var j=0;
+        window.addEventListener("scroll",function()
+            {
+                let offset=window.pageYOffset;
+                backgrd.style.backgroundPositionY=offset*0.4+"px";
+                strona2.style.backgroundPositionY=offset*0.4+"px";
+            if(pierwszyscroll==true)
+                 {
+                     if(offset>polowa1strony)//przekroczono scrollem polowe
+                      {
+                         pierwszyscroll=false;//zeby wykonalo sie tylko raz
+                         $("#rakieta").toggleClass("lec");
+                        pierwszy=false;//zeby potem sie animacja nie odpalała
+                      } 
+                 }
+            if(pierwszykometa==true)
+                 {
+                     if(offset>polowa1strony*5)
+                       {
+                        pierwszykometa=false;
+                        $("#kometa1").toggleClass("spadaj");
+                        console.log("leciiii");
+                       }
+                 }
+            console.log(polowa1strony*5);
+            i=j;
+                j=offset;
+                if(i>j)
+                    {
+                        $("nav").css("height",50);
+                        $("a").fadeIn(500);
+                        if(offset>polowa1strony*5&&offset<polowa1strony*9)//DO NOTATEEEEEEEEEEEEEEEEEEEEEEEEEEEEK
+                            {
+                               saturn.style.transform ="rotate("+r.toString()+"deg)";//DO NOTATEEEEEEEEEEEEEEEEEEEEEEEEEEEEK
+                                r+=0.6;
+                            }
+                    }
+                else if(j>i)
+                    {
+                        $("a").fadeOut(500);
+                        $("nav").css("height",0);
+                        if(offset>polowa1strony*5&&offset<polowa1strony*9)//DO NOTATEEEEEEEEEEEEEEEEEEEEEEEEEEEEK
+                            {
+                               saturn.style.transform ="rotate("+r.toString()+"deg)";//DO NOTATEEEEEEEEEEEEEEEEEEEEEEEEEEEEK
+                                r-=0.6;
+                            }
+                    }
+            })
+            $("#strona1 h1").on("click",function()
+            {
+                
+                $("body,html").animate
+                ({
+                    scrollTop:$("body").offset().top+$("#strona1").height()
+                },2000)
+                
+                
+                if(pierwszy==true)
+                {
+                    pierwszy=false;
+                    pierwszyscroll=false;
+                    $("#rakieta").toggleClass("lec");
+                }
+                
+            });
+        </script>
+        
+        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+        
+        <script>
+        AOS.init();
+        </script>
+        <script>
+           jQuery(function($) {
+
+"use strict";
+
+var win = $(window)
+    , target = $('body')
+    , wrapper = target.find('> div')
+    , easing = "ease-out" //css easing
+    , duration = "0.5s" //duration ms(millisecond) or s(second)
+    , top = 0
+    , kineticScroll = {
+        _init: function() {
+            if( wrapper.length == 1 ) {
+                target.height(wrapper.height());
+                wrapper.css({
+                    transition: 'transform ' + duration + ' ' + easing,
+                    position: 'fixed',
+                    top: '0',
+                    left: '0',
+                    width: '100%',
+                    padding: '0',
+                    zIndex: '2'
+                });
+
+                win.on({
+                    scroll: function () {
+                        kineticScroll._scroll();
+                    }
+                    , resize: function() {
+                        target.height(wrapper.outerHeight());
+                    }
+                });
+
+                kineticScroll._scroll();
+            }
+        },
+        _scroll: function() {
+            top = win.scrollTop();
+            wrapper.css('transform', 'translateY(-' + top + 'px)');
+        }
+    };
+
+if (typeof window.ontouchstart == 'undefined') {
+    kineticScroll._init();
+}
+});
+        </script>
+        <script>
+         $("#start").on("click",function()
+            {
+                $("body,html").animate
+                ({
+                    scrollTop:$("body").offset().top
+                },1000)
+            })
+            $("#about").on("click",function()
+            {
+                $("body,html").animate
+                ({
+                    scrollTop:$("body").offset().top+$("#strona1").height()
+                },1000)
+            })
+            
+            $("#contact").on("click",function()
+            {
+                $("body,html").animate
+                ({
+                    scrollTop:$("body").offset().top+$("#strona2").height()+$('#strona1').outerHeight(true)
+                },1000)
+            })
+        </script>
+        
+    </body>
+</html>

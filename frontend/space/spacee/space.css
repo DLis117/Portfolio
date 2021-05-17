@@ -1,0 +1,443 @@
+*
+{
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    box-sizing: border-box;
+}
+body
+{
+/*    overflow-x: hidden;*/
+}
+/*inline block*/
+.nadtlo1
+{
+    height: 100vh;
+    width:100vw;
+    background: transparent;/*zeby sie nie jebać z tlem xD*/
+}
+#strona1
+{
+    position: absolute;
+    z-index: ;
+    background: linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(144,0,255,1) 30%, rgba(225,0,255,1) 82%);
+    height: 100vh;
+    width: 100vw;
+    
+}
+#strona1 h1
+{
+    font-family: 'Pacifico', cursive;
+    color:dodgerblue;
+    position: absolute;
+    z-index: 3;
+    top: 50vh;
+    left: 50vw;
+    transform: translate(-50%,-50%);
+    cursor: pointer;
+    
+    
+}
+
+#gwiazdy/*meeh ale niech zostaną...*/
+{
+    background-image: url("searchpng.com-white-stars-background-png-image-free-download-2%20(1).png");
+    height: 100vh;
+    position: absolute;
+    top: 0px;
+    width: 100vw;
+    z-index: 1;
+}
+#slonce
+{
+    position: absolute;
+    z-index: 2;
+    height: 40vh;
+    top: 50vh;
+    left: 50vw;
+    transform: translate(-50%,-50%);
+    transition: height 0.5s ease;
+}
+#strona1 h1:hover+#slonce
+{
+    height: 50vh;
+}
+#strona1 h1:hover
+{
+    color:darkviolet;
+}
+#slonce:hover
+{
+    height: 50vh;
+}
+#rakieta
+{
+    height: 40vh;
+    position: absolute;
+    top: 110vh;/*80 start         0 meta */
+    left: -60vw;/*-20 start         120 meta*/
+    z-index: 4;
+    transform: rotate(30deg);
+}
+.lec
+{
+    animation: lece 3s ease normal;
+}
+#strona2
+{
+/*    background: linear-gradient(0deg, rgba(225,0,255,1) 0%, rgba(144,0,255,1) 46%, rgba(2,0,36,1) 90%);*/
+/*    background: linear-gradient(180deg, rgba(0,0,0,1) 10%, rgba(144,0,255,1) 40%, rgba(169,58,255,1) 90%);*/
+background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(255,0,255,1) 19%, rgba(159,39,252,1) 40%, rgba(12,0,52,1) 80%);
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: inline-block;
+    width: 100vw;
+/*    height: 400vh;                                                                         WYWAL TO !!!!!!!!!!!!111!!!!!!!!!!!!!*/
+/*    background-attachment: fixed;*/
+}
+
+#kometa1
+{
+    position: absolute;
+    transform: rotate(290deg);
+    height: 25vh;
+    top: 160vh;
+    left: -40vw;
+    margin-top: 0vh;
+}
+.spadaj
+{
+    animation: spadaj 1.5s ease normal;
+}
+.artykul1,.artykul2,.artykul3
+{
+    display: inline-block;
+    margin-top: 100vh;
+    margin-left: 10%;
+    width: 70vw;
+}
+.artykul2
+{
+    margin-left: 20%;
+    margin-top: 10vh;
+}
+.artykul3
+{
+    width: 95vw;
+    margin-top: 10vh;
+    margin-left: 0;
+    margin-bottom: 100vh;/*JESLI JEST OSTATNIE TO 100!*/
+}
+#planeta1,#planeta2,#planeta3
+{
+    display: inline-block;
+    height: 40vh;
+    float: left;
+    margin-left: 5vw;
+}
+#planeta2
+{
+    float: right;
+}
+#planeta3
+{
+    transform: rotate(180deg);
+}
+@media (orientation: portrait)
+{
+    .artykul3
+    {
+        width: 100vw;
+    }
+    .artykul3 p
+    {
+        margin-right: 25%;
+        font-size: 130%;
+    }
+    #planeta3
+    {
+        display: block;
+        height: 20vh;
+        margin-left: 0px;
+    }
+}
+@media(min-width: 473px) and (max-width: 660px)
+{
+    .artykul3
+    {
+        margin-bottom: 40vh;
+    }
+}
+p
+{
+    display: inline-block;
+    font-family: 'Caveat', cursive;
+    height: 40vh;
+    font-size: 200%;
+    color: white;
+    margin-top: 5vh;
+}
+.artykul3 p
+{
+    float: right;
+    height: 40vh;
+    width: 40vw;
+    margin-bottom: 0vh;
+}
+#moonsurface
+{
+    position: relative;
+    left: 0;
+    z-index: 5;
+    bottom: -1vh;
+    width: 100vw;
+    filter: blur(0.5px);
+}
+#flaga1
+{
+    position: absolute;
+    z-index: 6;
+    bottom: 3vh;
+    left: 30vw;
+}
+#satelita
+{
+    position: absolute;
+    z-index: 7;
+    bottom: 50vh;
+    left: 100vw;
+    height: 20vh;
+    transform: rotate(160deg);
+}
+@media(orientation: landscape)
+{
+    #satelita
+    {
+        animation: orbituj 60s linear infinite normal;
+    }
+}
+@media(orientation: portrait)
+{
+    #satelita
+    {
+        animation: orbitujportrait 60s linear infinite normal;
+    }
+}
+
+@keyframes orbituj
+{
+    0%
+    {
+        left: 100vw;
+    }
+    5%
+    {
+        transform: rotate(155deg);
+        left: 90vw;
+    }
+    10%
+    {
+        transform: rotate(150deg);
+        left: 80vw;
+    }
+    15%
+    {
+        transform: rotate(145deg);
+        left: 70vw;
+    }
+    20%
+    {
+        transform: rotate(140deg);
+        left: 60vw;
+    }
+    25%
+    {
+        transform: rotate(135deg);
+        left: 50vw;
+    }
+    30%
+    {
+        transform: rotate(130deg);
+        left: 40vw;
+    }
+    35%
+    {
+        transform: rotate(125deg);
+        left: 30vw;
+    }
+    40%
+    {
+        bottom: 45vh;
+        transform: rotate(120deg);
+    }
+    45%
+    {
+        transform: rotate(115deg);
+        left: 20vw;  
+    }
+    55%
+    {
+        transform: rotate(100deg);
+        left: 10vw;
+        bottom: 35vh;
+    }
+    60%
+    {
+        transform: rotate(95deg);
+        left: 0vw;
+        bottom: 30vh;       
+    }
+    65%
+    {
+        transform: rotate(85deg);
+        left: -10vw;
+        bottom: 20vh;    
+    }
+    65.001%
+    {
+        transform: rotate(85deg);
+        left: -20vw;
+        bottom: 20vh;
+    }
+    99.99%
+    {
+        transform: rotate(85deg);
+        left: -20vw;
+        bottom: 20vh;
+    }
+    100%
+    {
+        left: 100vw;
+    }
+}
+@keyframes orbitujportrait
+{
+    0%
+    {
+        left: 100vw;
+    }
+    5%
+    {
+        transform: rotate(155deg);
+        left: 90vw;
+    }
+    10%
+    {
+        transform: rotate(151deg);
+        left: 80vw;
+    }
+    15%
+    {
+        transform: rotate(147deg);
+        left: 70vw;
+    }
+    20%
+    {
+        transform: rotate(143deg);
+        left: 60vw;
+    }
+    25%
+    {
+        transform: rotate(139deg);
+        left: 50vw;
+    }
+    30%
+    {
+        transform: rotate(135deg);
+        left: 40vw;
+    }
+    35%
+    {
+        transform: rotate(131deg);
+        left: 30vw;
+    }
+    40%
+    {
+        
+        transform: rotate(130deg);
+    }
+    45%
+    {
+        transform: rotate(129deg);
+        left: 20vw;  
+    }
+    50%
+    {
+       transform: rotate(126deg);
+    }
+    55%
+    {
+        transform: rotate(123deg);
+        left: 10vw;
+    }
+    60%
+    {
+        transform: rotate(120deg);
+        left: 0vw;       
+    }
+    65%
+    {
+        transform: rotate(117deg);
+        left: -10vw;   
+    }
+    70%
+    {
+        transform: rotate(114deg);
+        left: -15vw;
+    }
+    99.99%
+    {
+        transform: rotate(110deg);
+        left: -60vw;
+    }
+    100%
+    {
+        left: 100vw;
+    }
+}
+
+
+@media (orientation: portrait)
+{
+    #flaga1
+    {
+        height: 15vh;
+    }
+}
+
+@keyframes lece
+{
+    0%
+    {
+        top: 110vh;
+        left: -60vw;
+    }
+    97%
+    {
+        top: -40vh;
+        left: 120vw;
+    }
+    98%
+    {
+        top: -40vh;
+        left: 120vw;
+    }
+    98.00001%
+    {
+        top: 110vh;
+        left: -60vw; 
+    }
+}
+@keyframes spadaj
+{
+    from
+    {
+        top: 160vh;
+        left: -40vw;
+    }
+    to
+    {
+        top: 260vh;
+        left: 100vw;       
+    }
+}

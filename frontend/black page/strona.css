@@ -1,0 +1,359 @@
+*
+{
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+    box-sizing: border-box;
+    
+}
+body
+{
+    display: inline-block;
+    overflow-x: hidden;
+    background-color: #000;
+    width: 100vw;
+}
+.czarnyprostokat/*tlo jest absolute wiec zeby odleglosc byla zachowana to pod tlo wrzucam prostokat o rozmiarze tla*/
+{
+    background: black;
+    height: 20vh;
+    width: 100vw;
+}
+#backgrd
+{
+    top: 0px;
+    background-image: url("13-Incredibly-Useful-Articles-on-Black-and-White-Landscape-Photography.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 20vh;
+    width: 100vw;
+    position: absolute;
+    z-index: 1;
+    animation: zmientlo 10.5s ease infinite alternate;
+}
+
+ #backgrd h2
+{
+    
+    color: white;
+    font-family: 'Jockey One', sans-serif;
+    letter-spacing: 10px;
+    font-size: 10vw;
+    opacity: 0.7;
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 50vw;
+    transform: translate(-50%,-50%);
+    z-index: 2;
+}
+
+nav
+{
+    height: 50px;
+    background-color: transparent;
+    width: 100vw;
+    position: fixed;
+    top: 0px;
+    transition: all 1s ease;
+    z-index: 3;
+}
+nav li
+{
+    display: inline-block;
+    float: right;
+    width: 20%;
+    line-height: 50px;
+    text-align: center;
+}
+
+a
+{
+    color: white;
+    font-size: 20px;
+    transition:color 1s ease;
+    text-decoration: none;
+}
+a:hover
+{
+    color: chartreuse;
+    cursor: pointer;
+    text-shadow: 0 0 10px chartreuse;
+}
+
+#art
+{
+    display: inline-block;
+    width: 100vw;
+}
+#artykul1,#artykul2,#artykul3
+{
+    display: inline-block;
+    padding-top: 5vh;
+/*    height: 110vh;*/
+    width: 100vw;
+/*    padding-bottom: 25vh;*/
+}
+
+#artykul1 img,#artykul2 img
+{
+    display: block;
+    height: 300px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+#artykul1 p,#artykul2 p,#artykul3 p
+{
+    display: block;
+    word-wrap: break-word;
+    margin: 0 auto;
+    font-size: 100%;
+    text-align: justify;
+    width: 90vw;
+    color: white;
+}
+/*--------------------------*/
+#art2
+{
+    display: inline-block;
+    width: 100vw;
+    background: black;
+    
+}
+
+
+.pasek
+{
+    
+    height: 5px;
+    width: 20vw;
+    position: relative;
+    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(255,255,255,1) 100%);
+    border-radius: 10px;
+    top: 0px;
+    transition: 1s ease;
+}
+
+.slider
+{
+    
+    margin: 0 auto;
+    overflow: hidden;
+    height: 60vh;
+    width: 50vw;
+    padding-bottom: 80vh;
+    position: relative;/*!!!*/
+}
+.ramka
+{
+    margin-top: 5vh; 
+    overflow: hidden;
+    height: 60vh;
+    width: 250vw;
+    position: relative;
+    transition: left 1s ease;
+    
+}
+.ramka img
+{
+    height: 60vh;
+    width: 50vw;
+    float: left;
+    
+}
+.prawo
+{
+    height: 80px;
+    width: 80px;
+    position: absolute;/*!!!*/
+    z-index: 99;
+    z-index: 100;
+    bottom: 50%;
+    right: 0vw;
+}
+.lewo
+{
+    position: absolute;/*!!!*/
+    bottom: 50%;
+    left: 0vw;
+    height: 80px;
+    width: 80px;
+    z-index: 100;
+}
+
+.sociale
+{
+    margin: 0 auto;
+    height: 50px;
+    float: right;
+    margin-right: 30vw;
+    display: inline-block;
+}
+.facebook,.youtube,.instagram
+{
+    margin-right: 10px;
+    transition: 1s ease;
+    height: 7vh;
+    border-radius: 50%;
+}
+.facebook:hover,.youtube:hover,.instagram:hover
+{
+    height: 8vh;
+}
+
+h1
+{
+    display: inline-block;
+    color: white;
+    margin: 40px 0 30px 15vw;
+    font-size: 40px;
+}
+.mapka
+{
+    height: 30vh;
+    float: left;
+    border-radius: 20px;
+}
+
+input[type="email"]
+{
+    display: inline-block;
+   border-radius: 10px;
+    height: 40px;
+    width: 200px;
+    opacity: 0.9;
+        display: inline-block;
+        width: 20vw;
+        float: left;
+        margin-left: 30%;
+    margin-right: 20px;
+/*
+        transform: translate(-50%,-50%);
+        margin-bottom: 40px;
+*/
+}
+input[type="email"]:focus
+{
+    
+    opacity: 1;
+    color: black;
+}
+input[type="submit"]
+{
+    display: inline-block;
+    height: 40px;
+    width: 80px;
+    border-radius: 10px;
+}
+input
+{
+    font-size: 20px;
+    transition: 1s ease;
+    color: darkviolet;
+}
+input[type="submit"]:hover
+{
+    box-shadow: 0 0 20px white;
+}
+.backgrd2
+{
+    display: inline-block;
+    background-image: url(20091130-Teton-Moonlight-bw.jpg);
+    width: 100vw;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.backgrd2 .exercise
+{
+    font-family: 'Jockey One', sans-serif;
+    letter-spacing: 10px;
+    font-size: 20vw;
+    opacity: 0.9;
+    display: inline-block;
+    color: white;
+    position: relative;
+    line-height: 50vh;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+
+@media (orientation: landscape)
+{
+    #backgrd
+    {
+        height: 50vh;
+    }
+    .czarnyprostokat
+    {
+        height: 50vh;
+    }
+    #artykul1 img
+{
+    margin-right: 10px;
+    float: left;
+}
+    #artykul2 img
+    {
+        margin-left: 10px;
+        float: right;
+    }
+
+    input[type="submit"]
+    {
+        display: inline;
+        transform: translate(-50%,-50%);
+    }
+    input[type="email"]
+    {
+                transform: translate(-50%,-50%);
+        margin-bottom: 40px;
+    }
+/*
+    .mapka
+    {
+        display: inline;
+        margin: 0 50%;
+        margin-top: 30px;
+        transform: translate(-50%,-50%);
+    }
+*/
+/*
+    .sociale
+    {
+        margin: 0 50%;
+transform: translate(-50%,-50%);
+    }
+*/
+    h1
+    {
+        display: inline-block;
+        width: 16vw;
+        height: 50px;
+        margin: 0 50%;
+transform: translate(-50%,-50%);
+    }
+}
+
+
+@keyframes zmientlo
+{
+    0%
+    {
+        background-image: url(20091130-Teton-Moonlight-bw.jpg);
+    }
+    48%
+    {
+        background-image: url(20091130-Teton-Moonlight-bw.jpg);
+    }
+    52%
+    {
+        background-image: url(13-Incredibly-Useful-Articles-on-Black-and-White-Landscape-Photography.jpeg);
+    }
+    100%
+    {
+        background-image: url(13-Incredibly-Useful-Articles-on-Black-and-White-Landscape-Photography.jpeg);
+    }
+}
+

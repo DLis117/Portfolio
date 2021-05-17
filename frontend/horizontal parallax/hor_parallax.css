@@ -1,0 +1,79 @@
+*
+{
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+body
+{
+    overflow-y: hidden;
+}
+#tlo
+{
+    background-image: url(itl.cat_nature-wallpaper-full-hd_48117.png);
+    width: 300vw;
+    height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.ramkanaprzyciski
+{
+    height: 40px;
+    width: 150px;
+    position: fixed;
+    top: 90%;
+    left: 50%;
+    -webkit-transform: translate(-50%,-90%);
+    transform: translate(-50%,-90%);
+}
+.przycisk1,.przycisk2,.przycisk3
+{
+    height: 40px;
+    width: 40px;
+    margin-left: 10px;
+    border-radius: 50%;
+    border: 5px solid white;
+    float: left;
+    -webkit-transition: all 1s ease;
+    transition: all 1s ease;
+/*    cursor: pointer;*/
+}
+.przycisk1
+{
+    background-color: white;
+}
+.trojkat
+{
+    -webkit-clip-path: polygon(0 0, 0% 100%, 100% 100%);
+    clip-path: polygon(0 0, 0% 100%, 100% 100%);
+    background-color: darkgreen;
+    height: 100vh;
+    width: 30vw;
+    opacity: 0.3;
+    position: fixed;
+    top: 0px;
+}
+h1
+{
+    left: 55px;
+    position: fixed;
+    top: 450px;
+    color: white;
+    text-shadow: 0 0 1px;
+    opacity: 0.8;
+    -webkit-transition: all 1s ease;
+    transition: all 1s ease;
+}
+p
+{
+    left: 5px;
+    word-wrap: break-word;
+    height: 200px;
+    color: white;
+    width: 350px;
+    position: fixed;
+    bottom: 0px;
+    opacity: 0.9;
+}
