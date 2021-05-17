@@ -1,0 +1,279 @@
+*
+{
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+}
+body
+{
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background:rgb(176, 247, 231);
+
+}
+.algosy
+{
+    height: 17vh;
+    width: 20vw;
+    -webkit-transform: rotate(5deg);
+    transform: rotate(5deg);
+    background-color: #EE82EE;
+    -webkit-box-shadow: 10px 10px 15px #FF00FF;
+    box-shadow: 10px 10px 15px #FF00FF;
+    border-radius: 10px;
+    position: absolute;
+    top: 10%;
+    left: 9%;
+    -webkit-transition: 0.5s ease;
+    transition: 0.5s ease;
+}
+.algosy:hover
+{
+    -webkit-transform: rotate(0deg) scale(1.1);
+    transform: rotate(0deg) scale(1.1);
+}
+h1
+{
+    text-align: center;
+    line-height: 50px;
+    -webkit-transform: rotate(2deg);
+   font-family: 'Sansita Swashed', cursive;
+    color: white;
+    font-size: 200%;
+    text-shadow: 0px 0px 10px; 
+}
+p
+{
+    font-family: 'Sansita Swashed', cursive;
+    color: white;
+    font-size: 300%;
+    -webkit-transform: rotate(3deg);
+    transform: rotate(3deg);
+    text-shadow: 0px 0px 10px;
+    text-align: center;
+    
+}
+h2
+{
+    font-family: 'Amatic SC', cursive;
+    color: white;
+    font-size: 7vw;
+    text-align: center;
+    margin-top: 2vh;
+}
+.higiena
+{
+    height: 50%;
+    -webkit-transform: rotate(10deg);
+    transform: rotate(10deg);
+    position: absolute;
+    left: 35%;
+    bottom: 5%;
+    -webkit-transition: 0.5s ease;
+    transition: 0.5s ease;
+}
+.higiena:hover
+{
+    -webkit-transform: rotate(0deg) scale(1.1);
+    transform: rotate(0deg) scale(1.1);
+}
+.piciewody
+{
+    -webkit-transform: rotate(5deg);
+    transform: rotate(5deg);
+    height: 40%;
+    position: absolute;
+    left: 53vw;
+    -webkit-transition: 0.5s ease;
+    transition: 0.5s ease;
+}
+.piciewody:hover
+{
+    -webkit-transform: rotate(0deg) scale(1.1);
+    transform: rotate(0deg) scale(1.1);
+}
+.zupka
+{
+   
+    -webkit-transform: rotate(3deg);
+   
+    transform: rotate(3deg);
+    -webkit-transition: 0.5s ease;
+    transition: 0.5s ease;
+    height: 45%;
+    position: absolute;
+    bottom: 0%;
+    left: 2%;
+}
+.zupka:hover
+{
+       -webkit-transform: rotate(0deg) scale(1.1);
+    transform: rotate(0deg) scale(1.1);
+}
+.banan
+{
+    height: 40%;
+    -webkit-transition: 0.5s ease;
+    transition: 0.5s ease;
+    position: absolute;
+    bottom: 0%;
+    right: 5%;
+}
+.banan:hover
+{
+    -webkit-transform: rotate(5deg) scale(1.1);
+    transform: rotate(5deg) scale(1.1);
+}
+.chomik
+{
+    -webkit-transform: rotate(-10deg);
+    transform: rotate(-10deg);
+    height: 40%;
+    -webkit-transition: 0.5s ease;
+    transition: 0.5s ease;
+    position: absolute;
+    bottom: 2%;
+    
+    right: 21%;
+}
+.chomik:hover
+{
+   
+    -webkit-transform: rotate(0deg) scale(1.1);
+   
+    transform: rotate(0deg) scale(1.1);
+}
+.arbuz
+{
+    -webkit-transform: rotate(-10deg);
+    transform: rotate(-10deg);
+    height: 40%;
+    -webkit-transition: 0.5s ease;
+    transition: 0.5s ease;
+    position: absolute;
+    top: 15%;
+    left: 24%;
+}
+.arbuz:hover
+{
+   
+    -webkit-transform: rotate(0deg) scale(1.1);
+   
+    transform: rotate(0deg) scale(1.1);
+}
+.garnek
+{
+    -webkit-transform: rotate(-10deg);
+    transform: rotate(-10deg);
+    height: 20%;
+    -webkit-transition: 0.5s ease;
+    transition: 0.5s ease;
+    position: absolute;
+    top: 35%;
+    left: 7%;
+}
+.garnek:hover
+{
+   
+    -webkit-transform: rotate(0deg) scale(1.1);
+   
+    transform: rotate(0deg) scale(1.1);
+}
+.basen
+{
+    -webkit-transform: rotate(-10deg);
+    transform: rotate(1deg);
+    height: 15%;
+    -webkit-transition: 0.5s ease;
+    transition: 0.5s ease;
+    position: absolute;
+    top: 3%;
+    right: 15%;
+}
+.basen:hover
+{
+   
+    -webkit-transform: rotate(5deg) scale(1.1);
+   
+    transform: rotate(5deg) scale(1.1);
+}
+.pole
+{
+    
+    text-align: left;
+    font-size: 3vh;
+    word-wrap: break-word;
+    overflow: hidden;
+    position: absolute;
+    z-index: 10;
+    right: 1%;
+    top:18%;
+    height: 40vh;
+    width: 25vw;
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+}
+.szczalka1,.szczalka2,.szczalka3,.szczalka4,.szczalka5,.szczalka6,.szczalka7,.szczalka8
+{
+    display: none;
+    height: 10%;
+    position: absolute;
+    -webkit-transition: 0.5s ease;
+    transition: 0.5s ease;
+}
+.szczalka1
+{
+    left: 11%;
+    top: 40%;
+}
+.szczalka2
+{
+    
+    left: 11%;
+    top: 80%;
+}
+.szczalka3
+{
+
+    left: 31%;
+    top: 35%;
+}
+.szczalka4
+{
+    left: 41%;
+    top: 79%;
+}
+.szczalka5
+{
+    right: 8%;
+    top: 76%;
+}
+.szczalka6
+{
+    right: 27%;
+    top: 77%;
+}
+.szczalka7
+{
+    right: 33%;
+    top: 46%;
+}
+.szczalka8
+{
+    right: 24%;
+    top: 4%;
+    
+}
+.znikaj
+{
+    display: block;
+}
+h3
+{
+    font-family: 'Amatic SC', cursive;
+    color: white;
+    font-size: 3vw;
+    text-align: center;
+
+}

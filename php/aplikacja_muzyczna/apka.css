@@ -1,0 +1,268 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+.body
+{
+    background: black;
+}
+.all
+{
+    background: linear-gradient(0deg, rgba(0,185,255,1) 0%, rgba(169,58,255,1) 100%);
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+li a
+{
+    display: inline-block;
+    color: white;
+    text-align: center;
+    font-size: 100%;
+    text-decoration: none;
+    margin-top: 5vh;
+    transition: all 1s ease;
+    margin: 5vh 5vw;
+}
+ul
+{
+    display: inline-block;
+    float: left;
+}
+.ramka
+{
+    display: inline-block;
+    background: #330047;
+    position: absolute;
+    z-index: 99;
+    transition: left 1s ease;
+    border-radius: 0 10px 10px 0px;
+    top: 10vh;
+    left: -300px;
+    
+}
+                                /*navbar*/
+.settings
+{
+    position: relative;
+}
+.rotate
+{
+    transform: rotate(30deg);
+}
+.settings i
+{
+    color: black;
+    position: absolute;
+    z-index: 100;
+    top: 1vh;
+    left: 5vw;
+    font-size: 200%;
+    transition: all 1s ease;
+}
+                                /*navbar*/
+.polish,.english
+{
+    margin-top: 3vh;
+    display: inline-block;
+    float: right;
+    width: 15vw;
+    height: 5vh;
+    border-radius: 10px;
+}
+.polish
+{
+    margin-left: 5vw;
+    margin-right: 5vw;
+}
+.podlogo
+{
+    margin-left: 50%;
+    margin-top: 15%;
+    transform: translate(-50%);
+    height: 40%;
+    margin-bottom: 10vh;
+}
+.logo
+{
+    position: absolute;
+    z-index: 100;
+    background-image: url("logo.png");
+    margin-left: 50%;
+    margin-top: 15%;
+    transform: translate(-50%);
+    height: 40vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    animation: powieksz 1s linear infinite alternate;
+}
+.start
+{
+    font-family: 'Pacifico', cursive;
+    color: white;
+    background: linear-gradient(45deg, rgba(255,0,255,1) 0%, rgba(159,39,252,1) 100%);
+    border-radius: 10px;
+    font-size: 7vw;
+    display: block;
+    width: 40vw;
+    height: 40vw;
+    margin: 0 auto;
+    margin-bottom: 4vh;
+}
+.buttons_menu
+{
+    display: inline-block;
+    width: 90vw;
+}
+.buttons_menu button
+{
+    font-family: 'Pacifico', cursive;
+    color: white;
+    background: linear-gradient(45deg, rgba(255,0,255,1) 0%, rgba(159,39,252,1) 100%);
+    border-radius: 10px;
+    display: inline-block;
+    height: 10vh;
+    width: 35vw;
+    font-size: 7vw;
+}
+.login
+{
+    float: left;
+    margin-left: 10vw;
+    margin-right: 10vw;
+}
+button a
+{
+    text-decoration: none;
+    color: white;
+}
+h1
+{
+    color: white;
+    text-align: center;
+    font-family: 'Pacifico', cursive;
+}
+input
+{
+    display: block;
+    margin: 5vh auto;
+    height: 10vh;
+    width: 70vw;
+    border-radius: 10px;
+    font-size: 5vw;
+}
+input[type="submit"]
+{
+    width: 50vw;
+    color: white;
+    text-align: center;
+    font-family: 'Pacifico', cursive;
+    background: linear-gradient(45deg, rgba(255,0,255,1) 0%, rgba(159,39,252,1) 100%);
+    margin-bottom: 0;
+}
+.back
+{
+    position: fixed;
+    bottom: 5vh;
+    right: 10vw;
+    font-size: 10vw;
+    color: white;
+    text-decoration: none;
+}
+input[type="checkbox"]
+{
+    
+    color: white;
+    display: inline-block;
+    width: 5vh;
+    height: 5vh;
+    float: left;
+    margin: 0 15vw;
+    margin-right: 5vw;
+}
+.statements
+{
+    line-height: 5vh;
+    margin-right: 0vw;
+    display: inline-block;
+    color: white;
+    font-size: 5vw;
+}
+.acc a
+{
+    margin-left: 10vw;
+    display: block;
+    text-decoration: none;
+    color: white;
+    font-family: 'Pacifico', cursive;
+    font-size: 10vw;
+}
+@keyframes powieksz
+{
+    from
+    {
+        height: 40vh;
+    }
+    to
+    {
+        height: 45vh;
+    }
+}
+.aud,.aud2
+{
+    display: inline-block;
+    margin: 1vh 50%;
+    transform: translate(-50%);
+    width: 95vw;
+    padding: 1vh;
+    background: black;
+    border-radius: 10px;
+}
+#gotocomments
+{
+    background: red;
+    display: inline-block;
+    height: 5vh;
+    width: 5vh;
+    cursor: pointer;
+    margin-top: 1.5vh;
+    margin-left: 2vw;
+}
+audio
+{
+    display: inline-block;
+    background: black;
+    border-radius: 10px;
+    float: left;
+    width: 80vw;
+}
+#komentarz,#komentarz_uzytkownika
+{
+    display: inline-block;
+    margin: 0 auto;
+    background: white;
+    display: block;
+    width: 70vw;
+    border-radius: 10px;
+    word-wrap: break-word;
+    margin-bottom: 20px;
+}
+#komentarz_uzytkownika
+{
+    background: #ff91f0;
+}
+#abovesong
+{
+    display: inline-block;
+    height: 10vh;
+    width: 100vw;
+}
+.aud2
+{
+    width: 84vw;
+}
