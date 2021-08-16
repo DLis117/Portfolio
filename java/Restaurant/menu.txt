@@ -1,0 +1,4 @@
+0,8,"zupa krem"
+1,4,"kotlet schabowy"
+2,7,"ryba po grecku"
+3,15,"karp w smietanie"
