@@ -33,10 +33,6 @@ public class MAIN
     public static int dubluj(int x)
     {
         x*=2;
-        if(x>2400)
-        {
-            x=2400;
-        }
         return x;
     }
     public static int getRandomNumber(int min, int max) {
@@ -47,7 +43,7 @@ public class MAIN
     {
         show_particles[pindx]=true;
         pindx++;
-        if(pindx==9600)
+        if(pindx==2000)
         {
             pindx=0;
         }
@@ -79,7 +75,7 @@ public class MAIN
 
             if(pierwszy==0)
             {
-                                                                        //zainicjalizowanie tablic - nadanie defaultowych wartosci
+                //zainicjalizowanie tablic - nadanie defaultowych wartosci
                 zajete=new int[4];
                 dead=new boolean[4];
                 for(int q=0;q<4;++q)
@@ -122,9 +118,8 @@ public class MAIN
                         }
                     }
                 }
-
-                                                                                //inicjalizacja particli
-                particles=new particle[9600];                                   //powyzej 2400 na osobe nie wyswietlaj
+                //inicjalizacja particli
+                particles=new particle[2000];                                   //powyzej 2400 na osobe nie wyswietlaj
                 show_particles=new boolean[particles.length];
                 for(int q=0;q<particles.length;++q)
                 {
@@ -133,11 +128,72 @@ public class MAIN
                     particles[q]=new particle((short)0,d1,0,0);
                 }
                 pierwszy=1;
-
             }
-            else if(pierwszy==1)
+
+            //wyswietlenie planszy
+            for(int b=0;b<tab.length;++b)
             {
-                                                                //sprawdzenie czy nie jest pokonany
+                for(int n=0;n<tab[b].length;++n)
+                {
+                    mg.setColor(Color.black);
+                    mg.draw(tab[b][n].kwadrat);
+
+                    Color c1=new Color(204,0, 18);
+                    Color c2=new Color(0, 11,150);
+                    Color c3=new Color(0,150,0);
+                    Color c4=new Color(200,200,0);
+                    if(tab[b][n].kolor==0)
+                    {
+                        mg.setColor(c1);
+                    }
+                    else if(tab[b][n].kolor==1)
+                    {
+                        mg.setColor(c2);
+                    }
+                    else if(tab[b][n].kolor==2)
+                    {
+                        mg.setColor(c3);
+                    }
+                    else
+                    {
+                        mg.setColor(c4);
+                    }
+                    mg.fill(tab[b][n].kwadrat);
+
+                }
+            }
+
+            r=40;                                                       //wyswietlenie luf
+            double x=Math.sqrt((r*r)-Math.pow((Math.sin(alpha)*r),2));  // -- wspolrzedna x dla kola o promieniu r
+            double y=Math.sin(alpha)*r;                                 // -- wspolrzedna y dla kola o promieniu r
+
+            Stroke st=new BasicStroke(10);
+            mg.setStroke(st);
+
+            if(!dead[0])
+            {
+                mg.setColor(Color.red);
+                mg.drawLine(0,0,(int)x,(int)y);
+            }
+            if(!dead[1])
+            {
+                mg.setColor(Color.blue);
+                mg.drawLine(450,0,(int)(450-x),(int)y);
+            }
+            if(!dead[2])
+            {
+                mg.setColor(Color.green);
+                mg.drawLine(0,450,(int)x,450-(int)y);
+            }
+            if(!dead[3])
+            {
+                mg.setColor(Color.yellow);
+                mg.drawLine(450,450,450-(int)x,450-(int)y);
+            }
+
+            if(pierwszy==1)
+            {
+                //sprawdzenie czy nie jest pokonany
                 short hq=0;
                 for(int q=0;q<4;++q)
                 {
@@ -152,65 +208,7 @@ public class MAIN
                 }
                 else
                 {                                                   //wyswietlenie planszy
-                    for(int b=0;b<tab.length;++b)
-                    {
-                        for(int n=0;n<tab[b].length;++n)
-                        {
-                            mg.setColor(Color.black);
-                            mg.draw(tab[b][n].kwadrat);
 
-                            Color c1=new Color(204,0, 18);
-                            Color c2=new Color(0, 11,150);
-                            Color c3=new Color(0,150,0);
-                            Color c4=new Color(200,200,0);
-                            if(tab[b][n].kolor==0)
-                            {
-                                mg.setColor(c1);
-                            }
-                            else if(tab[b][n].kolor==1)
-                            {
-                                mg.setColor(c2);
-                            }
-                            else if(tab[b][n].kolor==2)
-                            {
-                                mg.setColor(c3);
-                            }
-                            else
-                            {
-                                mg.setColor(c4);
-                            }
-                            mg.fill(tab[b][n].kwadrat);
-
-                        }
-                    }
-
-                    r=40;                                                       //wyswietlenie luf
-                    double x=Math.sqrt((r*r)-Math.pow((Math.sin(alpha)*r),2));  // -- wspolrzedna x dla kola o promieniu r
-                    double y=Math.sin(alpha)*r;                                 // -- wspolrzedna y dla kola o promieniu r
-
-                    Stroke st=new BasicStroke(10);
-                    mg.setStroke(st);
-
-                    if(!dead[0])
-                    {
-                        mg.setColor(Color.red);
-                        mg.drawLine(0,0,(int)x,(int)y);
-                    }
-                    if(!dead[1])
-                    {
-                        mg.setColor(Color.blue);
-                        mg.drawLine(450,0,(int)(450-x),(int)y);
-                    }
-                    if(!dead[2])
-                    {
-                        mg.setColor(Color.green);
-                        mg.drawLine(0,450,(int)x,450-(int)y);
-                    }
-                    if(!dead[3])
-                    {
-                        mg.setColor(Color.yellow);
-                        mg.drawLine(450,450,450-(int)x,450-(int)y);
-                    }
 
 
                     for(int q=0;q<4;++q)                                                //losowanie czy multiply czy shoot czy nic
@@ -259,8 +257,8 @@ public class MAIN
                         }
 
                     }
-                                                                                    // -- tworzenie particli danego koloru
-                                                                                    // -- zmniejszenie ilosci pociskow o 1
+                    // -- tworzenie particli danego koloru
+                    // -- zmniejszenie ilosci pociskow o 1
                     if(reds==true)
                     {
                         java.awt.geom.Rectangle2D.Double k1=new Rectangle2D.Double(x,y,1,1);
@@ -375,7 +373,7 @@ public class MAIN
                         }
 
                     }
-                                                                                 //jesli skonczyl strzelac to wroc do trybu zbierania pociskow
+                    //jesli skonczyl strzelac to wroc do trybu zbierania pociskow
                     if(reds==true&&ammor<1)
                     {
                         reds=false;
@@ -402,9 +400,8 @@ public class MAIN
                     mg.drawString("GREEN "+Integer.toString(zajete[2])+" "+Integer.toString(ammog),450,150);
                     mg.drawString("YELLOW "+Integer.toString(zajete[3])+" "+Integer.toString(ammoy),450,200);
 
-                    alpha+=0.01;
-                    alpha%=3.2;
-                                                                                                        //sprawdz czy nie zostal pokonany
+                    alpha=(alpha+=0.01)%(Math.PI-0.01); //liczone w Radianach!
+                    //sprawdz czy nie zostal pokonany
                     if(tab[0][0].kolor!=0||tab[0][1].kolor!=0||tab[1][0].kolor!=0||tab[1][1].kolor!=0)
                     {
                         dead[0]=true;
@@ -426,65 +423,7 @@ public class MAIN
             }
             else if(pierwszy==2)                                                            //po skonczonej grze
             {
-                for(int b=0;b<tab.length;++b)                                               //wyswiel plansze
-                {
-                    for(int n=0;n<tab[b].length;++n)
-                    {
-                        mg.setColor(Color.black);
-                        mg.draw(tab[b][n].kwadrat);
 
-                        Color c1=new Color(204,0, 18);
-                        Color c2=new Color(0, 11,150);
-                        Color c3=new Color(0,150,0);
-                        Color c4=new Color(200,200,0);
-                        if(tab[b][n].kolor==0)
-                        {
-                            mg.setColor(c1);
-                        }
-                        else if(tab[b][n].kolor==1)
-                        {
-                            mg.setColor(c2);
-                        }
-                        else if(tab[b][n].kolor==2)
-                        {
-                            mg.setColor(c3);
-                        }
-                        else
-                        {
-                            mg.setColor(c4);
-                        }
-                        mg.fill(tab[b][n].kwadrat);
-
-                    }
-                }
-
-                r=40;                                                                   //wyswietl zwyciezce
-                double x=Math.sqrt((r*r)-Math.pow((Math.sin(alpha)*r),2));
-                double y=Math.sin(alpha)*r;
-
-                Stroke st=new BasicStroke(10);
-                mg.setStroke(st);
-
-                if(!dead[0])
-                {
-                    mg.setColor(Color.red);
-                    mg.drawLine(0,0,(int)x,(int)y);
-                }
-                if(!dead[1])
-                {
-                    mg.setColor(Color.blue);
-                    mg.drawLine(450,0,(int)(450-x),(int)y);
-                }
-                if(!dead[2])
-                {
-                    mg.setColor(Color.green);
-                    mg.drawLine(0,450,(int)x,450-(int)y);
-                }
-                if(!dead[3])
-                {
-                    mg.setColor(Color.yellow);
-                    mg.drawLine(450,450,450-(int)x,450-(int)y);
-                }
                 short v=0;
                 for(short q=0;q<4;++q)
                 {
@@ -515,9 +454,7 @@ public class MAIN
                 }
                 s+=" is the winner!";
                 mg.drawString(s,450,50);                                    //wyswietl tekst o zwyciezcy na ekranie
-
-                alpha+=0.01;
-                alpha%=3.2;
+                alpha=(alpha+=0.01)%Math.PI;                                        //liczone w Radianach!
             }
         }
         public GraphicsDemo()
