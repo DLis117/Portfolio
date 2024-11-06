@@ -9,89 +9,123 @@
         <link rel="stylesheet" href="index.css">
     </head>
 <body>
-    <div id="gameboard">
-        <div class="tile"></div>
-        <div class="tile"></div>
-        <div class="tile"></div>
-        <div class="tile"></div>
-        <div class="tile"></div>
-        <div class="tile"></div>
-        <div class="tile"></div>
-        <div class="tile"></div>
-        <div class="tile"></div>
-        <div class="tile"></div>
-        <div class="tile"></div>
-        <div class="tile"></div>
-        <div class="tile"></div>
-        <div class="tile"></div>
-        <div class="tile"></div>
-        <div class="tile"></div>
-        <div class="tile"></div>
-        <div class="tile"></div>
-        <div class="tile"></div>
-        <div class="tile"></div>
-    </div>
+    <div id="gameboard"></div>
+    <h1 id="score">score: 0</h1>
+    <h1 id="attempts">attempts: 0</h1>
+    
     <script>
 
         let tiles = [
-      { value: 1, name: 'baloon.png' },
-      { value: 2, name: 'boat.png' },
-      { value: 3, name: 'car.png' },
-      { value: 4, name: 'crane.png' },
-      { value: 5, name: 'digger.png' },
-      { value: 6, name: 'excaviator.png' },
-      { value: 7, name: 'plane.png' },
-      { value: 8, name: 'rocket.png' },
-      { value: 9, name: 'submarine.png' },
-      { value: 10, name: 'tractor.png' },
-            
-      { value: 1, name: 'baloon.png' },
-      { value: 2, name: 'boat.png' },
-      { value: 3, name: 'car.png' },
-      { value: 4, name: 'crane.png' },
-      { value: 5, name: 'digger.png' },
-      { value: 6, name: 'excaviator.png' },
-      { value: 7, name: 'plane.png' },
-      { value: 8, name: 'rocket.png' },
-      { value: 9, name: 'submarine.png' },
-      { value: 10, name: 'tractor.png' }
+      { name: 'baloon.png' },
+      { name: 'boat.png' },
+      { name: 'car.png' },
+      { name: 'crane.png' },
+      { name: 'digger.png' },
+      { name: 'excaviator.png' },
+      { name: 'plane.png' },
+      { name: 'rocket.png' },
+      { name: 'submarine.png' },
+      { name: 'tractor.png' }, 
+      { name: 'baloon.png' },
+      { name: 'boat.png' },
+      { name: 'car.png' },
+      { name: 'crane.png' },
+      { name: 'digger.png' },
+      { name: 'excaviator.png' },
+      { name: 'plane.png' },
+      { name: 'rocket.png' },
+      { name: 'submarine.png' },
+      { name: 'tractor.png' }
 ];
+        
+        
         function shuffleTiles()
         {
             tiles.sort(()=>0.5 - Math.random());
         }
         
+        function showTiles()
+        {
+            for(let i=0;i<tiles.length;++i)
+            {
+                let x=document.createElement("div");
+                x.className=`tile url(pics/${tiles[i].name})`;
+                x.style.backgroundImage=`url(pics/tile.png)`;
+                let v=document.getElementById("gameboard");
+                v.appendChild(x);
+            }
+        }
+        
         shuffleTiles();
+        showTiles();
         
         let allTiles=document.getElementsByClassName("tile");
-            
-        for (let i=0;i<allTiles.length;++i)
-        {
-            allTiles[i].style.backgroundImage=`url(pics/${tiles[i].name})`;
-        }
-//        document.getElementsByClassName("tile");
+        let second=false;
+        let lastclicked;
+        let score=0;
+        let attempts=0;
         
-        let u=0;
-        let a;
-        let b;
-        for(t of allTiles)
+        let displayAttempts=document.getElementById("attempts");
+        let displayScore=document.getElementById("score");
+        
+        
+        
+        for(let i=0;i<tiles.length;++i)
         {
-            t.onclick=function()
-            {          
-                if(u==0)
+            allTiles[i].onclick=function()
+            {
+                if(allTiles[i].className.split(" ").length==2)
                 {
-                    a=this.style.backgroundImage;
-                    u=1;
-                }
-                else
-                {
-                    b=this.style.backgroundImage;
-                    u=0;
-                    if(a===b)
+                    this.style.backgroundImage=`url(pics/${tiles[i].name})`;
+                    if(second!=false)
                     {
-                        console.log("match!");
+                        this.style.backgroundImage=`url(pics/${tiles[i].name})`;
+                        ++attempts;
+                        displayAttempts.innerHTML=`attempts: ${attempts}`;
+                        if(lastclicked!==allTiles[i]&&lastclicked.style.backgroundImage===allTiles[i].style.backgroundImage)
+                        {
+                            ++score;
+                            displayScore.innerHTML=`score: ${score}`;
+                            
+                            //we are taking the class away so it will not be clicked again
+                            lastclicked.className="tile";
+                            allTiles[i].className="tile";
+                            
+                            //removing pair of tiles from the gameboard
+                            lastclicked.style.background="transparent";
+                            allTiles[i].style.background="transparent";
+                            
+                        }
+                        else
+                        {
+                            //those were different
+                            //so we have to cover them again
+                            //but lets do it with little delay so user can see what was there
+                            
+                             setTimeout(() => {
+                            lastclicked.style.backgroundImage=`url(pics/tile.png)`;
+                            allTiles[i].style.backgroundImage=`url(pics/tile.png)`;
+                            }, 500);
+
+                            
+                        }
                     }
+                    if(score==10)
+                    {
+                        displayScore.innerHTML=`congratulations!
+                            you won the game after ${attempts} attempts`;
+                        displayAttempts.innerHTML='';
+                        
+                        displayScore.style.left="50%";
+                        displayScore.style.top="50%";
+                        displayScore.style.transform="translate(-50%, -50%)";
+                        displayScore.style.width="40%";
+                    }
+                    second=!second;
+                    lastclicked=this;
+                    
                 }
+                
             }
         }
         
