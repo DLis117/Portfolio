@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>arkanoid</title>
+        <meta name="description" content="arkanoid">
+        <link rel="stylesheet" href="index.css">
+    </head>
+<body>
+    <div id="gameboard">
+    
+        <div id="pad"></div> 
+        <div id="ball"></div>
+    </div>
+    <script>
+        let gameStarted=false;
+        let brickHeigth=20;
+        let brickWidth=65;
+        //top 25.399999618530273
+        //left 98.20000457763672
+        let gameboard=document.querySelector("#gameboard");
+        let ball=document.querySelector("#ball");
+        ball.style.top=`${600-30}px`;
+        
+        const rect = gameboard.getBoundingClientRect();
+//        console.log("Top:", rect.top);       // Distance from the top of the viewport
+//        console.log("Left:", rect.left);     // Distance from the left of the viewport
+//        console.log("Right:", rect.right);   // Distance from the left to the right edge of the element
+//        console.log("Bottom:", rect.bottom); // Distance from the top to the bottom edge of the element
+//        console.log("Width:", rect.width);   // Width of the element
+//        console.log("Height:", rect.height); // Height of the element
+        let pad=document.querySelector("#pad");
+        
+        gameboard.addEventListener('mousemove',function(event)
+      { 
+            //moving the pad
+            let x=Number(`${event.clientX-rect.left-100}`);
+            if(x>450)
+            {
+                
+                pad.style.left="450px";
+                if(gameStarted===false)
+                {   
+                    //+100 - 15  //+pad width/2 -ball size/2
+                    ball.style.left="535px";
+                }
+            }
+            else if(x<0)
+            {
+                pad.style.left="0px";
+                if(gameStarted===false)
+                {
+                    //+100 - 15  //+pad width/2 -ball size/2
+                    ball.style.left="85px";
+                }
+            }
+            else
+            {
+                pad.style.left=`${event.clientX-rect.left-100}px`;
+                if(gameStarted===false)
+                {
+                    //+100 - 15  //+pad width/2 -ball size/2
+                    ball.style.left=`${x+100-15}px`;
+                }
+            }
+                                              //x coordinates of mouse position
+                                                                //half of pad width
+                    
+            //0 - 450
+//                    console.log((pad.style.width));//.split("px")[0]   nie dziala idk czemu
+//            if(gameStarted===false)
+//            {
+//                ball.style.left=`${x+100-15}px`;
+//                
+//            }
+        })
+        for(let i=0;i<10;++i)
+        {
+            for(let j=0;j<10;++j)
+            {
+                let brick=document.createElement('div');
+                brick.className="brick";
+                brick.style.position="absolute";
+                brick.style.top=`${i*brickHeigth}px`;
+                brick.style.left=`${j*brickWidth}px`;
+                gameboard.append(brick);
+                
+            }
+        }
+        
+        
+        
+        
+        
+    </script>  
+    
+</body>
+</html>

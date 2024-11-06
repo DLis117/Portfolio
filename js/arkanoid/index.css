@@ -1,0 +1,54 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+/*
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+*/
+}
+body
+{
+    background: black;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+#gameboard
+{
+    width: 650px;
+    height: 650px;
+    background: darkgreen;
+    display: block;
+    border: solid 10px white;
+    border-radius: 20px;
+    
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.brick
+{
+    width: 65px;
+    height: 20px;
+    background: blue;
+}
+#pad
+{
+    background: black;
+    width: 200px;
+    height: 20px;
+    position: absolute;
+    top: 600px;
+    left: 400px;
+    cursor: pointer;
+}
+#ball
+{
+    background: red;
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    position: absolute;
+}
