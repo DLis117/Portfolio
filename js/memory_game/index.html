@@ -74,9 +74,11 @@
         {
             allTiles[i].onclick=function()
             {
+                
                 if(allTiles[i].className.split(" ").length==2)
                 {
                     this.style.backgroundImage=`url(pics/${tiles[i].name})`;
+                    
                     if(second!=false)
                     {
                         this.style.backgroundImage=`url(pics/${tiles[i].name})`;
@@ -101,14 +103,21 @@
                             //those were different
                             //so we have to cover them again
                             //but lets do it with little delay so user can see what was there
+                            //and don't cover those which are already guessed.
                             
                              setTimeout(() => {
-                            lastclicked.style.backgroundImage=`url(pics/tile.png)`;
-                            allTiles[i].style.backgroundImage=`url(pics/tile.png)`;
+                                 for(tile of allTiles)
+                                 {
+                                    if(tile.className.split(" ").length==2)
+                                    {
+                                        tile.style.backgroundImage=`url(pics/tile.png)`;
+                                    }
+                                 }
                             }, 500);
 
                             
                         }
+                        
                     }
                     if(score==10)
                     {
@@ -128,7 +137,6 @@
                 
             }
         }
-        
         
     </script>  
     
