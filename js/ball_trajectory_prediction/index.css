@@ -1,0 +1,32 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+body
+{
+    background: black;
+}
+#frame
+{
+    background:white;
+    border: solid 2px gray;
+}
+#ball, #ballTarget, #ballPredicted
+{
+    width: 5px;
+    height: 5px;
+    border-radius: 100%;
+    position: absolute;
+    background: red;
+}
+#ballTarget
+{
+    background: blue;
+}
+#ballPredicted
+{
+    background: yellow;
+}

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>ball trajectory calculation</title>
+        <meta name="description" content="ball trajectory calculation">
+        <link rel="stylesheet" href="index.css">
+    </head>
+<body>
+    <div id="frame">
+        <div id="ball"></div>
+        <div id ="ballTarget"></div>
+        <div id="ballPredicted"></div>
+    </div>
+    
+    <script>
+        let frame=document.getElementById("frame");
+        let ball= document.getElementById("ball");
+        let ballTarget= document.getElementById("ballTarget");
+        let ballPredicted= document.getElementById("ballPredicted");
+        
+        
+        const frameWidth=100;
+        const frameHeigth=200;
+        
+        const ballSize=5;
+        
+        let ballX=10;   //default ball position
+        let ballY=200;  //default ball position
+        
+        let targetX=70;
+        let targetY=0;
+        
+        let predictedX=0;
+        let predictedY=0;
+        
+        let sinalpha=0;
+        let cosalpha=0;
+        
+        let changesin=false; //if wall is hit we need to multiply it by -1 to change ball direction
+        let changecos=false; //if wall is hit we need to multiply it by -1 to change ball direction
+        
+        //to change
+        //we need to check for >200 <0 etc
+        let v=2; //iterator for calculating distance from starting point
+                 //by default set to 2 because if less then script sees it as 
+        
+        frame.style.width=`${frameWidth}px`;
+        frame.style.height=`${frameHeigth}px`;
+        
+        ball.style.top=`${ballY}px`;
+        ball.style.left=`${ballX}px`;
+        
+        ballTarget.style.top=`${targetY}px`;
+        ballTarget.style.left=`${targetX}px`;
+        
+        
+        function calculateSinAndCos()
+        {
+            //we need to calculate distances between ball and ballTarget height and width, so we can use it later 
+            //to calculate distance between balls 
+            //and use it to calculate sin and cos functions
+            
+            let lengthDelta=Math.abs(ballX-targetX);
+            let heightDelta=Math.abs(ballY-targetY);
+            let distanceBetweenPoints=Math.sqrt(lengthDelta**2+heightDelta**2);
+            //console.log(`lengthDelta: ${lengthDelta}  heightDelta: ${heightDelta}  distanceBetweenPoints: ${distanceBetweenPoints}`);
+
+            cosalpha=heightDelta/distanceBetweenPoints;
+            sinalpha=lengthDelta/distanceBetweenPoints;
+            
+        }
+        
+        function setNewTrajectory()
+        {
+            //if ballPredited reaches the target wall, we need to set up new positions for each ball
+            //based on previous ones
+            
+            ballX=targetX;
+            ballY=targetY;
+            ball.style.top=`${ballY}px`;
+            ball.style.left=`${ballX}px`;
+            
+            targetX=Number(ballPredicted.style.left.split("px")[0]);
+            targetY=Number(ballPredicted.style.top.split("px")[0]);   
+            ballTarget.style.top=`${targetY}px`;
+            ballTarget.style.left=`${targetX}px`;
+        }
+
+        
+        
+        function goByPredictedPath()
+        {
+            let str=``;
+            setInterval(()=>{
+                if(changesin==true)
+                {
+                    ballPredicted.style.top=`${Math.round(targetY+v*sinalpha*-1)}px`;
+                    str=`top: ${Math.round(targetY+v*sinalpha*-1)}px `;
+                }
+                else
+                {
+                    ballPredicted.style.top=`${Math.round(targetY+v*sinalpha)}px`;
+                    str=`top: ${Math.round(targetY+v*sinalpha)}px `;
+                }
+                
+                if(changecos==true)
+                {
+                     ballPredicted.style.left=`${Math.round(targetX+v*cosalpha*-1)}px`;
+                   str+=`left: ${Math.round(targetX+v*cosalpha*-1)}px`;
+                }
+                else
+                {
+                     ballPredicted.style.left=`${Math.round(targetX+v*cosalpha)}px`;
+                    str+=`left: ${Math.round(targetX+v*cosalpha)}px`;
+                }
+                console.log(str);
+                
+               
+                if(Math.round(Number(ballPredicted.style.left.split("px")[0]))==0)
+                {
+                    console.log("uderzyl w lewa sciane");
+                    v=2;
+                    changecos=!changecos;
+                    calculateSinAndCos();
+                    setNewTrajectory();
+                    return;
+                }
+                else if(Math.round(Number(ballPredicted.style.left.split("px")[0]))==frameWidth)
+                {
+                    console.log("uderzyl w prawa sciane");
+                    v=2;
+                    
+                    changecos=!changecos;
+                    calculateSinAndCos();
+                    setNewTrajectory();
+                    
+                    return;
+                }
+                else if(Math.round(Number(ballPredicted.style.top.split("px")[0]))==0)
+                {
+                    console.log("uderzyl w gorna sciane");
+                    v=2;
+                    changesin=!changesin;
+                    calculateSinAndCos();
+                    setNewTrajectory();
+                    return;
+                }
+                else if(Math.round(Number(ballPredicted.style.top.split("px")[0]))==frameHeigth)
+                {
+                    console.log("uderzyl w dolna sciane");
+                    v=2;
+                    changesin=!changesin;
+                    calculateSinAndCos();
+                    setNewTrajectory();
+//                    
+                    return;
+                }
+                else 
+                {
+                     v++;
+                }
+            },10);
+        }
+        
+        calculateSinAndCos();
+        goByPredictedPath();
+        
+    </script>  
+    
+</body>
+</html>
