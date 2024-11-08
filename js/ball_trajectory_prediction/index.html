@@ -83,8 +83,8 @@
             ball.style.top=`${ballY}px`;
             ball.style.left=`${ballX}px`;
             
-            targetX=Number(ballPredicted.style.left.split("px")[0]);
-            targetY=Number(ballPredicted.style.top.split("px")[0]);   
+            targetX=predictedX;
+            targetY=predictedY;
             ballTarget.style.top=`${targetY}px`;
             ballTarget.style.left=`${targetX}px`;
         }
@@ -93,69 +93,34 @@
         
         function goByPredictedPath()
         {
-            let str=``;
             setInterval(()=>{
-                if(changesin==true)
-                {
-                    ballPredicted.style.top=`${Math.round(targetY+v*sinalpha*-1)}px`;
-                    str=`top: ${Math.round(targetY+v*sinalpha*-1)}px `;
-                }
-                else
-                {
-                    ballPredicted.style.top=`${Math.round(targetY+v*sinalpha)}px`;
-                    str=`top: ${Math.round(targetY+v*sinalpha)}px `;
-                }
+                //if wall has been hit, change the direction by changing sin to -sin (left or right wall hit)
+                //or cos to -cos (top or bottom wall hit)
+                changesin==true?predictedY=Math.round(targetY+v*sinalpha*-1):predictedY=Math.round(targetY+v*sinalpha);
+                changecos==true?predictedX=Math.round(targetX+v*cosalpha*-1):predictedX=Math.round(targetX+v*cosalpha);
+
+                ballPredicted.style.top=`${predictedY}px`;
+                ballPredicted.style.left=`${predictedX}px`;
                 
-                if(changecos==true)
-                {
-                     ballPredicted.style.left=`${Math.round(targetX+v*cosalpha*-1)}px`;
-                   str+=`left: ${Math.round(targetX+v*cosalpha*-1)}px`;
-                }
-                else
-                {
-                     ballPredicted.style.left=`${Math.round(targetX+v*cosalpha)}px`;
-                    str+=`left: ${Math.round(targetX+v*cosalpha)}px`;
-                }
-                console.log(str);
-                
+                //for thebugging we can display coordinates of yellow ball
+                //console.log(`top: ${predictedY}px left: ${predictedX}px`);
                
-                if(Math.round(Number(ballPredicted.style.left.split("px")[0]))==0)
+                if(Math.round(predictedX)==0||Math.round(predictedX)==frameWidth)
                 {
-                    console.log("uderzyl w lewa sciane");
+                    //left or right wall hit
                     v=2;
                     changecos=!changecos;
                     calculateSinAndCos();
                     setNewTrajectory();
                     return;
                 }
-                else if(Math.round(Number(ballPredicted.style.left.split("px")[0]))==frameWidth)
+                else if(Math.round(predictedY)==0||Math.round(predictedY)==frameHeigth)
                 {
-                    console.log("uderzyl w prawa sciane");
-                    v=2;
-                    
-                    changecos=!changecos;
-                    calculateSinAndCos();
-                    setNewTrajectory();
-                    
-                    return;
-                }
-                else if(Math.round(Number(ballPredicted.style.top.split("px")[0]))==0)
-                {
-                    console.log("uderzyl w gorna sciane");
+                    //top or bottom wall hit
                     v=2;
                     changesin=!changesin;
                     calculateSinAndCos();
                     setNewTrajectory();
-                    return;
-                }
-                else if(Math.round(Number(ballPredicted.style.top.split("px")[0]))==frameHeigth)
-                {
-                    console.log("uderzyl w dolna sciane");
-                    v=2;
-                    changesin=!changesin;
-                    calculateSinAndCos();
-                    setNewTrajectory();
-//                    
                     return;
                 }
                 else 
