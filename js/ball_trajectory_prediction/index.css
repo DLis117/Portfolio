@@ -20,11 +20,11 @@ body
     height: 5px;
     border-radius: 100%;
     position: absolute;
-    background: red;
+    background: red;  /*only for debbuging*/ 
 }
 #ballTarget
 {
-    background: blue;
+    background: blue; /*only for debbuging*/ 
 }
 #ballPredicted
 {

@@ -94,6 +94,7 @@
         function goByPredictedPath()
         {
             setInterval(()=>{
+                
                 //if wall has been hit, change the direction by changing sin to -sin (left or right wall hit)
                 //or cos to -cos (top or bottom wall hit)
                 changesin==true?predictedY=Math.round(targetY+v*sinalpha*-1):predictedY=Math.round(targetY+v*sinalpha);
@@ -105,7 +106,7 @@
                 //for thebugging we can display coordinates of yellow ball
                 //console.log(`top: ${predictedY}px left: ${predictedX}px`);
                
-                if(Math.round(predictedX)==0||Math.round(predictedX)==frameWidth)
+                if(predictedX<=0||predictedX>=frameWidth)
                 {
                     //left or right wall hit
                     v=2;
@@ -114,7 +115,7 @@
                     setNewTrajectory();
                     return;
                 }
-                else if(Math.round(predictedY)==0||Math.round(predictedY)==frameHeigth)
+                else if(predictedY<=0||predictedY>=frameHeigth)
                 {
                     //top or bottom wall hit
                     v=2;
