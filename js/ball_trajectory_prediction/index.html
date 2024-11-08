@@ -22,10 +22,12 @@
         let ballPredicted= document.getElementById("ballPredicted");
         
         
-        const frameWidth=100;
-        const frameHeigth=200;
+        const frameWidth=500;
+        const frameHeigth=600;
         
-        const ballSize=5;
+        let ballSize=25;
+        ballPredicted.style.height=ballPredicted.style.width=`${ballSize}px`;
+       
         
         let ballX=10;   //default ball position
         let ballY=200;  //default ball position
@@ -105,8 +107,10 @@
                 
                 //for thebugging we can display coordinates of yellow ball
                 //console.log(`top: ${predictedY}px left: ${predictedX}px`);
-               
-                if(predictedX<=0||predictedX>=frameWidth)
+                                                         // - ballSize because on animation without it it will look like 
+                                                         // it't  going beyond the frame 
+                                                         // so to make it look like bounce we subtract ballSize and this // way check if right side of the ball touches the frame
+                if(predictedX<=0||predictedX>=frameWidth-ballSize)
                 {
                     //left or right wall hit
                     v=2;
@@ -115,7 +119,7 @@
                     setNewTrajectory();
                     return;
                 }
-                else if(predictedY<=0||predictedY>=frameHeigth)
+                else if(predictedY<=0||predictedY>=frameHeigth-ballSize)
                 {
                     //top or bottom wall hit
                     v=2;
@@ -128,7 +132,7 @@
                 {
                      v++;
                 }
-            },10);
+            },5);
         }
         
         calculateSinAndCos();

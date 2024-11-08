@@ -16,8 +16,8 @@ body
 }
 #ball, #ballTarget, #ballPredicted
 {
-    width: 5px;
-    height: 5px;
+    width: 25px;
+    height: 25px;
     border-radius: 100%;
     position: absolute;
 /*    background: red;  only for debbuging */
