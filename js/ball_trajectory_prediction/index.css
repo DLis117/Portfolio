@@ -11,8 +11,19 @@ body
 }
 #frame
 {
-    background:white;
-    border: solid 2px gray;
+    width: 650px;
+    height: 650px;
+    background: darkgreen;
+    display: block;
+    border: solid 10px white;
+/*    border-radius: 20px;*/
+    
+    position: absolute;
+/*
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+*/
 }
 #ball, #ballTarget, #ballPredicted
 {
@@ -20,13 +31,19 @@ body
     height: 25px;
     border-radius: 100%;
     position: absolute;
-/*    background: red;  only for debbuging */
+    background: red;  /*only for debbuging*/ 
 }
 #ballTarget
 {
-/*    background: blue; only for debbuging */
+    background: blue; /*only for debbuging*/ 
 }
 #ballPredicted
 {
     background: yellow;
+}
+.brick
+{
+    width: 65px;
+    height: 20px;
+    background: blue;
 }
