@@ -2,38 +2,67 @@
     padding: 0px;
     margin: 0px;
     border: 0px;
-/*
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-*/
 }
 body
 {
     background: black;
-    height: 100vh;
-    width: 100vw;
-    overflow: hidden;
 }
-#gameboard
+#frame
 {
     width: 650px;
     height: 650px;
     background: darkgreen;
     display: block;
-    border: solid 10px white;
-    border-radius: 20px;
+    border: solid 2px white;
+/*    border-radius: 20px;*/
     
     position: absolute;
+/*
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+*/
 }
+#ball, #ballTarget, #ballPredicted, #testBall
+{
+/*
+    width: 25px;
+    height: 25px;
+*/
+    border-radius: 100%;
+    position: absolute;
+    background: red;  
+/*    background: transparent;*/
+}
+#ballTarget
+{
+    background: blue; 
+/*    background: transparent;*/
+}
+#ballPredicted
+{
+    background: yellow;
+    
+}
+
+#testBall
+{
+    background: magenta;
+}
+
 .brick
 {
     width: 65px;
-    height: 20px;
+    height: 20px;    
     background: blue;
+/*    background: transparent;*/
+
+/*    display: flex;*/
 }
+
+
 #pad
 {
     background: black;
@@ -43,12 +72,4 @@ body
     top: 600px;
     left: 400px;
     cursor: pointer;
-}
-#ball
-{
-    background: red;
-    width: 30px;
-    height: 30px;
-    border-radius: 100%;
-    position: absolute;
 }
