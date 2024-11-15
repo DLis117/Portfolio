@@ -11,8 +11,6 @@ body
 }
 #frame
 {
-    width: 650px;
-    height: 650px;
     background: darkgreen;
     display: block;
     border: solid 2px white;

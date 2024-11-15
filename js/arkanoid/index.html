@@ -108,68 +108,39 @@
             //moving the pad
             //first we need to check mouse position and move the pad after some calculations
             //then we will position the ball on the pad
-            let x=Number(`${event.clientX}`);   //mouse position
-            let padPosition=x-padWidth/2; //pad position will be based on the middle of the pad instead of top left corner
-            
-            
-            if(padPosition>=frameWidth-padWidth)
-            {
-                pad.style.left=`${frameWidth-padWidth}px`;
-                
-            }
-            else if(padPosition<0)
-            {
-                pad.style.left=`${0}px`;
-            }
-            else
-            {
-                if(gameStarted==false)
-                {
-                    testBallX=padPosition+(padWidth/2)-(ballSize/2); //the ball will be in the middle of the pad
-                    testBallY=padY-ballSize;                         //the ball will be on top of the pad
-                    
-                    testBall.style.top=`${testBallY}px`;
-                    testBall.style.left=`${testBallX}px`;    
-                }
-                pad.style.left=`${padPosition}px`;
-            }
+//            let x=Number(`${event.clientX}`);   //mouse position
+//            let padPosition=x-padWidth/2; //pad position will be based on the middle of the pad instead of top left corner
+//            
+//            
+//            if(padPosition>=frameWidth-padWidth)
 //            {
+//                pad.style.left=`${frameWidth-padWidth}px`;
 //                
-//                pad.style.left="450px";
-//                if(gameStarted===false)
-//                {   
-//                    //+100 - 15  //+pad width/2 -ball size/2
-//                    ball.style.left="535px";
-//                }
 //            }
-//            else if(x<0)
+//            else if(padPosition<0)
 //            {
-//                pad.style.left="0px";
-//                if(gameStarted===false)
-//                {
-//                    //+100 - 15  //+pad width/2 -ball size/2
-//                    ball.style.left="85px";
-//                }
+//                pad.style.left=`${0}px`;
 //            }
 //            else
 //            {
-//                pad.style.left=`${event.clientX-rect.left-100}px`;
-//                if(gameStarted===false)
+//                if(gameStarted==false)
 //                {
-//                    //+100 - 15  //+pad width/2 -ball size/2
-//                    ball.style.left=`${x+100-15}px`;
+//                    testBallX=padPosition+(padWidth/2)-(ballSize/2); //the ball will be in the middle of the pad
+//                    testBallY=padY-ballSize;                         //the ball will be on top of the pad
+//                    
+//                    testBall.style.top=`${testBallY}px`;
+//                    testBall.style.left=`${testBallX}px`;    
 //                }
+//                pad.style.left=`${padPosition}px`;
 //            }
-                                              //x coordinates of mouse position
-                                                                //half of pad width
-                    
-            //0 - 450
-//                    console.log((pad.style.width));//.split("px")[0]   nie dziala idk czemu
-//            if(gameStarted===false)
-//            {
-//                ball.style.left=`${x+100-15}px`;
-//                
-//            }
+            
+            
+            
+            ////////////////////
+            testBallX=event.clientX;
+            testBallY=event.clientY;
+            testBall.style.top=`${testBallY}px`;
+            testBall.style.left=`${testBallX}px`;    
         })
         
         
@@ -222,26 +193,66 @@
         let linearFunction=calculateLinearFunction();
         let executeOnlyOnce=true;
         
+        setInterval(checkIfBricksHit,10);
         
         function checkIfBricksHit()
         {
-            for(let i=99;i>=0;i--)
+            testBall.style.zIndex="1";
+            let error=5; //size of the ball differs from size of the div a little bit
+                         //this causes the situation where div hit the brick 
+                         //but we cannot see it bc of border-radius
+                         //so we add error variable to correct how we see the ball hit
+            
+            
+            for(let k=99;k>=0;--k)
             {
-               // if(first==true)
-//                {
-                    let halfx=(bricks[i].x+brickWidth/2);
-                    let halfy=(bricks[i].y+brickHeigth/2);
-                    
-                    if(Math.sqrt(Math.pow(halfx-predictedX,2)+Math.pow(halfy-predictedY,2))<ballSize&&bricks[i].destroyed==false)
+                for(let i=testBallX+error;i<=testBallX+ballSize-error;++i)
+                {
+                    for(let j=bricks[k].x;j<=bricks[k].x+brickWidth;++j)
                     {
-                        bricks[i].brick.style.background='transparent';
-                        bricks[i].destroyed=true;
-                        return true;
+                        if(i===j&&(testBallY==bricks[k].y+brickHeigth&&bricks[k].destroyed==false))
+                        {
+                            console.log('hit by a ball from its top part to bottom part of a brick');
+                            bricks[k].brick.style.background="yellow";
+                            
+                            //change direction of the ball
+                            return;
+                        }
+                        else if(i===j&&(testBallY+ballSize==bricks[k].y&&bricks[k].destroyed==false))
+                        {
+                            console.log('hit by a ball from its bottom part to top part of a brick');
+                            bricks[k].brick.style.background="green";
+                            
+                            //change direction of the ball
+                            return;
+                        }
                     }
-//                }
+                }
+                
+                for(let i=testBallY;i<=testBallY+ballSize;++i)
+                {
+                    for(let j=bricks[k].y;j<=bricks[k].y+brickHeigth;++j)
+                    {
+                        if(i===j&&(testBallX+ballSize==bricks[k].x&&bricks[k].destroyed==false))
+                        {
+                            console.log('hit by a ball from its right part to left part of a brick');
+                            bricks[k].brick.style.background="pink";
+                            
+                            //change direction of the ball
+                            return;
+                        }
+                        else if(i===j&&(testBallX==bricks[k].x+brickWidth&&bricks[k].destroyed==false))
+                        {
+                            console.log('hit by a ball from its left part to right part of a brick');
+                            bricks[k].brick.style.background="cyan";
+                            
+                            //change direction of the ball
+                            return;
+                        }
+                    }
+                }
                 
             }
-            return false;
         }
         
         
