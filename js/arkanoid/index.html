@@ -4,8 +4,8 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>ball trajectory calculation</title>
-        <meta name="description" content="ball trajectory calculation">
+        <title>arkanoid</title>
+        <meta name="description" content="arkanoid">
         <link rel="stylesheet" href="index.css">
     </head>
 <body>
@@ -31,14 +31,14 @@
         
         let ball= document.getElementById("ball");
         let ballSize=25;
-	    let ballX=561;   //default ball position
-        let ballY=625;   //default ball position
+	    let ballX=frameWidth/2-ballSize/2;   //default ball position
+        let ballY=620;   //default ball position
         ball.style.top=`${ballY}px`;
         ball.style.left=`${ballX}px`;
         
         let ballTarget= document.getElementById("ballTarget");
-        let targetX=10;         //CAUTION! if target is on the wall predicted will not work 
-        let targetY=251;        //always place target in front of the wall
+        let targetX=frameWidth/2-ballSize;         //CAUTION! if target is on the wall predicted will not work 
+        let targetY=600;        //always place target in front of the wall
         ballTarget.style.top=`${targetY}px`;
         ballTarget.style.left=`${targetX}px`;
         
@@ -59,7 +59,7 @@
         let pad=document.querySelector("#pad");
         let padWidth=200;
         let padHeight=20;
-        let padX=400;
+        let padX=frameWidth/2-padWidth/2;
         let padY=600;
         pad.style.width=`${padWidth}px`;
         pad.style.top=`${padY}px`;
@@ -81,10 +81,12 @@
         
         let beforeFirstBounce=true;         //to control ball trajectory before first wall hit
         
-        let gameStarted=false;      //to know where to position the ball. it needs to be positioned on pad first.
+        let gameStarted=0;      //to know where to position the ball. it needs to be positioned on pad first.
         
         let brickHeigth=20;
         let brickWidth=65;
+        
+        let linearFunction;
         
         let bricks=[];
         
@@ -146,9 +148,50 @@
             targetY=predictedY;
             ballTarget.style.top=`${targetY}px`;
             ballTarget.style.left=`${targetX}px`;
+            
         }
+        
+        
+        frame.addEventListener('mousemove',function(event)
+        { 
+            
+//            moving the pad
+//            first we need to check mouse position and move the pad after some calculations
+            if(gameStarted==1)
+            {
+                let x=Number(`${event.clientX}`);   //mouse position
+                let padPosition=x-padWidth/2; //pad position will be based on the middle of the pad instead of top left corner
 
-        let linearFunction=calculateLinearFunction();
+
+                if(padPosition>=frameWidth-padWidth)
+                {
+                    pad.style.left=`${frameWidth-padWidth}px`;
+                }
+                else if(padPosition<0)
+                {
+                    pad.style.left=`${0}px`;
+                }
+                else
+                {
+                    pad.style.left=`${padPosition}px`;
+                }   
+            }
+            
+        })
+        
+        
+       frame.addEventListener('click',function()
+       {
+            if(gameStarted!==1)
+            {
+                //make sure user can only click once to start a game
+                gameStarted=1;
+            }
+
+       });
+        
+
+        
 
         function checkIfBricksHit()
         {
@@ -170,7 +213,6 @@
                             bricks[k].brick.style.background="transparent";
                             bricks[k].destroyed=true;
                             changeDirectionTopBottom();
-//                            console.log(`brick index: ${k}`);
                             return true;
                         }
                         else if(i===j&&(predictedY+ballSize==bricks[k].y&&bricks[k].destroyed==false))
@@ -179,7 +221,6 @@
                             bricks[k].brick.style.background="transparent";
                             bricks[k].destroyed=true;
                             changeDirectionTopBottom();
-//                            console.log(`brick index: ${k}`);
                             return true;
                         }
                     }
@@ -195,7 +236,6 @@
                             bricks[k].brick.style.background="transparent";
                             bricks[k].destroyed=true;
                             changeDirectionLeftRight();
-//                            console.log(`brick index: ${k}`);
                             return true;
                         }
                         else if(i===j&&(predictedX==bricks[k].x+brickWidth&&bricks[k].destroyed==false))
@@ -204,7 +244,6 @@
                             bricks[k].brick.style.background="transparent";
                             bricks[k].destroyed=true;
                             changeDirectionLeftRight();
-//                            console.log(`brick index: ${k}`);
                             return true;
                         }
                     }
@@ -305,95 +344,109 @@
             calculateSinAndCos();
         }
         
+        
         function goByPredictedPath()
         {
             setInterval(()=>{
-                
-                if(beforeFirstBounce==false)
+//                
+                if(gameStarted==1)
                 {
-                    
-                    changesin==true?predictedY=Math.round(targetY+v*sinalpha*-1):predictedY=Math.round(targetY+v*sinalpha);
-                    changecos==true?predictedX=Math.round(targetX+v*cosalpha*-1):predictedX=Math.round(targetX+v*cosalpha);
-                    
-//                    console.log(`red: ${ballX} ${ballY}, blue: ${targetX}, ${targetY} yellow: ${predictedX} ${predictedY}`);
-                }
-                else
-                {
-                    if(firstTrajectoryCalculation==true)
+                    if(beforeFirstBounce==false)
                     {
-                        firstTrajectoryCalculation=false;
-                        predictedX=targetX;
-                    }
-                    
-                    if(targetY>ballY&&targetX>ballX)
-                    {
-//                        console.log("bottom wall from left to right");
-                        predictedX++;
-                    }
-                    else if(targetY>ballY&&targetX<ballX)
-                    {
-//                        console.log("bottom wall from right to left");
-                        predictedX--;
-                    }
-                    else if(targetY<ballY&&targetX<ballX)
-                    {
-//                        console.log("top wall from right to left");
-                        predictedX--;
-                    }
-                    else if(targetY<ballY&&targetX>ballX)
-                    {
-//                        console.log("top wall from left to right");
-                        predictedX++;
-                    }
-                    
-                     predictedY=Math.round((linearFunction[0]*predictedX)+linearFunction[1]);
-                    
-                    //we need to correct values if those are beyond the frame 
-                    //because nagative numbers will cause sin and cos sign to change every time 
-                    //and it will cause unwanted behaviour
-                    
-                    if(predictedX<0) predictedX=0;
-                    if(predictedX>frameWidth) predictedX=frameWidth;
-                    if(predictedY<0) predictedY=0;
-                    if(predictedY>frameHeigth) predictedY=frameHeigth
-                }
-                    ballPredicted.style.top=`${predictedY}px`;
-                    ballPredicted.style.left=`${predictedX}px`;
-                
-                //for thebugging we can display coordinates of yellow ball
-                //console.log(`top: ${predictedY}px left: ${predictedX}px`);
-                                                         // - ballSize because on animation without it it will look like 
-                                                         // it't  going beyond the frame 
-                                                         // so to make it look like beforeFirstBounce we subtract ballSize and this
-                                                         // way check if right side of the ball touches the frame
-                
-                if(checkIfBricksHit()==false) //if brick hit then change direction
-                {
-                    //else
-                    if(predictedX<=0||predictedX>=frameWidth-ballSize)
-                    {
-                        //left or right wall hit
-                        changeDirectionLeftRight();
 
+                        changesin==true?predictedY=Math.round(targetY+v*sinalpha*-1):predictedY=Math.round(targetY+v*sinalpha);
+                        changecos==true?predictedX=Math.round(targetX+v*cosalpha*-1):predictedX=Math.round(targetX+v*cosalpha);
+                        
                     }
-                    else if(predictedY<=0||predictedY>=frameHeigth-ballSize)
+                    else
                     {
-                        //top or bottom wall hit
-                        changeDirectionTopBottom();
+                        
+                        
+                        if(firstTrajectoryCalculation==true)
+                        {
+                            linearFunction=calculateLinearFunction();
+                            
+                            firstTrajectoryCalculation=false;
+                            predictedX=targetX;
+                        }
 
+                        if(targetY>ballY&&targetX>ballX)
+                        {
+    //                        console.log("bottom wall from left to right");
+                            predictedX++;
+                        }
+                        else if(targetY>ballY&&targetX<ballX)
+                        {
+    //                        console.log("bottom wall from right to left");
+                            predictedX--;
+                        }
+                        else if(targetY<ballY&&targetX<ballX)
+                        {
+    //                        console.log("top wall from right to left");
+                            predictedX--;
+                        }
+                        else if(targetY<ballY&&targetX>ballX)
+                        {
+    //                        console.log("top wall from left to right");
+                            predictedX++;
+                            
+                        }
+                        predictedY=Math.round((linearFunction[0]*predictedX)+linearFunction[1]);
+                        
+                        
+
+                        //we need to correct values if those are beyond the frame 
+                        //because nagative numbers will cause sin and cos sign to change every time 
+                        //and it will cause unwanted behaviour
+
+                        if(predictedX<0) predictedX=0;
+                        if(predictedX>frameWidth) predictedX=frameWidth;
+                        if(predictedY<0) predictedY=0;
+                        if(predictedY>frameHeigth) predictedY=frameHeigth
+                        
                     }
-                    else 
+                    
+                        ballPredicted.style.top=`${predictedY}px`;
+                        ballPredicted.style.left=`${predictedX}px`;
+//console.log(`red: ${ballX} ${ballY}, blue: ${targetX}, ${targetY} yellow: ${predictedX} ${predictedY}`);
+                    //for thebugging we can display coordinates of yellow ball
+                    //console.log(`top: ${predictedY}px left: ${predictedX}px`);
+                                                             // - ballSize because on animation without it it will look like 
+                                                             // it't  going beyond the frame 
+                                                             // so to make it look like beforeFirstBounce we subtract ballSize and this
+                                                             // way check if right side of the ball touches the frame
+
+                    if(checkIfBricksHit()==false) //if brick hit then change direction
                     {
-                         v++;
+                        
+                        //else
+                        if(predictedX<=0||predictedX>=frameWidth-ballSize)
+                        {
+                            //left or right wall hit
+                            changeDirectionLeftRight();
+
+                        }
+                        else if(predictedY<=0||predictedY>=frameHeigth-ballSize)
+                        {
+                            //top or bottom wall hit
+                            changeDirectionTopBottom();
+
+                        }
+                        else 
+                        {
+                             v++;
+                        }
                     }
+
+
+    //                console.log(`yellow: x: ${predictedX} y: ${predictedY}, brick x: ${bricks[92].x}-${bricks[92].x+brickWidth} brick y: ${bricks[92].y}-${bricks[92].y+brickHeigth}`);
                 }
                 
-                
-//                console.log(`yellow: x: ${predictedX} y: ${predictedY}, brick x: ${bricks[92].x}-${bricks[92].x+brickWidth} brick y: ${bricks[92].y}-${bricks[92].y+brickHeigth}`);
             },5);
         }
         
         goByPredictedPath();
+        
     </script>  
     
 </body>
