@@ -13,7 +13,7 @@
         <div id="ball"></div>
         <div id ="ballTarget"></div>
         <div id="ballPredicted"></div>
-        <div id="testBall"></div>
+<!--        <div id="testBall"></div>-->
         <div id="pad"></div>
     </div>
     
@@ -31,14 +31,14 @@
         
         let ball= document.getElementById("ball");
         let ballSize=25;
-	    let ballX=test[zz][0];   //default ball position
-        let ballY=test[zz][1];   //default ball position
+	    let ballX=561;   //default ball position
+        let ballY=625;   //default ball position
         ball.style.top=`${ballY}px`;
         ball.style.left=`${ballX}px`;
         
         let ballTarget= document.getElementById("ballTarget");
-        let targetX=test[zz][2];
-        let targetY=test[zz][3];
+        let targetX=10;         //CAUTION! if target is on the wall predicted will not work 
+        let targetY=251;        //always place target in front of the wall
         ballTarget.style.top=`${targetY}px`;
         ballTarget.style.left=`${targetX}px`;
         
@@ -48,13 +48,13 @@
         ballPredicted.style.height=ballPredicted.style.width=`${ballSize}px`;
         
         
-        let testBall=document.querySelector("#testBall");
-        let testBallX;
-        let testBallY;
+//        let testBall=document.querySelector("#testBall");
+//        let testBallX;
+//        let testBallY;
         
         ball.style.height=ball.style.width=`${ballSize}px`;
         ballTarget.style.height=ballTarget.style.width=`${ballSize}px`;
-        testBall.style.height=testBall.style.width=`${ballSize}px`;
+//        testBall.style.height=testBall.style.width=`${ballSize}px`;
         
         let pad=document.querySelector("#pad");
         let padWidth=200;
@@ -101,48 +101,6 @@
                 bricks.push({destroyed: false, y: i*brickHeigth, x: j*brickWidth, brick: brick});
             }
         }
-        
-        
-        frame.addEventListener('mousemove',function(event)
-        { 
-            //moving the pad
-            //first we need to check mouse position and move the pad after some calculations
-            //then we will position the ball on the pad
-//            let x=Number(`${event.clientX}`);   //mouse position
-//            let padPosition=x-padWidth/2; //pad position will be based on the middle of the pad instead of top left corner
-//            
-//            
-//            if(padPosition>=frameWidth-padWidth)
-//            {
-//                pad.style.left=`${frameWidth-padWidth}px`;
-//                
-//            }
-//            else if(padPosition<0)
-//            {
-//                pad.style.left=`${0}px`;
-//            }
-//            else
-//            {
-//                if(gameStarted==false)
-//                {
-//                    testBallX=padPosition+(padWidth/2)-(ballSize/2); //the ball will be in the middle of the pad
-//                    testBallY=padY-ballSize;                         //the ball will be on top of the pad
-//                    
-//                    testBall.style.top=`${testBallY}px`;
-//                    testBall.style.left=`${testBallX}px`;    
-//                }
-//                pad.style.left=`${padPosition}px`;
-//            }
-            
-            
-            
-            ////////////////////
-            testBallX=event.clientX;
-            testBallY=event.clientY;
-            testBall.style.top=`${testBallY}px`;
-            testBall.style.left=`${testBallX}px`;    
-        })
-        
         
         function calculateLinearFunction()
         {
@@ -191,13 +149,9 @@
         }
 
         let linearFunction=calculateLinearFunction();
-        let executeOnlyOnce=true;
-        
-        setInterval(checkIfBricksHit,10);
-        
+
         function checkIfBricksHit()
         {
-            testBall.style.zIndex="1";
             let error=5; //size of the ball differs from size of the div a little bit
                          //this causes the situation where div hit the brick 
                          //but we cannot see it bc of border-radius
@@ -206,55 +160,150 @@
             
             for(let k=99;k>=0;--k)
             {
-                for(let i=testBallX+error;i<=testBallX+ballSize-error;++i)
+                for(let i=predictedX+error;i<=predictedX+ballSize-error;++i)
                 {
                     for(let j=bricks[k].x;j<=bricks[k].x+brickWidth;++j)
                     {
-                        if(i===j&&(testBallY==bricks[k].y+brickHeigth&&bricks[k].destroyed==false))
+                        if(i===j&&(predictedY==bricks[k].y+brickHeigth&&bricks[k].destroyed==false))
                         {
-                            console.log('hit by a ball from its top part to bottom part of a brick');
-                            bricks[k].brick.style.background="yellow";
-                            
-                            //change direction of the ball
-                            return;
+//                            console.log('hit by a ball from its top part to bottom part of a brick');
+                            bricks[k].brick.style.background="transparent";
+                            bricks[k].destroyed=true;
+                            changeDirectionTopBottom();
+//                            console.log(`brick index: ${k}`);
+                            return true;
                         }
-                        else if(i===j&&(testBallY+ballSize==bricks[k].y&&bricks[k].destroyed==false))
+                        else if(i===j&&(predictedY+ballSize==bricks[k].y&&bricks[k].destroyed==false))
                         {
-                            console.log('hit by a ball from its bottom part to top part of a brick');
-                            bricks[k].brick.style.background="green";
-                            
-                            //change direction of the ball
-                            return;
+//                            console.log('hit by a ball from its bottom part to top part of a brick');
+                            bricks[k].brick.style.background="transparent";
+                            bricks[k].destroyed=true;
+                            changeDirectionTopBottom();
+//                            console.log(`brick index: ${k}`);
+                            return true;
                         }
                     }
                 }
                 
-                for(let i=testBallY;i<=testBallY+ballSize;++i)
+                for(let i=predictedY;i<=predictedY+ballSize;++i)
                 {
                     for(let j=bricks[k].y;j<=bricks[k].y+brickHeigth;++j)
                     {
-                        if(i===j&&(testBallX+ballSize==bricks[k].x&&bricks[k].destroyed==false))
+                        if(i===j&&(predictedX+ballSize==bricks[k].x&&bricks[k].destroyed==false))
                         {
-                            console.log('hit by a ball from its right part to left part of a brick');
-                            bricks[k].brick.style.background="pink";
-                            
-                            //change direction of the ball
-                            return;
+//                            console.log('hit by a ball from its right part to left part of a brick');
+                            bricks[k].brick.style.background="transparent";
+                            bricks[k].destroyed=true;
+                            changeDirectionLeftRight();
+//                            console.log(`brick index: ${k}`);
+                            return true;
                         }
-                        else if(i===j&&(testBallX==bricks[k].x+brickWidth&&bricks[k].destroyed==false))
+                        else if(i===j&&(predictedX==bricks[k].x+brickWidth&&bricks[k].destroyed==false))
                         {
-                            console.log('hit by a ball from its left part to right part of a brick');
-                            bricks[k].brick.style.background="cyan";
-                            
-                            //change direction of the ball
-                            return;
+//                            console.log('hit by a ball from its left part to right part of a brick');
+                            bricks[k].brick.style.background="transparent";
+                            bricks[k].destroyed=true;
+                            changeDirectionLeftRight();
+//                            console.log(`brick index: ${k}`);
+                            return true;
                         }
                     }
                 }
                 
             }
+            return false;
+        }
+        function changeDirectionLeftRight()
+        {
+            v=2;
+            if(beforeFirstBounce==true)
+            {
+                beforeFirstBounce=false;
+            }
+
+
+            setNewTrajectory();
+
+            //we need to know what sign to leave in sin and cos fomula to be able to decide how the
+            //ball will beforeFirstBounce
+            //so we need to check the direction the ball is coming from and which wall has been hit
+
+            //if wall has been hit, change the direction by changing sin to -sin
+            //or cos to -cos 
+            if(targetY>ballY&&targetX>ballX)
+            {
+                // CASE 7
+                //console.log("right wall hit from top to bottom");
+                changecos=true;
+                changesin=false;
+            }
+            else if(targetY>ballY&&targetX<ballX)
+            {
+                //CASE 3
+                //console.log("left wall hit from top to bottom");
+                changecos=false;
+                changesin=false;
+            }
+            else if(targetY<ballY&&targetX<ballX)
+            {
+                //CASE 5
+                //console.log("left wall hit from bottom to top");
+                changecos=false;
+                changesin=true;
+            }
+            else if(targetY<ballY&&targetX>ballX)
+            {
+                //CASE 1
+                //console.log("right wall hit from bottom to top");
+                changecos=true;
+                changesin=true;
+            }
+
+            calculateSinAndCos();
         }
         
+        function changeDirectionTopBottom()
+        {
+            v=2;
+            if(beforeFirstBounce==true)
+            {
+                beforeFirstBounce=false;
+            }
+
+            setNewTrajectory();
+
+            if(targetY>ballY&&targetX>ballX)
+            {
+                //CASE 6
+                //console.log("bottom wall from left to right");
+                changecos=false;
+                changesin=true;
+            }
+            else if(targetY>ballY&&targetX<ballX)
+            {
+                //CASE 2
+                //console.log("bottom wall from right to left");
+                changecos=true;
+                changesin=true;
+            }
+            else if(targetY<ballY&&targetX<ballX)
+            {
+                //CASE 4
+                //console.log("top wall from right to left");
+                changecos=true;
+                changesin=false;
+            }
+            else if(targetY<ballY&&targetX>ballX)
+            {
+                //CASE 0
+                //console.log("top wall from left to right");
+                changesin=false;
+                changecos=false;
+
+            }
+
+            calculateSinAndCos();
+        }
         
         function goByPredictedPath()
         {
@@ -262,8 +311,11 @@
                 
                 if(beforeFirstBounce==false)
                 {
+                    
                     changesin==true?predictedY=Math.round(targetY+v*sinalpha*-1):predictedY=Math.round(targetY+v*sinalpha);
                     changecos==true?predictedX=Math.round(targetX+v*cosalpha*-1):predictedX=Math.round(targetX+v*cosalpha);
+                    
+//                    console.log(`red: ${ballX} ${ballY}, blue: ${targetX}, ${targetY} yellow: ${predictedX} ${predictedY}`);
                 }
                 else
                 {
@@ -314,105 +366,30 @@
                                                          // it't  going beyond the frame 
                                                          // so to make it look like beforeFirstBounce we subtract ballSize and this
                                                          // way check if right side of the ball touches the frame
-                if(predictedX<=0||predictedX>=frameWidth-ballSize)
+                
+                if(checkIfBricksHit()==false) //if brick hit then change direction
                 {
-                    //left or right wall hit
-                    v=2;
-                    if(beforeFirstBounce==true)
+                    //else
+                    if(predictedX<=0||predictedX>=frameWidth-ballSize)
                     {
-                        beforeFirstBounce=false;
-                    }
-                    
-                    
-                    setNewTrajectory();
-                    
-                    //we need to know what sign to leave in sin and cos fomula to be able to decide how the
-                    //ball will beforeFirstBounce
-                    //so we need to check the direction the ball is coming from and which wall has been hit
-                    
-                    //if wall has been hit, change the direction by changing sin to -sin
-                    //or cos to -cos 
-                    if(targetY>ballY&&targetX>ballX)
-                        {
-                            // CASE 7
-                            console.log("right wall hit from top to bottom");
-                            changecos=true;
-                            changesin=false;
-                        }
-                        else if(targetY>ballY&&targetX<ballX)
-                        {
-                            //CASE 3
-                            console.log("left wall hit from top to bottom");
-                            changecos=false;
-                            changesin=false;
-                        }
-                        else if(targetY<ballY&&targetX<ballX)
-                        {
-                            //CASE 5
-                            console.log("left wall hit from bottom to top");
-                            changecos=false;
-                            changesin=true;
-                        }
-                        else if(targetY<ballY&&targetX>ballX)
-                        {
-                            //CASE 1
-                            console.log("right wall hit from bottom to top");
-                            changecos=true;
-                            changesin=true;
-                        }
-                    
-                    calculateSinAndCos();
-                    
-                }
-                else if(predictedY<=0||predictedY>=frameHeigth-ballSize)
-                {
-                    //top or bottom wall hit
-                    v=2;
-                    if(beforeFirstBounce==true)
-                    {
-                        beforeFirstBounce=false;
-                    }
-                    
-                    setNewTrajectory();
-                    
-                    if(targetY>ballY&&targetX>ballX)
-                    {
-                        //CASE 6
-                        console.log("bottom wall from left to right");
-                        changecos=false;
-                        changesin=true;
-                    }
-                    else if(targetY>ballY&&targetX<ballX)
-                    {
-                        //CASE 2
-                        console.log("bottom wall from right to left");
-                        changecos=true;
-                        changesin=true;
-                    }
-                    else if(targetY<ballY&&targetX<ballX)
-                    {
-                        //CASE 4
-                        console.log("top wall from right to left");
-                        changecos=true;
-                        changesin=false;
-                    }
-                    else if(targetY<ballY&&targetX>ballX)
-                    {
-                        //CASE 0
-                        console.log("top wall from left to right");
-                        changesin=false;
-                        changecos=false;
+                        //left or right wall hit
+                        changeDirectionLeftRight();
 
                     }
-                    
-                    calculateSinAndCos();
-                    
-                }
-                else 
-                {
-                     v++;
+                    else if(predictedY<=0||predictedY>=frameHeigth-ballSize)
+                    {
+                        //top or bottom wall hit
+                        changeDirectionTopBottom();
+
+                    }
+                    else 
+                    {
+                         v++;
+                    }
                 }
                 
+                
+//                console.log(`yellow: x: ${predictedX} y: ${predictedY}, brick x: ${bricks[92].x}-${bricks[92].x+brickWidth} brick y: ${bricks[92].y}-${bricks[92].y+brickHeigth}`);
             },5);
         }
         

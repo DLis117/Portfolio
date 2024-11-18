@@ -23,7 +23,7 @@ body
     transform: translate(-50%, -50%);
 */
 }
-#ball, #ballTarget, #ballPredicted, #testBall
+#ball, #ballTarget, #ballPredicted/*, #testBall*/
 {
 /*
     width: 25px;
@@ -32,6 +32,7 @@ body
     border-radius: 100%;
     position: absolute;
     background: red;  
+    z-index: 1;
 /*    background: transparent;*/
 }
 #ballTarget
@@ -44,11 +45,13 @@ body
     background: yellow;
     
 }
+/*
 
 #testBall
 {
     background: magenta;
 }
+*/
 
 .brick
 {
