@@ -16,7 +16,7 @@
         
         function giveItARandom()
         {
-            let i=Math.random()*780;
+            let i=Math.random()*680;
             return ((Math.floor((i)/size))*size);
         }
         
@@ -206,7 +206,7 @@
                     {
                         if(snake[0][0]<0)
                         {
-                            snake[0][0]=800-size;
+                            snake[0][0]=700-size;
                         }
                     }
                 }
@@ -216,7 +216,7 @@
                     
                     if(goingThroughWalls==true)
                     {
-                        if(snake[0][0]>800-size)
+                        if(snake[0][0]>700-size)
                         {
                             snake[0][0]=0;
                         }
@@ -229,7 +229,7 @@
                     {
                         if(snake[0][1]<0)
                         {
-                            snake[0][1]=800-size;
+                            snake[0][1]=700-size;
                         }
                     }
                 }
@@ -238,7 +238,7 @@
                     snake[0][1]+=size;
                     if(goingThroughWalls==true)
                     {
-                        if(snake[0][1]>800-size)
+                        if(snake[0][1]>700-size)
                         {
                             snake[0][1]=0;
                         }
@@ -251,6 +251,7 @@
                     start=document.createElement('div');
                     start.className='start';
                     start.innerHTML = "GAME OVER";
+                    start.style.width='50%';
                     board.appendChild(start);
                     return;
                 }                
@@ -285,9 +286,9 @@ function correctFoodPlacement()
 {
     let oSize=(size*-1);
     
-    for(let i=oSize;i<=800;i+=size)
+    for(let i=oSize;i<=700;i+=size)
     {
-        if((snake[0][0]==i&&snake[0][1]==oSize)||(snake[0][0]==oSize&&snake[0][1]==i)||(snake[0][0]==800&&snake[0][1]==i)||(snake[0][0]==i&&snake[0][1]==800))
+        if((snake[0][0]==i&&snake[0][1]==oSize)||(snake[0][0]==oSize&&snake[0][1]==i)||(snake[0][0]==700&&snake[0][1]==i)||(snake[0][0]==i&&snake[0][1]==700))
            {
                return true;
            }
