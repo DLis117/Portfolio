@@ -229,6 +229,12 @@
 
         function checkIfBricksHit()
         {
+            //we dont want to check if ball is below last row of bricks
+            if(predictedY>bricks[99].y+brickHeigth)
+            {
+                return false;
+            }
+               
             let error=5; //size of the ball differs from size of the div a little bit
                          //this causes the situation where div hit the brick 
                          //but we cannot see it bc of border-radius
