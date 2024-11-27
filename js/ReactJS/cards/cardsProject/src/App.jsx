@@ -1,4 +1,4 @@
-import CardComponent from "./Card.jsx"
+import CardComponent from "./Card/Card.jsx"
 
 function App() {
   return (<><CardComponent/><CardComponent/><CardComponent/><CardComponent/></>);
