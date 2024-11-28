@@ -18,8 +18,9 @@ function CardComponent(props)
 
 CardComponent.defaultProps=
 {
-    name:'noname',
-    desc: 'nodesc',
+    name:'card without a name',
+    desc: 'description not available',
+    pic: '/default.png'
 }
 
 export default CardComponent;

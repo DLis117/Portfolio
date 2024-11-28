@@ -9,6 +9,7 @@ function App() {
             <CardComponent pic={fieldpic} desc='this card shows fields' name='fields card' key={1}/>
             <CardComponent pic={autumnpic} desc='this card shows autumn' name='autumn card' key={2}/>
             <CardComponent pic={sunsetpic} desc='this card shows sunset' name='sunset card' key={3}/>
+            <CardComponent/>
          </>
   );
 }
