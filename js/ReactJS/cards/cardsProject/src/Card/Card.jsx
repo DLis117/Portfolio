@@ -22,6 +22,7 @@ CardComponent.propTypes=
 {
     name: propTypes.string,
     desc: propTypes.string,
+    pic: propTypes.string,
 }
 
 CardComponent.defaultProps=

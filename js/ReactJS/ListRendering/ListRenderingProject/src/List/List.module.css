@@ -1,0 +1,20 @@
+h1
+{
+    display: inline-block;
+    background: rgb(85, 121, 239);
+    border: solid 2px white;
+    border-radius: 10px;
+    color: white;
+}
+li
+{
+    color: white;
+    font-size: 35px;
+    margin: 5px 0;
+    font-family: 'Courier New', Courier, monospace;
+}
+ul
+{
+    margin-bottom: 50px;
+    margin-left: 30px;
+}
