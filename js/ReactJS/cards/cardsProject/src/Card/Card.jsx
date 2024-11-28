@@ -1,4 +1,5 @@
 import styles from  '../Card/Card.module.css';
+import propTypes from 'prop-types';
 
 function CardComponent(props)
 {
@@ -14,6 +15,13 @@ function CardComponent(props)
                 <h1>{props.name}</h1>
             </div>
         </div>);
+}
+
+//check if types of props are correct
+CardComponent.propTypes=
+{
+    name: propTypes.string,
+    desc: propTypes.string,
 }
 
 CardComponent.defaultProps=
