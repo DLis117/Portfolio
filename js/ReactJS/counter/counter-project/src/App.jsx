@@ -1,7 +1,11 @@
 import Counter from "./Counter.jsx"
+import Form from "./Form.jsx"
 function App() 
 {
-  return (<Counter/>)
+  return (<>
+              <Counter/>
+              <Form/>
+          </>)
 }
 
 export default App
