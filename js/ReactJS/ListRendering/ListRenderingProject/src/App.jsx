@@ -1,4 +1,5 @@
 import ListofElements from "./List/List"
+import Butt from "./Button.jsx";
 
 let l=['apple','banana','orange'];
 let l2=['tomato','potato','carrot','lettuce'];
@@ -12,6 +13,7 @@ function App()
             <ListofElements list={l} category={lCategory}/>
             <ListofElements list={l2} category={l2Category}/>
             <ListofElements/>
+            <Butt/>
           </>
   );
 }
