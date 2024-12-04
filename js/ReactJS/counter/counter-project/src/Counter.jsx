@@ -3,8 +3,8 @@ function Counter()
 {
     let [num, setNum] =useState(0);
 
-    let incrementNum = () =>setNum(num+1);
-    let decrementNum = () =>setNum(num-1);
+    let incrementNum = () =>setNum(prevNum=>prevNum+1);
+    let decrementNum = () =>setNum(prevNum=>prevNum-1);
     let resetNum = () => setNum(0);
 
     return(<>
