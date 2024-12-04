@@ -68,11 +68,12 @@ form
 {
   margin-left: 1%;
   margin-top: 1%;
-  background: black;
+  background: rgba(0, 0, 0, 0.69);
   width: 30%;
   height: 93%;
   border-radius: 10px;
   border: solid 5px white;
+  float: left;
 }
 
 input,select

@@ -1,7 +1,6 @@
 import React, {useState} from "react";
-import ItemForSell from "./ItemForSell";
 
-function Form ()
+function Form (props)
 {
     let [numberVar, setNumber] = useState(0);
     let [paymentOption, setPaymentOption] = useState();
@@ -152,7 +151,9 @@ function Form ()
         <>
         <form action="submit">
             <div id="itemQuant">
-                <ItemForSell/>
+            <h1>{props.element}</h1>
+                <br/>
+            <div className='itemContainer' style={props.styles}></div>
                 
                 <input id="quantity" type="number" onChange={(e)=>updateNumber(e)} placeholder="qty"></input>
             </div>
