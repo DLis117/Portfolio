@@ -22,13 +22,15 @@ function ListOfFood()
     }
 
     return (<>
-                <h1>add elements to the list</h1>
-                <p>if you want to delete an element just click on it</p>
-                <ul>
-                    {list.map((x,y)=><li key={y} onClick={()=>removeElement(y)}>added element: {x} with index {y}</li>)}
-                </ul>
-                <input type="text" value={listelement} onChange={updateListElement}></input>
-                <button onClick={updateList}>add element to the list</button>
+                <div id="list-of-food-frame">
+                    <h1>add elements to the list</h1>
+                    <p>if you want to delete an element just click on it</p>
+                    <ul>
+                        {list.map((x,y)=><li key={y} onClick={()=>removeElement(y)}>added element: {x} with index {y}</li>)}
+                    </ul>
+                    <input type="text" value={listelement} onChange={updateListElement}></input>
+                    <button onClick={updateList}>add element to the list</button>
+                </div>
             </>)
 }
 export default ListOfFood;

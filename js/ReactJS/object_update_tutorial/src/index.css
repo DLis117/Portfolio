@@ -9,3 +9,8 @@ body
 {
   background: gray;
 }
+#car-form-frame,#list-of-food-frame,#list-of-objects-frame
+{
+  border: solid 2px black;
+  margin-bottom: 10px;
+}

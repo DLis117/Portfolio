@@ -18,10 +18,12 @@ function CarForm()
         updateCar(prevCar=>({...prevCar,model:e.target.value}))
     }
     return (<>
-                <h1>your chosen car is:{car.year} {car.make} {car.model}</h1>
-                <input type="number" value={car.year} onChange={updateYear}></input>
-                <input type="text"  value={car.make} onChange={updateMake}></input>
-                <input type="text" value={car.model} onChange={updateModel}></input>
+                <div id="car-form-frame">
+                    <h1>your chosen car is:{car.year} {car.make} {car.model}</h1>
+                    <input type="number" value={car.year} onChange={updateYear}></input>
+                    <input type="text"  value={car.make} onChange={updateMake}></input>
+                    <input type="text" value={car.model} onChange={updateModel}></input>
+                </div>
             </>)
 }
 export default CarForm;
