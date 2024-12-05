@@ -1,0 +1,71 @@
+*
+{
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+body
+{
+  background: rgb(65, 65, 65);
+  overflow: hidden;
+}
+h1
+{
+  color: white;
+  display: flex;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  overflow: hidden;
+  justify-content: center;
+}
+#to-do-container-frame
+{
+  border: 5px white solid;
+  width: 60%;
+  margin: 0 auto;
+  margin-top: 10%;
+}
+input
+{
+  border-radius: 2px;
+  color: black;
+}
+button
+{
+  font-weight: bold;
+  height: 10%;
+  width: 7%;
+  border-radius: 2px;
+  background: green;
+}
+#buttons-container
+{
+  display: inline-block;
+  height: 10%;
+  width: 15%;
+  float: right;
+}
+#buttons-container button
+{
+  float: left;
+}
+.blue
+{
+  background: rgb(96, 197, 239);
+  width: 30%;
+}
+#red
+{
+  background: red;
+  width: 40%;
+}
+ul li
+{
+  list-style-type: none;
+  width: 50%;
+  height: 2%;
+  background: white;
+  margin: 0 auto;
+  margin-bottom: 1%;
+  border-radius: 5px;
+}
