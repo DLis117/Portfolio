@@ -5,10 +5,15 @@
   border: 0;
   box-sizing: border-box;
 }
+#root
+{
+  width: 100vw;
+  height: 100vh;
+}
 body
 {
   background: rgb(65, 65, 65);
-  overflow: hidden;
+  overflow-x: hidden;
 }
 h1
 {
@@ -23,49 +28,93 @@ h1
   border: 5px white solid;
   width: 60%;
   margin: 0 auto;
-  margin-top: 10%;
+  margin-top: 2%;
 }
-input
+#input-container
+{
+  display: flex;
+  justify-content: center;
+  height: 5vh;
+  margin-bottom: 3%;
+}
+#input-container input
 {
   border-radius: 2px;
   color: black;
+  font-size: 30px;
+  width: 30%;
 }
-button
+#input-container button
 {
   font-weight: bold;
-  height: 10%;
   width: 7%;
   border-radius: 2px;
   background: green;
 }
-#buttons-container
+
+
+
+#li-container-flex
 {
-  display: inline-block;
-  height: 10%;
-  width: 15%;
-  float: right;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2%;
+  height: 8vh;
 }
-#buttons-container button
+#li-container-flex #li-container
 {
-  float: left;
+  background: rgb(255, 255, 255);
+  width: 80%;
+  list-style-type: none;
+  font-size: 25px;
+  height: 100%;
+  border-radius: 10px;
+}
+#li-container-flex #li-container li
+{
+  width:68%;
+  background: rgb(255, 255, 255);
+  height: 80%;
+  border-radius: 5px;
+  position: relative;
+  top: 50%;
+  transform: translate(0%,-50%);
+  display: inline-block;
+  margin-left: 1%;
+
+}
+ul #buttons-container
+{
+  width: 30%;
+  float: right;
+  height: 80%;
+  border-radius: 5px;
+  position: relative;
+  top: 50%;
+  transform: translate(0%,-50%);
+}
+button
+{
+  height: 100%;
+  border-radius: 5px;
+  font-size: 25px;
+  cursor: pointer;
 }
 .blue
 {
-  background: rgb(96, 197, 239);
-  width: 30%;
+  background: rgb(55, 193, 252);
+  width: 28%;
+  height: 100%;
+  border-radius: 5px;
+  font-size: 25px;
+  margin-right: 3%;
 }
 #red
 {
   background: red;
-  width: 40%;
-}
-ul li
-{
-  list-style-type: none;
-  width: 50%;
-  height: 2%;
-  background: white;
-  margin: 0 auto;
-  margin-bottom: 1%;
+  width: 35%;
+  height: 100%;
   border-radius: 5px;
+  font-size: 25px;
+  margin-right: 3%;
 }

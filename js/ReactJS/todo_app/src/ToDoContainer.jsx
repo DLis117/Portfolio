@@ -15,40 +15,58 @@ function ToDoContainer()
     {
         if(task.trim()!='')
         {
-            setListOfTasks(prevList=>[...prevList,task]);
+            setListOfTasks(updatedList=>[...updatedList,task]);
         }
         setTask("");
     }
 
-    // function moveUpTask(i)
-    // {
+    function moveUpTask(i)
+    {
+        //there will be no case when list is empty bc it will not be rendered then
+        if(i==0)
+        {
+            return;
+        }
+        let updatedList=[...listOfTasks];
+        [updatedList[i],updatedList[i-1]]=[updatedList[i-1],updatedList[i]];
+        setListOfTasks(updatedList);
+    }
 
-    // }
-
-    // function moveDownTask(i)
-    // {
-
-    // }
+    function moveDownTask(i)
+    {
+        if(i==listOfTasks.length-1)
+        {
+            return;
+        }
+        let updatedList=[...listOfTasks];
+        [updatedList[i],updatedList[i+1]]=[updatedList[i+1],updatedList[i]];
+        setListOfTasks(updatedList);
+    }
 
     function deleteTask(i)
     {
-        setListOfTasks(prevList=>prevList.filter((_,y)=>y!==i))
+        setListOfTasks(updatedList=>updatedList.filter((_,y)=>y!==i))
     }
     
     return(<>
                 <div id="to-do-container-frame">
                 <h1>To do List:</h1>
+                <div id="input-container">
                     <input type="text" value={task} onChange={updateTask}/>
                     <button onClick={()=>updateListOfTasks(task)}>+</button>
+                </div>
                     <ul>
                         {listOfTasks.map((t,indx)=>
-                            <li key={indx}>{t}
+                        <div id="li-container-flex">
+                            <div id="li-container">
+                                <li key={indx}>{t}</li>
                                 <div id="buttons-container">
-                                    <button className="blue" onClick={()=>moveUpTask(indx)}>^</button>
-                                    <button id="red" onClick={()=>deleteTask(indx)}>x</button>
-                                    <button className="blue" onClick={()=>moveDownTask(indx)}>v</button>
+                                    <button id="red" onClick={()=>deleteTask(indx)}>❌</button>
+                                    <button className="blue" onClick={()=>moveUpTask(indx)}>☝️</button>
+                                    <button className="blue" onClick={()=>moveDownTask(indx)}>👇</button>
                                 </div>
-                            </li>)}
+                            </div>
+                        </div>)}
                     </ul>
                 </div>
            </>)
