@@ -9,6 +9,7 @@
   background: gray;
   width: 100vw;
   height: 100vh;
+  overflow: hidden;
 }
 body
 {
@@ -26,4 +27,15 @@ h1 {
   color: white;
   font-size: 150%;
   display: inline-block;
+}
+button,input
+{
+  width: 10vw;
+  height: 4vh;
+  border-radius: 10px;
+  border: solid black 3px;
+}
+input
+{
+  margin-left: 30px;
 }
