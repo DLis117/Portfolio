@@ -1,7 +1,10 @@
-import Header from "./Hello.jsx"
+import ComponentA from "./ComponentA.jsx";
 function App() 
 {
-  return (<Header/>);
+  return (<>
+    <ComponentA/>
+  </>);
+
 }
 
 export default App
