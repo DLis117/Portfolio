@@ -1,0 +1,74 @@
+*
+{
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+#root
+{
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+body
+{
+  background: rgb(57, 57, 57);
+}
+.stopwatch-box
+{
+  background: rgb(183, 183, 183);
+  border: solid 5px rgb(96, 90, 255);
+  width: 20%;
+  height: 20%;
+  border-radius: 5px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.stopwatch-half
+{
+  /* background: black; */
+  height: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+}
+h1
+{
+  color: white;
+  font-weight: bold;
+  /* background: yellow; */
+  font-size: 50px;
+}
+.button-container
+{
+  /* background: red; */
+  width: 90%;
+  height: 60%;
+  display: flex;
+  justify-content: center;
+}
+button
+{
+  cursor: pointer;
+  width: 30%;
+  margin: 0 2%;
+  font-weight: bold;
+  font-size: 25px;
+  border-radius: 5px;
+  border: solid white 3px;
+  color: rgb(0, 0, 0);
+}
+.start
+{
+  background: rgb(106, 246, 106);
+}
+.reset
+{
+  background: rgb(78, 78, 232);
+}
+.stop
+{
+  background: rgb(250, 41, 41);
+}
