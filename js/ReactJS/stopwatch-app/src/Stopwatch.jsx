@@ -28,17 +28,29 @@ function Stopwatch()
     function stop()
     {
         setTimerStarted(false);
+        let hours=String(Math.floor(time/3600)).padStart(2,"0");
+        let minutes=String(Math.floor((time%3600)/60)).padStart(2,"0");
+        let seconds=String(Math.floor((time%3600)%60)).padStart(2,"0");
+
+        setTimeHolder(`${hours}:${minutes}:${seconds}`);
     }
     function reset()
     {
-        setTime(0);
         setTimerStarted(false);
+        setTime(0);
+        setTimeHolder(`00:00:00`);
+        
     }
-    
+
     useEffect(()=>{
-        let myInterval = setInterval(runTime,intrvl);
+        let myInterval;
+        if(timerStarted)
+        {
+            myInterval = setInterval(runTime,intrvl);
+        }
+        console.log("item rerendered");
         return ()=> clearInterval(myInterval);
-    },[])
+    },[time,timerStarted])
 
     return(<div className="stopwatch-box">
             <div className="stopwatch-half">
