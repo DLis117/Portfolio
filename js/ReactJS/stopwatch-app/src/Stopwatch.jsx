@@ -1,60 +1,59 @@
+import { useRef } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 
 function Stopwatch()
 {
     let intrvl=1;
-    let [timerStarted,setTimerStarted]=useState(false);
-    let [timeHolder,setTimeHolder]=useState("00:00:00");
+    let timerStartedRef=useRef(false);
     let [time,setTime]=useState(0);
 
-    function runTime()
+    let intervalRef=useRef(null);
+
+    function formatTime()
     {
-        if(timerStarted)
-        {
-            setTime(prevT=>prevT+intrvl)
-        }
         let hours=String(Math.floor(time/3600)).padStart(2,"0");
         let minutes=String(Math.floor((time%3600)/60)).padStart(2,"0");
         let seconds=String(Math.floor((time%3600)%60)).padStart(2,"0");
-
-        setTimeHolder(`${hours}:${minutes}:${seconds}`);
-        
+        return(`${hours}:${minutes}:${seconds}`);
+    }
+    function runTime()
+    {
+            setTime(prevT=>prevT+intrvl)
     }
     function start()
     {
-        setTimerStarted(true);
+        if(timerStartedRef.current==false)
+        {
+            timerStartedRef.current=true;
+            intervalRef.current = setInterval(runTime,intrvl);
+        }
+        
     }
     function stop()
-    {
-        setTimerStarted(false);
-        let hours=String(Math.floor(time/3600)).padStart(2,"0");
-        let minutes=String(Math.floor((time%3600)/60)).padStart(2,"0");
-        let seconds=String(Math.floor((time%3600)%60)).padStart(2,"0");
-
-        setTimeHolder(`${hours}:${minutes}:${seconds}`);
+    {   
+        if(timerStartedRef.current==true)
+        {
+            timerStartedRef.current=false;
+            clearInterval(intervalRef.current);
+        }
     }
+    
     function reset()
     {
-        setTimerStarted(false);
+        stop();
         setTime(0);
-        setTimeHolder(`00:00:00`);
-        
     }
 
     useEffect(()=>{
-        let myInterval;
-        if(timerStarted)
-        {
-            myInterval = setInterval(runTime,intrvl);
-        }
+            
         console.log("item rerendered");
-        return ()=> clearInterval(myInterval);
-    },[time,timerStarted])
+        return ()=> clearInterval(intervalRef.current);
+    },[])
 
     return(<div className="stopwatch-box">
             <div className="stopwatch-half">
-                <h1 className="timer">{timeHolder}</h1>
+                <h1 className="timer">{formatTime()}</h1>
             </div>
             <div className="stopwatch-half">
                 <div className="button-container">

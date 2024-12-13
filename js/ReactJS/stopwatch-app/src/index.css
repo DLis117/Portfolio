@@ -23,6 +23,7 @@ body
   height: 20%;
   border-radius: 5px;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  margin: 2%;
 }
 .stopwatch-half
 {
@@ -39,7 +40,7 @@ h1
   color: white;
   font-weight: bold;
   /* background: yellow; */
-  font-size: 50px;
+  font-size: 250%;
 }
 .button-container
 {
