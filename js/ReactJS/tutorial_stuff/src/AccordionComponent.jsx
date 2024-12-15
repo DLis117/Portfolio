@@ -34,7 +34,15 @@ function AccordionComponent(props)
             <button onClick={handleMultipleInfosToggled}>{multipleInfosToggled?"click to activate multiple selection":"click to activate single selection"}</button>
         </div>
         <ul>
-            {listOfStuff.map((x,indx)=><li onClick={()=>handleShowAdditionalInfo(indx)} key={indx}>{x.info} 🔽 {x.additionalInfoActivated&&<h2>{x.additionalInfo}</h2>}</li>)}
+            
+            {
+                listOfStuff!=undefined?
+                (listOfStuff.map((x,indx)=>
+                    <li onClick={()=>handleShowAdditionalInfo(indx)} key={indx}>{x.info} 🔽 {x.additionalInfoActivated&&
+                        <h2>{x.additionalInfo}</h2>}
+                    </li>)):
+                <li style={{background: "red"}}>your list is empty!</li>
+            }
         </ul>
     </div>
     </>

@@ -15,7 +15,9 @@ let info = [
 
 function App() {
   return(
-          <><AccordionComponent info={info}/></>
+          <><AccordionComponent info={info}/>
+          <AccordionComponent/>
+          </>
         )
 }
 
