@@ -1,0 +1,87 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+body
+{
+    background: black;
+}
+#frame
+{
+    background: orange;
+    display: block;
+/*    border-radius: 20px;*/
+    
+    position: absolute;
+/*
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+*/
+}
+#ball, #ballTarget, #ballPredicted/*, #testBall*/
+{
+/*
+    width: 25px;
+    height: 25px;
+*/
+    border-radius: 100%;
+    position: absolute;
+/*    background: red;  */
+    z-index: 1;
+/*    background: transparent;*/
+}
+/*
+#ballTarget
+{
+    background: blue; 
+    background: transparent;
+}
+*/
+#ballPredicted
+{
+    background: yellow;
+    
+}
+/*
+
+#testBall
+{
+    background: magenta;
+}
+*/
+
+.brick
+{
+    width: 65px;
+    height: 20px;    
+/*    background: blue;*/
+/*    background: transparent;*/
+
+/*    display: flex;*/
+}
+
+
+#pad
+{
+    background: black;
+    width: 200px;
+    height: 20px;
+    position: absolute;
+    top: 600px;
+    left: 400px;
+    cursor: pointer;
+}
+#score
+{
+    color: white;
+    width: 50%;
+    font-size: 30px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
