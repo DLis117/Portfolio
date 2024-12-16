@@ -19,9 +19,7 @@ function StarRating()
             <>
                 <div className={style.starRatingContainer}>
                     {
-                        rating.map((x,y)=>x.clicked===true?
-                        <p onClick={()=>handleRating(y)} className={style.yellowStar} key={y}>{x.x}</p>
-                        :<p onClick={()=>handleRating(y)} className={style.blackStar} key={y}>{x.x}</p>)
+                        rating.map((x,y)=><p onClick={()=>handleRating(y)} className={x.clicked?style.yellowStar:style.blackStar} key={y}>{x.x}</p>)
                     }
                     <h2>overall rating: {overallRating}/{howManyStars}</h2>
                 </div>
