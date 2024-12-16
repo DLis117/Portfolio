@@ -1,0 +1,20 @@
+.starRatingContainer
+{
+    border: solid rgb(167, 67, 67) 2px;
+    /* background: white; */
+    display: inline-block;
+}
+p
+{
+    font-size: 35px;
+    float: left;
+    cursor: pointer;
+}
+.yellowStar
+{
+    color: yellow;
+}
+.blackStar
+{
+    color: black;
+}

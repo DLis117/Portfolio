@@ -1,4 +1,6 @@
 import { useState } from "react";
+import style from '/src/AccordionComponent/AccordionComponent.module.css';
+
 
 function AccordionComponent(props)
 {
@@ -28,8 +30,8 @@ function AccordionComponent(props)
     }
     return(
     <>
-    <div className="accordion-list-box">
-        <div className="header">
+    <div className={style.accordionListBox}>
+        <div className={style.header}>
             <h1>this is simple accordion like List</h1>
             <button onClick={handleMultipleInfosToggled}>{multipleInfosToggled?"click to activate multiple selection":"click to activate single selection"}</button>
         </div>
