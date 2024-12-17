@@ -7,7 +7,7 @@ function AdvancedStarRating()
     let emptyStarColor='white';
     let fullStarColor="yellow";
     
-    const [rating,setRating]=useState(Array.from({ length: howManyStars }, () => ({x:'★',status: "empty",style:{color: emptyStarColor}})));
+    const [rating,setRating]=useState(Array.from({ length: howManyStars }, () => ({x:'★',style:{color: emptyStarColor}})));
     const [realRating,setRealRating]=useState(0);
 
     let arr=[]
@@ -26,7 +26,7 @@ function AdvancedStarRating()
             {
                 if(((i*divider))<=s)
                 {
-                    arr.push({x:'★',status: "full",style:{color: fullStarColor}});
+                    arr.push({x:'★',style:{color: fullStarColor}});
                 }
                 else
                 {
@@ -35,11 +35,11 @@ function AdvancedStarRating()
     
                     if(leftVal>=100||rest===true)
                     {
-                        arr.push({x:'★',status: "empty",style:{color: emptyStarColor}});
+                        arr.push({x:'★',style:{color: emptyStarColor}});
                     }
                     else
                     {
-                        arr.push({x:'★',status: "partial", style:{background: `linear-gradient(to left, ${emptyStarColor} ${leftVal}%, ${fullStarColor} ${rigthVal}%) text`,
+                        arr.push({x:'★',style:{background: `linear-gradient(to left, ${emptyStarColor} ${leftVal}%, ${fullStarColor} ${rigthVal}%) text`,
                         WebkitBackgroundClip: "text",
                         WebkitTextFillColor: "transparent"}});
                         rest=true;
