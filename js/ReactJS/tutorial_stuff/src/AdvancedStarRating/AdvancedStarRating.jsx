@@ -23,12 +23,6 @@ function AdvancedStarRating()
         arr=[]
         
         for(let i=1;i<=howManyStars;++i)
-        {
-            if(rest)
-            {
-                arr.push({x:'★',status: "empty",style:{color: emptyStarColor}});
-            }
-            else
             {
                 if(((i*divider))<=s)
                 {
@@ -36,13 +30,22 @@ function AdvancedStarRating()
                 }
                 else
                 {
-                    rest=true;
-                    arr.push({x:'★',status: "partial", style:{background: `linear-gradient(to left, ${emptyStarColor} ${100-((s-(divider*(i-1)))*100/divider)}%, ${fullStarColor} ${(s-(divider*(i-1)))*100/divider}%) text`,
+                    let rigthVal = (s-(divider*(i-1)))*100/divider;
+                    let leftVal = 100-rigthVal;
+    
+                    if(leftVal>=100||rest===true)
+                    {
+                        arr.push({x:'★',status: "empty",style:{color: emptyStarColor}});
+                    }
+                    else
+                    {
+                        arr.push({x:'★',status: "partial", style:{background: `linear-gradient(to left, ${emptyStarColor} ${leftVal}%, ${fullStarColor} ${rigthVal}%) text`,
                         WebkitBackgroundClip: "text",
                         WebkitTextFillColor: "transparent"}});
+                        rest=true;
+                    }
                 }
             }
-        }
         // updating the rating, but dont update the value realRating
         setRating(arr);
 
