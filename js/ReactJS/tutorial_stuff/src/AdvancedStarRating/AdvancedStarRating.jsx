@@ -71,14 +71,22 @@ function AdvancedStarRating()
 
         // width of div with stars 
         let width = element.width;  
-        
-        //score calculated based on mouse position on the div with stars
+
         let score=(Math.round((e.clientX-positionX)/width*maxRating))
-        if(score<0)
+
+        //to make it possible to score maxRating instead of maxRating-1 (due to positioning mouse out of the frame)
+        //we took into consideration not the div with stars but its parent div 
+        //so if we go beyond div with stars it will let us click 0 or maxRating score
+        //but if we go beyond it would give us negative or score>maxRating
+        //thats why we have to correct it here 
+        if(score>maxRating)
+        {
+            score=maxRating;
+        }
+        else if(score<0)
         {
             score=0;
         }
-
         commonEvent(score);
         
         return score;
@@ -90,9 +98,9 @@ function AdvancedStarRating()
     }
     
     return (<>
-                <div className={style.starRatingContainer}>
+                <div className={style.starRatingContainer} onClick={handleRealRating} onMouseMove={handleHoveronRating} onMouseLeave={handleLeaveonRating}>
                     {
-                        <div className={style.starsContainer} onClick={handleRealRating} onMouseMove={handleHoveronRating} onMouseLeave={handleLeaveonRating}> 
+                        <div className={style.starsContainer}> 
                             {displayStars()}
                         </div>
                     }
