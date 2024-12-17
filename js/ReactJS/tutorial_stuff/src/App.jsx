@@ -1,5 +1,6 @@
 import AccordionComponent from './AccordionComponent/AccordionComponent'
 import StarRating from './StarRating/StarRating'
+import AdvancedStarRating from './AdvancedStarRating/AdvancedStarRating'
 let info = [
             {info: 'Mercury is the planet nearest to the Sun',
              additionalInfo: "and the smallest planet in our solar system",
@@ -19,6 +20,7 @@ function App() {
           <><AccordionComponent info={info}/>
           <AccordionComponent/>
           <StarRating/>
+          <AdvancedStarRating/>
           </>
         )
 }

@@ -1,0 +1,23 @@
+.starRatingContainer
+{
+    display: inline-block;
+    border: solid white 0.01px;
+}
+.starsContainer
+{
+    display: inline-block;
+    border: solid white 0.01px;
+}
+p
+{
+    font-size: 35px;
+    float: left;
+    cursor: pointer;
+}
+/* 
+.partial
+{
+    /* background: linear-gradient(to right, white 50%, yellow 50%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+} */
