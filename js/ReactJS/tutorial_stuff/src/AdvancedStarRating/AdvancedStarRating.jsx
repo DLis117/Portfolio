@@ -4,15 +4,50 @@ function AdvancedStarRating()
 {
     const howManyStars=5;
     let maxRating = 100;
+    let emptyStarColor='white';
+    let fullStarColor="yellow";
     
-    const [rating,setRating]=useState(Array.from({ length: howManyStars }, () => ({x:'★',status: "empty",style:{color: 'white'}})));
+    const [rating,setRating]=useState(Array.from({ length: howManyStars }, () => ({x:'★',status: "empty",style:{color: emptyStarColor}})));
     const [realRating,setRealRating]=useState(0);
 
     let arr=[]
 
-    function commonEvent(indx)
+    function commonEvent(s) //score
     {
+        let divider=maxRating/howManyStars;
         
+        //flag which tells if we found partially filled star. If so, we know that rest of stars is empty 
+        let rest=false;
+
+        //an array to store new rating
+        arr=[]
+        
+        for(let i=1;i<=howManyStars;++i)
+        {
+            if(rest)
+            {
+                arr.push({x:'★',status: "empty",style:{color: emptyStarColor}});
+            }
+            else
+            {
+                if(((i*divider))<=s)
+                {
+                    arr.push({x:'★',status: "full",style:{color: fullStarColor}});
+                }
+                else
+                {
+                    rest=true;
+                    arr.push({x:'★',status: "partial", style:{background: `linear-gradient(to left, ${emptyStarColor} ${100-((s-(divider*(i-1)))*100/divider)}%, ${fullStarColor} ${(s-(divider*(i-1)))*100/divider}%) text`,
+                        WebkitBackgroundClip: "text",
+                        WebkitTextFillColor: "transparent"}});
+                }
+            }
+        }
+        // updating the rating, but dont update the value realRating
+        setRating(arr);
+
+        //displaying rating in the UI
+        displayStars();
     }
     function handleRealRating(e)
     {
@@ -41,85 +76,17 @@ function AdvancedStarRating()
             score=0;
         }
 
-        //if the star is partially filled, we need to calculate percentage of the fill
-        let divider=maxRating/howManyStars;
+        commonEvent(score);
         
-        //flag which tells if we found partially filled star. If so, we know that rest of stars is empty 
-        let rest=false;
-
-        //an array to store new rating
-        arr=[]
-        
-        for(let i=1;i<=howManyStars;++i)
-        {
-            if(rest)
-            {
-                arr.push({x:'★',status: "empty",style:{color: 'white'}});
-            }
-            else
-            {
-                if(((i*divider))<=score)
-                {
-                    arr.push({x:'★',status: "full",style:{color: 'yellow'}});
-                }
-                else
-                {
-                    rest=true;
-                    arr.push({x:'★',status: "partial", style:{background: `linear-gradient(to left, white ${100-((score-(divider*(i-1)))*100/divider)}%, yellow ${(score-(divider*(i-1)))*100/divider}%) text`,
-                        WebkitBackgroundClip: "text",
-                        WebkitTextFillColor: "transparent"}});
-                }
-            }
-        }
-        // updating the rating, but dont update the value realRating
-        setRating(arr);
-
-        //displaying rating in the UI
-        displayStars();
         return score;
     }
     function handleLeaveonRating()
     {
-        let score=realRating;
         //based on realRating value calculate and display stars in the UI
-        let divider=maxRating/howManyStars;
-        
-        //flag which tells if we found partially filled star. If so, we know that rest of stars is empty 
-        let rest=false;
-
-        //an array to store new rating
-        arr=[]
-        
-        for(let i=1;i<=howManyStars;++i)
-        {
-            if(rest)
-            {
-                arr.push({x:'★',status: "empty",style:{color: 'white'}});
-            }
-            else
-            {
-                if(((i*divider))<=score)
-                {
-                    arr.push({x:'★',status: "full",style:{color: 'yellow'}});
-                }
-                else
-                {
-                    rest=true;
-                    arr.push({x:'★',status: "partial", style:{background: `linear-gradient(to left, white ${100-((score-(divider*(i-1)))*100/divider)}%, yellow ${(score-(divider*(i-1)))*100/divider}%) text`,
-                        WebkitBackgroundClip: "text",
-                        WebkitTextFillColor: "transparent"}});
-                }
-            }
-        }
-        // updating the rating, but dont update the value realRating
-        setRating(arr);
-
-        //displaying rating in the UI
-        displayStars();
+        commonEvent(realRating);
     }
     
-    return (
-            <>
+    return (<>
                 <div className={style.starRatingContainer}>
                     {
                         <div className={style.starsContainer} onClick={handleRealRating} onMouseMove={handleHoveronRating} onMouseLeave={handleLeaveonRating}> 
@@ -127,10 +94,7 @@ function AdvancedStarRating()
                         </div>
                     }
                     <h2>overall rating: {realRating}/{maxRating}</h2>
-                    
-                    
                 </div>
-                
             </>)
 }
 export default AdvancedStarRating;
