@@ -1,0 +1,71 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+.frame {
+    width: 30vw;
+    height: 60vh;
+    overflow: hidden;
+    border: solid pink 5px;
+    position: relative;
+}
+
+.photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure the image covers its box */
+    object-position: center; /* Center the image */
+    flex-shrink: 0; /*Prevent shrinking, ensuring each image stays full frame width*/
+}
+.dotsContainer
+{
+    border: solid red 1px;
+    display: flex;
+    justify-content: center;
+    /* background: blue; */
+    position: absolute;
+    width: 40%;
+    height: 5%;
+    top: 95%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 5;
+}
+.filledDot,.emptyDot
+{
+    background: white;
+    width: 20px;
+    height: 100%;
+    /* position: relative; */
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    float: left;
+    border: solid white 3px;
+}
+.emptyDot
+{
+    background: transparent;
+}
+.left,.right
+{
+    display: inline-block;
+    color: white;
+    width: 40px;
+    height: 40px;
+    font-size: 25px;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(0%,-50%);
+    border-radius: 50%;
+    border: solid white 5px;
+}
+.right
+{
+    left: 91%;
+    /* transform: translate(20%,1/0%); */
+}
