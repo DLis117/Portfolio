@@ -8,7 +8,7 @@ function LoadingScreen()
     async function getData()
     {
         setLoading(true); //indicate that you are loading the data
-        let response = await fetch(`https://picsum.photos/v2/list?page=${10}&limit=${10000}`)
+        let response = await fetch(`https://picsum.photos/v2/list?page=${1}&limit=${10}`)
         return new Promise((resolve,reject)=>{
             
             if(response)
