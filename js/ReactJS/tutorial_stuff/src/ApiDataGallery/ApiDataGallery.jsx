@@ -30,17 +30,9 @@ function GallerySlider(props)
     {
         try
         {
-            let tempGallery=[]
             const loadedResponse = await fetchData();
             let array = await loadedResponse.json();
-            console.log(array)
-            for (let i=0;i<array.length;++i)
-            {
-                // console.log(array[i].url);
-                tempGallery.push({src:array[i].download_url,activated:i===slideVal?true:false})
-            }
-            // setGalleryPhotos(array.map((x,y)=>[x.src=x.url,y===slideVal?x.activated=true:x.activated=false]))
-            setGalleryPhotos(tempGallery);
+            setGalleryPhotos(array.map((x,y)=>({src:x.download_url,activated:(y===slideVal?true:false)})));
             setLoading(false); //indicate that you have finished loading the data
         }
         catch(e)
