@@ -3,7 +3,7 @@ import style from '/src/GallerySlider/GallerySlider.module.css'
 function GallerySlider(props)
 {
     let [galleryPhotos,setGalleryPhotos]=useState([{src: '/autumn.png',activated: true},{src: '/field.png', activated: false},{src: '/mountain.png', activated: false},{src: '/sunset.png', activated: false}])
-    let photoWidth=30;
+    let photoWidth=30;//30vw
     let [slideVal,setSlideVal]=useState(0);
 
     //to make a slider I've created a container for photos, I aligned photos horizontally next to each other
