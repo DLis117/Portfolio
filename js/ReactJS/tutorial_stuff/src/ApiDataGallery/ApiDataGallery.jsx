@@ -9,7 +9,6 @@ function GallerySlider(props)
     let [slideVal,setSlideVal]=useState(0);
     let photoWidth=30;//30vw
     let howManyToLoad=5;
-
     
     async function fetchData()
     {
@@ -67,7 +66,7 @@ function GallerySlider(props)
         */
         let newLimit=limit+howManyToLoad;
         setLimit(newLimit)
-        let newUrl=`${props.url}&limit=${newLimit}`
+        let newUrl=`${props.url}&limit=${newLimit}` 
         setUrl(newUrl)
         
         // loadData(); theres no need for it anymore since url change will trgger a rerender bc of useEffect

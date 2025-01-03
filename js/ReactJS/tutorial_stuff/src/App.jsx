@@ -5,6 +5,7 @@ import GallerySlider from './GallerySlider/GallerySlider'
 // import LoadingScreen from './loadingScreen/LoadingScreen'
 import ApiDataGallery from './ApiDataGallery/ApiDataGallery'
 import Test from './Test/Test'
+import LoadMoreData from './LoadMoreData/LoadMoreData'
 let info = [
             {info: 'Mercury is the planet nearest to the Sun',
              additionalInfo: "and the smallest planet in our solar system",
@@ -24,14 +25,15 @@ let urlForGallery=`https://picsum.photos/v2/list?page=${1}`;
 function App() {
   return(
           <>
-          <AccordionComponent info={info}/>
-          <AccordionComponent/>
-          <StarRating/>
-          <AdvancedStarRating/>
-          <GallerySlider/>
+          {/* <AccordionComponent info={info}/> */}
+          {/* <AccordionComponent/> */}
+          {/* <StarRating/> */}
+          {/* <AdvancedStarRating/> */}
+          {/* <GallerySlider/> */}
           {/* <LoadingScreen/> */}
           <ApiDataGallery url={urlForGallery} limit={10}/>
           {/* <Test/> */}
+          {/* <LoadMoreData url={urlForGallery} limit={10}/> */}
           </>
         )
 }
