@@ -4,6 +4,7 @@ import AdvancedStarRating from './AdvancedStarRating/AdvancedStarRating'
 import GallerySlider from './GallerySlider/GallerySlider'
 // import LoadingScreen from './loadingScreen/LoadingScreen'
 import ApiDataGallery from './ApiDataGallery/ApiDataGallery'
+import Test from './Test/Test'
 let info = [
             {info: 'Mercury is the planet nearest to the Sun',
              additionalInfo: "and the smallest planet in our solar system",
@@ -18,7 +19,7 @@ let info = [
             additionalInfoActivated: false,}
     ]
 
-let urlForGallery=`https://picsum.photos/v2/list?page=${1}&limit=${10}`;
+let urlForGallery=`https://picsum.photos/v2/list?page=${1}`;
 
 function App() {
   return(
@@ -29,7 +30,8 @@ function App() {
           <AdvancedStarRating/>
           <GallerySlider/>
           {/* <LoadingScreen/> */}
-          <ApiDataGallery url={urlForGallery}/>
+          <ApiDataGallery url={urlForGallery} limit={10}/>
+          {/* <Test/> */}
           </>
         )
 }
