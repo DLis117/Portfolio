@@ -1,4 +1,4 @@
-import { useState,useEffect,useRef } from 'react';
+import { useState,useEffect } from 'react';
 import style from '/src/ApiDataGallery/ApiDataGallery.module.css'
 function GallerySlider(props)
 {
@@ -39,7 +39,6 @@ function GallerySlider(props)
             let array = await loadedResponse.json();
             setGalleryPhotos(array.map((x,y)=>({src:x.download_url,activated:y===((slideVal/photoWidth)*-1)})))
             setLoading(false); //indicate that you have finished loading the data
-            
         }
         catch(e)
         {
@@ -58,6 +57,14 @@ function GallerySlider(props)
     
     function loadMore()
     {
+        /* even if we set new limit, when we try to set new url we still use non updated value of limit bc React updates those asynchronously 
+           react will schedule a rerender but we are using the non updated value before the rerender
+           thats why we have to set new values manually if we want to use them one after another
+
+           Key Takeaway
+           When React state updates are asynchronous, calculate the value you need directly and use it immediately,
+           rather than waiting for state to update.
+        */
         let newLimit=limit+howManyToLoad;
         setLimit(newLimit)
         let newUrl=`${props.url}&limit=${newLimit}`
@@ -89,6 +96,11 @@ function GallerySlider(props)
     {
         setSlideVal(y*photoWidth*-1);
         setGalleryPhotos(g=>g.map((x,z)=>({...x,activated:y===z})))
+        
+        if((y*photoWidth*-1)===(galleryPhotos.length-1)*(photoWidth*-1))
+        {
+            loadMore();
+        }
     }
     
     let gallery = <><div className={style.dotsContainer}>{galleryPhotos.map((x,y)=><div key={y} className={x.activated===true?style.whiteDot:style.grayDot} onClick={()=>handleDotClick(y)}/>)}</div>
@@ -101,7 +113,7 @@ function GallerySlider(props)
                 </div>
                 </>
 
-    let loadingInfo = <h1>loading ...</h1>
+    let loadingInfo = <h1 className={style.loading} >↻</h1>
     return(<>
             <div className={style.frame}>
                 {loading===true?loadingInfo:gallery}
