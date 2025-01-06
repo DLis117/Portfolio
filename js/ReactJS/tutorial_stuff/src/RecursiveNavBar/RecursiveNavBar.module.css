@@ -1,0 +1,29 @@
+.NavBarContainer
+{
+    display: inline-block;
+    width: 20vw;
+    /* max-width: 20vw; */
+    min-height: 100vh;
+    background: rgb(26, 102, 225);
+}
+
+.NavBarContainer ul
+{
+    float: left;
+    /* margin: 0; */
+}
+.NavBarContainer li
+{
+    float: left;
+    margin: 0;
+    margin-left: 25px;
+    /* display: block; */
+    width: 100%;
+}
+.NavBarContainer p
+{
+    font-size: 20px;
+    margin-bottom: 5%;
+    width: 100%;
+    /* margin: 0; */
+}
