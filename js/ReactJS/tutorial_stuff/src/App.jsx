@@ -28,8 +28,7 @@ export let navBarData = [
           id: 1,
           label: "Home",
           url: "/home",
-          children: [],
-          activated: true
+          children: []
         },
         {
           id: 2,
@@ -45,28 +44,23 @@ export let navBarData = [
                   id: 4,
                   label: "Leadership",
                   url: "/about/team/leadership",
-                  children: [],
-                  activated: true
+                  children: []
                 },
                 {
                   id: 5,
                   label: "Staff",
                   url: "/about/team/staff",
-                  children: [],
-                  activated: true
+                  children: []
                 },
-              ],
-              activated: true
+              ]
             },
             {
               id: 6,
               label: "Our History",
               url: "/about/history",
-              children: [],
-              activated: true
+              children: []
             },
-          ],
-          activated: true
+          ]
         },
         {
           id: 7,
@@ -77,8 +71,7 @@ export let navBarData = [
               id: 8,
               label: "Consulting",
               url: "/services/consulting",
-              children: [],
-              activated: true
+              children: []
             },
             {
               id: 9,
@@ -89,21 +82,17 @@ export let navBarData = [
                   id: 10,
                   label: "Software Development",
                   url: "/services/implementation/software-development",
-                  children: [],
-                  activated: true
+                  children: []
                 },
                 {
                   id: 11,
                   label: "System Integration",
                   url: "/services/implementation/system-integration",
-                  children: [],
-                  activated: true
+                  children: []
                 },
-              ],
-              activated: true
+              ]
             },
-          ],
-          activated: true
+          ]
         },
         {
           id: 12,
@@ -114,18 +103,15 @@ export let navBarData = [
               id: 13,
               label: "Support",
               url: "/contact/support",
-              children: [],
-              activated: true
+              children: []
             },
             {
               id: 14,
               label: "Sales",
               url: "/contact/sales",
-              children: [],
-              activated: true
+              children: []
             },
-          ],
-          activated: true
+          ]
         },
       ];
 
