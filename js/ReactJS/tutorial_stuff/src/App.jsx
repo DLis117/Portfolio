@@ -7,6 +7,7 @@ import ApiDataGallery from './ApiDataGallery/ApiDataGallery'
 import Test from './Test/Test'
 import LoadMoreData from './LoadMoreData/LoadMoreData'
 import RecursiveNavBar from '/src/RecursiveNavBar/RecursiveNavBar'
+import ThemedComponent from './LightDarkModeTheme/ThemedComponent'
 let info = [
             {info: 'Mercury is the planet nearest to the Sun',
              additionalInfo: "and the smallest planet in our solar system",
@@ -127,7 +128,8 @@ function App() {
           {/* <ApiDataGallery url={urlForGallery} limit={10}/> */}
           {/* <Test/> */}
           {/* <LoadMoreData url={urlForGallery} limit={10}/> */}
-          <RecursiveNavBar data={navBarData}/>
+          {/* <RecursiveNavBar data={navBarData}/> */}
+          <ThemedComponent/>
           </>
         )
 }
