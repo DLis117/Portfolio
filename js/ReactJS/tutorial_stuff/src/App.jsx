@@ -8,6 +8,7 @@ import Test from './Test/Test'
 import LoadMoreData from './LoadMoreData/LoadMoreData'
 import RecursiveNavBar from '/src/RecursiveNavBar/RecursiveNavBar'
 import ThemedComponent from './LightDarkModeTheme/ThemedComponent'
+import ProgressScrollBar from './ProgressScrollBar/ProgressScrollBar'
 let info = [
             {info: 'Mercury is the planet nearest to the Sun',
              additionalInfo: "and the smallest planet in our solar system",
@@ -129,7 +130,8 @@ function App() {
           {/* <Test/> */}
           {/* <LoadMoreData url={urlForGallery} limit={10}/> */}
           {/* <RecursiveNavBar data={navBarData}/> */}
-          <ThemedComponent/>
+          {/* <ThemedComponent/> */}
+          <ProgressScrollBar url={`https://jsonplaceholder.typicode.com/posts`}/>
           </>
         )
 }
