@@ -1,0 +1,60 @@
+.popUpFrame
+{
+    background: pink;
+}
+.popupContainer
+{
+
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.659);
+    position: fixed;
+}
+.popup
+{
+    background: rgba(255, 255, 255, 0.838);
+    width: 70%;
+    height: 50vh;
+    border-radius: 5px;
+    border: solid 5px rgb(32, 247, 54);
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 9999;
+    text-align: center;
+}
+.popup header
+{
+    --lHeight: 40px;
+    background: rgb(32, 247, 54);
+    text-align: right;
+    line-height: var(--lHeight)
+}
+.popup header span
+{
+    display: inline-block;
+    font-weight: bold;
+    font-size: var(--lHeight);
+    margin-right: 10px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: white;
+    cursor: pointer;
+    
+}
+.popup h1
+{
+    margin-top: 100px;
+    display: inline-block;
+    width: 50%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 25px;
+}
+.page
+{
+    width: 99vw;
+    height: 100vh;
+    background-image:url('/public/field.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
