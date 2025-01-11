@@ -10,6 +10,7 @@ import RecursiveNavBar from '/src/RecursiveNavBar/RecursiveNavBar'
 import ThemedComponent from './LightDarkModeTheme/ThemedComponent'
 import ProgressScrollBar from './ProgressScrollBar/ProgressScrollBar'
 import PopupComponent from './PopupComponent/PopupComponent'
+import GithubUserFinder from './GithubUserFinder/GithubUserFinder'
 let info = [
             {info: 'Mercury is the planet nearest to the Sun',
              additionalInfo: "and the smallest planet in our solar system",
@@ -133,7 +134,8 @@ function App() {
           {/* <RecursiveNavBar data={navBarData}/> */}
           {/* <ThemedComponent/> */}
           {/* <ProgressScrollBar url={`https://jsonplaceholder.typicode.com/posts`}/> */}
-          <PopupComponent/>
+          {/* <PopupComponent/> */}
+          <GithubUserFinder url={`https://api.github.com/users/DLis117`}/>
           </>
         )
 }
