@@ -2,6 +2,10 @@
 {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
+body
+{
+    text-align: center;
+}
 .frame
 {
     width: 50%;
@@ -28,8 +32,8 @@
 }
 .frame img
 {
-    width: 30%;
-    height: 60%;
+    width: 200px;
+    height: 200px;
     background-size: cover;
     border-radius: 50%;
 }
@@ -58,4 +62,10 @@ header button
     height: 25%;
     border-radius: 5px;
     cursor: pointer;
+}
+.err
+{
+    margin-top: 2%;
+    display: inline-block;
+    color: rgb(163, 11, 11);
 }

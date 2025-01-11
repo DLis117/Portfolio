@@ -3,7 +3,7 @@ import style from '/src/GithubUserFinder/GithubUserFinder.module.css'
 function GithubUserFinder()
 {
         let [data,setData]=useState([])
-        let [nicknameVar,setNicknameVar]=useState();
+        let [nicknameVar,setNicknameVar]=useState('');
         let [err,setErr]=useState();
 
         function setNewUrl(nicknameVar)
@@ -29,13 +29,13 @@ function GithubUserFinder()
                 {
                     setData([])
                     setErr('github API blocked searching!')
-                    throw new Error('github API blocked searching');
+                    throw new Error('github API blocked searching!');
                 }
                 else 
                 {
                     setData([])
-                    setErr('data load failed');
-                    throw new Error('data load failed');
+                    setErr('data load failed!');
+                    throw new Error('data load failed!');
                 }
             }
             catch (e)
@@ -69,11 +69,11 @@ function GithubUserFinder()
                 <button onClick={()=>setNewUrl(nicknameVar)}>🔎</button>
             </header>
             
-            <div className={style.frame}>
-                {(data&&data.login)?<><h1>username: {data.login}</h1>
+            {(data&&data.login)?<div className={style.frame}>
+                <h1>username: {data.login}</h1>
                 <img src={data.avatar_url} />
-                <p>id: {data.id}</p></>:<h1>{err}</h1>}
-            </div>
+                <p>id: {data.id}</p></div>:<h1 className={style.err}>{err}</h1>}
+            
         </>)
     
 }
