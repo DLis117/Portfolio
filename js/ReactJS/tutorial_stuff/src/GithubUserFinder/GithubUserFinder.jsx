@@ -57,9 +57,9 @@ function GithubUserFinder()
             }
         }
     
-        useEffect(()=>{
-            loadData(`https://api.github.com/users/DLis117`);
-        },[])
+        // useEffect(()=>{
+        //     loadData(`https://api.github.com/users/DLis117`);
+        // },[])
     
         return(<>
             <header>
@@ -71,7 +71,7 @@ function GithubUserFinder()
             
             <div className={style.frame}>
                 {(data&&data.login)?<><h1>username: {data.login}</h1>
-                <img src={url=(data.avatar_url)} />
+                <img src={data.avatar_url} />
                 <p>id: {data.id}</p></>:<h1>{err}</h1>}
             </div>
         </>)
