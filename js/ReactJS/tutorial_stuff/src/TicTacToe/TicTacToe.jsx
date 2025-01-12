@@ -27,122 +27,42 @@ function TicTacToe()
                     c.value=nowPlacesRef.current;
                     nowPlacesRef.current=nowPlacesRef.current==='X'?'O':'X'
                     
-                    //check if win or not (8 ways)
-                    if(newData[0][0].value===newData[0][1].value&&newData[0][1].value===newData[0][2].value&&newData[0][0].value!='')
+                    let winningPatterns=[[[0,0],[0,1],[0,2]],
+                                         [[1,0],[1,1],[1,2]],
+                                         [[2,0],[2,1],[2,2]],
+                                         [[0,0],[1,0],[2,0]],
+                                         [[0,1],[1,1],[2,1]],
+                                         [[0,2],[1,2],[2,2]],
+                                         [[0,0],[1,1],[2,2]],
+                                         [[0,2],[1,1],[2,0]],
+                                        ];
+                    for(let pattern of winningPatterns)
                     {
-                        console.log(0)
-                        newData[0][0].red=newData[0][1].red=newData[0][2].red=true;
-                        if(newData[0][0].value==='O')
+                        if(newData[pattern[0][0]][pattern[0][1]].value===newData[pattern[1][0]][pattern[1][1]].value&&newData[pattern[2][0]][pattern[2][1]].value===newData[pattern[1][0]][pattern[1][1]].value&&newData[pattern[1][0]][pattern[1][1]].value!='')
                         {
-                            winnerRef.current='O'
-                        }
-                        else if(newData[0][0].value==='X')
-                        {
-                            winnerRef.current='X'
+                            newData[pattern[0][0]][pattern[0][1]].red=newData[pattern[1][0]][pattern[1][1]].red=newData[pattern[2][0]][pattern[2][1]].red=true;
+                            if(newData[pattern[0][0]][pattern[0][1]].value==='O')
+                            {
+                                winnerRef.current='O'
+                            }
+                            else
+                            {
+                                winnerRef.current='X'
+                            }
+                            setData(newData)
+                            return;
                         }
                     }
-                    else if(newData[1][0].value===newData[1][1].value&&newData[1][1].value===newData[1][2].value&&newData[1][0].value!='')
-                    {
-                        console.log(1)
-                        newData[1][0].red=newData[1][1].red=newData[1][2].red=true;
-                        if(newData[1][0].value==='O')
-                        {
-                            winnerRef.current='O'
-                        }
-                        else if(newData[1][0].value==='X')
-                        {
-                            winnerRef.current='X'
-                        }
-                    }
-                    else if(newData[2][0].value===newData[2][1].value&&newData[2][1].value===newData[2][2].value&&newData[2][0].value!='')
-                    {
-                        console.log(2)
-                        newData[2][0].red=newData[2][1].red=newData[2][2].red=true;
-                        if(newData[2][0].value==='O')
-                        {
-                            winnerRef.current='O'
-                        }
-                        else if(newData[2][0].value==='X')
-                        {
-                            winnerRef.current='X'
-                        }
-                    }
-                    /// by columns
-                    else if(newData[0][0].value===newData[1][0].value&&newData[1][0].value===newData[2][0].value&&newData[2][0].value!='')
-                    {
-                        console.log(3)
-                        newData[0][0].red=newData[1][0].red=newData[2][0].red=true;
-                        if(newData[0][0].value==='O')
-                        {
-                            winnerRef.current='O'
-                        }
-                        else if(newData[0][0].value==='X')
-                        {
-                            winnerRef.current='X'
-                        }
-                    }
-                    else if(newData[0][1].value===newData[1][1].value&&newData[1][1].value===newData[2][1].value&&newData[0][1].value!='')
-                    {
-                        console.log(4)
-                        newData[0][1].red=newData[1][1].red=newData[2][1].red=true;
-                        if(newData[0][1].value==='O')
-                        {
-                            winnerRef.current='O'
-                        }
-                        else if(newData[0][1].value==='X')
-                        {
-                            winnerRef.current='X'
-                        }
-                    }
-                    else if(newData[0][2].value===newData[1][2].value&&newData[1][2].value===newData[2][2].value&&newData[0][2].value!='')
-                    {
-                        console.log(5)
-                        newData[0][2].red=newData[1][2].red=newData[2][2].red=true;
-                        if(newData[0][2].value==='O')
-                        {
-                            winnerRef.current='O'
-                        }
-                        else if(newData[0][2].value==='X')
-                        {
-                            winnerRef.current='X'
-                        }
-                    }
-                    //diagonals
-                    else if(newData[0][0].value===newData[1][1].value&&newData[1][1].value===newData[2][2].value&&newData[2][2].value!='')
-                    {
-                        console.log(6)
-                        newData[0][0].red=newData[1][1].red=newData[2][2].red=true;
-                        if(newData[0][0].value==='O')
-                        {
-                            winnerRef.current='O'
-                        }
-                        else if(newData[0][0].value==='X')
-                        {
-                            winnerRef.current='X'
-                        }
-                    }
-                    else if(newData[0][2].value===newData[1][1].value&&newData[1][1].value===newData[2][0].value&&newData[2][0].value!='')
-                    {
-                        console.log(7)
-                        newData[0][2].red=newData[1][1].red=newData[2][0].red=true;
-                        if(newData[0][2].value==='O')
-                        {
-                            winnerRef.current='O'
-                        }
-                        else if(newData[0][2].value==='X')
-                        {
-                            winnerRef.current='X'
-                        }
-                    }
-                    else if(newData[0][0].value!=''&&newData[0][1].value!=''&&newData[0][2].value!=''&&
-                            newData[1][0].value!=''&&newData[1][1].value!=''&&newData[1][2].value!=''&&
-                            newData[2][0].value!=''&&newData[2][1].value!=''&&newData[2][2].value!=''
+                    if(newData[0][0].value!=''&&newData[0][1].value!=''&&newData[0][2].value!=''&&
+                       newData[1][0].value!=''&&newData[1][1].value!=''&&newData[1][2].value!=''&&
+                       newData[2][0].value!=''&&newData[2][1].value!=''&&newData[2][2].value!=''
                     )
                     {
                         winnerRef.current='Tie';
+                        setData(newData)
+                        return;
                     }
                     setData(newData)
-                    return;
                 }
             }
         }
