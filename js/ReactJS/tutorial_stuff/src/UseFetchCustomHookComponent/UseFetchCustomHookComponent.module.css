@@ -1,0 +1,43 @@
+.flexContainer
+{
+    /* width: 100%; */
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+.error
+{
+    color: rgb(124, 4, 4);
+}
+.dataFrame
+{
+    margin-bottom: 1%;
+    border-radius: 5px;
+    width: 75%;
+    list-style-type:none; /*disables markers*/
+}
+.dataFrame li
+{
+    margin: 0;  /*important*/
+    background: rgb(1, 128, 41);
+    margin-bottom: 0.5%;
+    border-radius: 5px;
+    color: white;
+    
+}
+.input,.button
+{
+    height: 3vh;
+    border-radius: 5px;
+}
+.input
+{
+    margin-right: 0.5%;
+    font-size: 20px;
+    margin-bottom: 2%;
+}
+.button
+{
+    width: 3%;
+}

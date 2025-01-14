@@ -12,7 +12,8 @@ import ProgressScrollBar from './ProgressScrollBar/ProgressScrollBar'
 import PopupComponent from './PopupComponent/PopupComponent'
 import GithubUserFinder from './GithubUserFinder/GithubUserFinder'
 import AutocompleteData from './AutocompleteData/AutocompleteData'
-import TicTacToe from './TicTacToe/TicTacToe'
+import TicTacToe from './TicTacToe/TicTacToe';
+import UseFetchCustomHookComponent from './useFetchCustomHookComponent/useFetchCustomHookComponent'
 let info = [
             {info: 'Mercury is the planet nearest to the Sun',
              additionalInfo: "and the smallest planet in our solar system",
@@ -139,7 +140,8 @@ function App() {
           {/* <PopupComponent/> */}
           {/* <GithubUserFinder url={`https://api.github.com/users/DLis117`}/> */}
           {/* <AutocompleteData/> */}
-          <TicTacToe/>
+          {/* <TicTacToe/> */}
+          <UseFetchCustomHookComponent/>
           </>
         )
 }
