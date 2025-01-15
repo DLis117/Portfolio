@@ -14,6 +14,7 @@ import GithubUserFinder from './GithubUserFinder/GithubUserFinder'
 import AutocompleteData from './AutocompleteData/AutocompleteData'
 import TicTacToe from './TicTacToe/TicTacToe';
 import UseFetchCustomHookComponent from './useFetchCustomHookComponent/useFetchCustomHookComponent'
+import TierList from './TierList/TierList'
 let info = [
             {info: 'Mercury is the planet nearest to the Sun',
              additionalInfo: "and the smallest planet in our solar system",
@@ -141,7 +142,8 @@ function App() {
           {/* <GithubUserFinder url={`https://api.github.com/users/DLis117`}/> */}
           {/* <AutocompleteData/> */}
           {/* <TicTacToe/> */}
-          <UseFetchCustomHookComponent/>
+          {/* <UseFetchCustomHookComponent/> */}
+          <TierList tiers={[{tier:'S',color:'#fefefe'},{tier:'A',color:'#a0a0a0'},{tier:'B',color:'#343434'},{tier:'C',color:'#00ffff'},{tier:'D',color:'#ff00ff'},{tier:'E',color:'#f0f0f0'},{tier:'F',color:'#abcdef'},{tier:'XD',color:'#eeeeee'}]} label={`tier list`}/>
           </>
         )
 }
