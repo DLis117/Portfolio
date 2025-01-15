@@ -143,7 +143,7 @@ function App() {
           {/* <AutocompleteData/> */}
           {/* <TicTacToe/> */}
           {/* <UseFetchCustomHookComponent/> */}
-          <TierList tiers={[{tier:'S',color:'#fefefe'},{tier:'A',color:'#a0a0a0'},{tier:'B',color:'#343434'},{tier:'C',color:'#00ffff'},{tier:'D',color:'#ff00ff'},{tier:'E',color:'#f0f0f0'},{tier:'F',color:'#abcdef'},{tier:'XD',color:'#eeeeee'}]} label={`tier list`}/>
+          <TierList tiers={[{tier:'S',color:'#fefefe'},{tier:'A',color:'#a0a0a0'},{tier:'B',color:'#343434'},{tier:'C',color:'#00ffff'},{tier:'D',color:'#ff00ff'},{tier:'E',color:'#f0f0f0'},{tier:'F',color:'#abcdef'},{tier:'XDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD',color:'#eeeeee'}]} label={`tier list`}/>
           </>
         )
 }
