@@ -10,11 +10,9 @@ function TierList(props)
     const width=80;
     const imageWidth=5;                             //percentage width of single image (based on single tier width)
     const howManyObjectsPerTierToChangeHeight=20;   //defined number to know when to change the size of single tier
-
-    //ile jest obiektow /20 i wziac calosc
-
+    
     let [tiersData,setTierData]=useState(                                                                   /* font size will be scaled to fit the tier square*/
-        props.tiers.map((x,y)=>({index:y,text:x.tier,color:x.color,height:`${tiersVH/props.tiers.length}vh`,fontSize:`${fontSize/x.tier.length}%`,data:['/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png']}))
+        props.tiers.map((x,y)=>({index:y,text:x.tier,color:x.color,height:`${tiersVH/props.tiers.length}vh`,fontSize:x.tier.length>6?`${fontSize-200}%`:x.tier.length>2?`${fontSize-150}%`:`${fontSize}%`,data:['/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png']}))
     )
 
 
@@ -34,9 +32,11 @@ function TierList(props)
                 <h1>{props.label}</h1>
                 <div className={tierStyle.tierListContainer}>
                     {tiersData.map(x=>
-                    // height:x.height
-                        <div className={tierStyle.tier} id={x.index} style={{background:x.color,width:`${width}vw`,height:`${(tiersVH*(Math.floor(x.data.length/howManyObjectsPerTierToChangeHeight)+1))/props.tiers.length}vh`}} onMouseOver={()=>console.log(x.index)}>
-                                <div className={tierStyle.flexComponent} style={{width:`${imageWidth}%`,Height:`${tiersVH/props.tiers.length}vh`}}>
+                                                                                                                                  /* we are calculating the height of single tier based on how many objects it has  
+                                                                                                                                 (howManyObjectsPerTierToChangeHeight+1) -> +1 because size of all objects in tier exceeds the tier length itself, so we make it resize if it really exceeds the tier length
+                                                                                                                                  Math.floor(x.data.length/(howManyObjectsPerTierToChangeHeight+1))+1 -> +1 because we want to calculate by how many times we have to resize and if we dont want to resize we need to put 1 instead of 0, floor to make sure its an Integer */
+                        <div className={tierStyle.tier} id={x.index} style={{background:x.color,width:`${width}vw`,height:`${(tiersVH*(Math.floor(x.data.length/(howManyObjectsPerTierToChangeHeight+1))+1))/props.tiers.length}vh`}} onMouseOver={()=>console.log(x.index,x.data.length)}>
+                                <div className={tierStyle.flexComponent} style={{width:`${imageWidth}%`}}>
 
                                     {/* if text is bigger, make font smaller and smaller */}
                                     {/* if length of text is longer than 7 then font size gets negative value and becomes too large 
@@ -44,14 +44,7 @@ function TierList(props)
                                     <h1 style={{fontSize:x.fontSize}}>{x.text}</h1>
                                 </div>
                                 <div className={tierStyle.dataOfTier}>
-                                {/* {dataToBeTiered.map(x=><img key={x.index} src={x.src} className={tierStyle.img} style={{width:`${imageWidth}%`,height:`${tiersVH/props.tiers.length}vh`}}/>)} */}
-                                {/* {dataToBeTiered.map(x=><img key={x.index} src={x.src} className={tierStyle.img} style={{width:`${imageWidth}%`,height:`${tiersVH/props.tiers.length}vh`}}/>)}
-                                {dataToBeTiered.map(x=><img key={x.index} src={x.src} className={tierStyle.img} style={{width:`${imageWidth}%`,height:`${tiersVH/props.tiers.length}vh`}}/>)}
-                                {dataToBeTiered.map(x=><img key={x.index} src={x.src} className={tierStyle.img} style={{width:`${imageWidth}%`,height:`${tiersVH/props.tiers.length}vh`}}/>)}
-                                {dataToBeTiered.map(x=><img key={x.index} src={x.src} className={tierStyle.img} style={{width:`${imageWidth}%`,height:`${tiersVH/props.tiers.length}vh`}}/>)}
-                                
-                                {dataToBeTiered.map(x=><img key={x.index} src={x.src} className={tierStyle.img} style={{width:`${imageWidth}%`,height:`${tiersVH/props.tiers.length}vh`}}/>)}
-                                {dataToBeTiered.map(x=><img key={x.index} src={x.src} className={tierStyle.img} style={{width:`${imageWidth}%`,height:`${tiersVH/props.tiers.length}vh`}}/>)} */}
+                                    {x.data?.length>0&&x.data.map((x,y)=><img key={y} src={x} className={tierStyle.img} style={{width:`${imageWidth}%`,height:`${tiersVH/props.tiers.length}vh`}}/>)}
                                 </div>
                         </div>)}
                     <div className={tierStyle.dataContainer}>
