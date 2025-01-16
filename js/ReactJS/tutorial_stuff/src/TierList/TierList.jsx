@@ -62,7 +62,6 @@ function TierList(props)
             if(whereToPutSelectedObjectRef.current>=tiersData.length)
             {
                 //out of tiers so we put it into DataToBeTiered
-                console.log(dataToBeTiered);
                 setDataToBeTiered(d=>[...d,{index:x.index,src:x.src}])
             }
             else
@@ -100,14 +99,8 @@ function TierList(props)
                         // console.log(x.index,"index przenoszonego!")
                         //we need to delete it from tier
                         let newTiersData=[...tiersData]
-                        newTiersData[i].data.filter(p=>p!=x)
+                        newTiersData[i].data=newTiersData[i].data.filter(p=>p!=x)
                         setTiersData(newTiersData);
-                        //NIE DZIALA, BO NAJWYRAZNIEJ KORZYSTA ZE STAREGO STANU!!!!!!!!!!!!!!
-                        //NIE DZIALA, BO NAJWYRAZNIEJ KORZYSTA ZE STAREGO STANU!!!!!!!!!!!!!!
-                        //NIE DZIALA, BO NAJWYRAZNIEJ KORZYSTA ZE STAREGO STANU!!!!!!!!!!!!!!
-                        //NIE DZIALA, BO NAJWYRAZNIEJ KORZYSTA ZE STAREGO STANU!!!!!!!!!!!!!!
-                        
-
                         return;
                     }
                 }
@@ -116,14 +109,15 @@ function TierList(props)
                 // console.log(i," index przenoszonego!")
 
                 //TO DZIALA A TO DZIWNE W SUMIE
-                // setDataToBeTiered(dataToBeTiered.filter(z=>x.index!==z.index)); //usuwamy z tablicy 'dataToBeTiered'
+                setDataToBeTiered(d=>d.filter(z=>x.index!==z.index)); //usuwamy z tablicy 'dataToBeTiered'
 
-                // !!!!NIE DZIALA A POWINNO!!!
                 // whereToPutSelectedObjectRef.current=i;
                 // // console.log(i," index przenoszonego!")
                 let newDataToBeTiered = [...dataToBeTiered];
-                newDataToBeTiered.filter(z=>x.index!==z.index)
+                newDataToBeTiered=newDataToBeTiered.filter(z=>x.index!==z.index)
                 setDataToBeTiered(newDataToBeTiered); //usuwamy z tablicy 'dataToBeTiered'
+                // console.log(newDataToBeTiered.length);
+                
             }
             else
             {
