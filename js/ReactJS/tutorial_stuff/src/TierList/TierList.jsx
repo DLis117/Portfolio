@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import tierStyle from '/src/TierList/TierList.module.css'
 function TierList(props)
 {
-    // dummyTieredData=['/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png']
+    let dummyTieredData=['/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png']
     let dummyDataToBeTiered=['/public/sunset.png','/public/sunset.png','/public/sunset.png']
     const mainVH=80;                                //viewHeight percentage of all tiers combined
     const dataVH=10;                                //viewHeight percentage of all 'images to be tiered' combined
@@ -13,12 +13,10 @@ function TierList(props)
     const howManyObjectsPerTierToChangeHeight=20;   //defined number to know when to change the size of single tier
     
     let [tiersData,setTierData]=useState(                                                                   /* font size will be scaled to fit the tier square*/
-        props.tiers.map((x,y)=>({index:y,text:x.tier,color:x.color,height:`${tiersVH/props.tiers.length}vh`,fontSize:x.tier.length>6?`${fontSize-200}%`:x.tier.length>2?`${fontSize-150}%`:`${fontSize}%`,data:[]}))
+        props.tiers.map((x,y)=>({index:y,text:x.tier,color:x.color,height:`${tiersVH/props.tiers.length}vh`,fontSize:x.tier.length>6?`${fontSize-200}%`:x.tier.length>2?`${fontSize-150}%`:`${fontSize}%`,data:dummyTieredData}))
     )
 
-    let [ghostX,setGhostX]=useState();
-    let [ghostY,setGhostY]=useState();
-    let [ghost,setGhost]=useState();
+    let [ghost,setGhost]=useState(); //movable object
 
     // let [dataToBeTiered,setDataToBeTiered]=useState(props.imagesData.map((x,y)=>({index:y,src:x})));
     let [dataToBeTiered,setDataToBeTiered]=useState(dummyDataToBeTiered.map((x,y)=>({index:y,src:x})));
@@ -46,7 +44,6 @@ function TierList(props)
                                     {x.data?.length>0&&x.data.map((x,y)=><img key={y} src={x} className={tierStyle.img} style={{width:`${imageWidth}%`,height:`${tiersVH/props.tiers.length}vh`}}/>)}
                                 </div>
                         </div>)}
-                        <p>{draggingState?"true":"false"}</p>
                     <div className={tierStyle.dataContainer}>
                         {/* <img src='/public/sunset.png' className={tierStyle.img} style={{width:imageWidth}}/> */}
                         
@@ -57,16 +54,31 @@ function TierList(props)
             
         function tryToDrag(e,x)
         {
-            
             if(draggingState==true)
             {
                 setDataToBeTiered(dataToBeTiered.filter(z=>x.index!==z.index)); //usuwamy z tablicy
                 //ale moze byc tez w tierach~! 
-                //wiec trzeba przeszukac gdzie jest 
-                setGhost(<div onMouseMove={(e)=>tryToDrag(e,x)} onMouseDown={()=>{setDraggingState(true)}} onMouseUp={()=>{setDraggingState(false)}} key={x.index} src={x.src} className={tierStyle.img} style={{backgroundImage:`url(${x.src})`,backgroundSize:"cover",position:"absolute",top: `${e.clientY-30}px`,left:`${e.clientX-30}px`,width:`${imageWidth}%`,height:`${tiersVH/props.tiers.length}vh`}}/>)
+                //wiec trzeba przeszukac gdzie jest                                                                                                                                                                                                                                                  /* take scroll into account */
+                setGhost(<div onMouseMove={(e)=>tryToDrag(e,x)} onMouseDown={()=>{setDraggingState(true)}} onMouseUp={()=>{setDraggingState(false)}} key={x.index} src={x.src} className={tierStyle.img} style={{backgroundImage:`url(${x.src})`,backgroundSize:"cover",position:"absolute",top: `${e.clientY-30+window.scrollY}px`,left:`${e.clientX-30}px`,width:`${imageWidth}%`,height:`${tiersVH/props.tiers.length}vh`}}/>)
+
+                //now we need to know where to add element
+                let tiersData = document.getElementsByClassName(tierStyle.tier);
+                for(var i=0;i<tiersData.length;++i)
+                {
+                    let rect = tiersData[i].getBoundingClientRect();
+                    if(e.clientX>=rect.left&&e.clientX<=rect.right&&e.clientY>=rect.top&&e.clientY<=rect.bottom)
+                    {
+                        console.log(i)
+                        return;
+                    }
+                }
+                //placed somewhere else so we will put it back to untiered
+                console.log(i)
             }
             else
             {
+                //if its not there, if we click on next element it will show position of last clicked
+                //we dont want that so we will reset ghost
                 setGhost();
             }
             // let newDataToBeTiered=dataToBeTiered.map(z=>)
