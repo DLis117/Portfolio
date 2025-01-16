@@ -79,25 +79,6 @@ function TierList(props)
         {
             if(draggingState==true)
             {
-                // //we need to know wehe this object was before:
-                // if(ghost==undefined) //but only search for object's tier if ghost is not set
-                // {
-                //     for(var i=0;i<tiersData.length;++i)
-                //         {
-                //             for (let index of tiersData[i].data)
-                //             {
-                //                 if(index===x.index)
-                //                 {
-                //                     console.log("our data is in tier ",i);
-                //                     break;
-                //                 }
-                //             }
-                //         }
-                //         //not found anywhere so it is in dataToBeTiered
-                //         console.log("our data is in tier ",i);
-                // }
-                
-                
                 //ale moze byc tez w tierach~! 
                 //wiec trzeba przeszukac gdzie jest                                                                                                                                                                                                                                                  /* take scroll into account */
                 setGhost(<div onMouseMove={(e)=>tryToDrag(e,x)} onMouseDown={()=>{setDraggingState(true)}} onMouseUp={()=>handlePutObject(x)} key={x.index} src={x.src} className={tierStyle.img} style={{backgroundImage:`url(${x.src})`,backgroundSize:"cover",position:"absolute",top: `${e.clientY-30+window.scrollY}px`,left:`${e.clientX-30}px`,width:`${imageWidth}%`,height:`${tiersVH/props.tiers.length}vh`}}/>)
@@ -113,13 +94,19 @@ function TierList(props)
                         //this will also work if we take already placed element.
                         //we know the boundary cords so we know where it was and where will it be placed
                         whereToPutSelectedObjectRef.current=i;
-                        console.log(x.index,"index przenoszonego!")
+                        // console.log(x.index,"index przenoszonego!")
+                        //we need to delete it from tier
+                        let newTiersData=[...tiersData]
+                        newTiersData[i].data.filter(y=>x.index!==y.index);
+                        console.log("tiersdata :",tiersData," newTiersData: ",newTiersData,x);
+                        // console.log(i," index przenoszonego!")
+                        setTiersData(newTiersData);
                         return;
                     }
                 }
                 //the mouse is positioned somewhere else so we will put object back to 'dataToBeTiered'
                 whereToPutSelectedObjectRef.current=i;
-                console.log(x.index,"index przenoszonego!")
+                // console.log(i," index przenoszonego!")
                 setDataToBeTiered(dataToBeTiered.filter(z=>x.index!==z.index)); //usuwamy z tablicy 'dataToBeTiered'
             }
             else
@@ -133,23 +120,3 @@ function TierList(props)
         }
 }
 export default TierList;
-
-
-
-// tier
-// {
-//     index: 0,
-//     text: 'a',
-//     color: '#ffffff',
-//     height: 12 //vh to bedzie ulegalo zmianie a na poczatku zostanie wyliczone na podstawie ilosci tierow
-//     //top i bottom bedzie znany jak dasz onmousemove na danym komponencie
-        // data=[] //tu beda obrazki
-// }
-
-//na podstawie tego ile jest tierow ustalimy min height
-//ale damy inline-block zeby mogl sie powiekszac
-
-//w srodku text + miejsce na dane
-//text odpowiednio bedzie sie zmniejszal zeby sie zmiescic w ramce
-// dane inline block? ale raczej o min height =100% width = 90% (w zaleznosci ile text bedzie zajmowal)
-//dane inline block zeby dalo sie je wrzucic i zeby sie powiekszaly
