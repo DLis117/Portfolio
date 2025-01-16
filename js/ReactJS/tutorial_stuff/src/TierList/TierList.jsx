@@ -16,23 +16,20 @@ function TierList(props)
         props.tiers.map((x,y)=>({index:y,text:x.tier,color:x.color,height:`${tiersVH/props.tiers.length}vh`,fontSize:x.tier.length>6?`${fontSize-200}%`:x.tier.length>2?`${fontSize-150}%`:`${fontSize}%`,data:[]}))
     )
 
+    let [ghostX,setGhostX]=useState();
+    let [ghostY,setGhostY]=useState();
+    let [ghost,setGhost]=useState();
 
     // let [dataToBeTiered,setDataToBeTiered]=useState(props.imagesData.map((x,y)=>({index:y,src:x})));
     let [dataToBeTiered,setDataToBeTiered]=useState(dummyDataToBeTiered.map((x,y)=>({index:y,src:x})));
     
-    let [objectToMove,setObjectToMove]=useState();
-    let [draggingState,setDraggingState]=useState(-1);
+    let [draggingState,setDraggingState]=useState(false);
     
-    useEffect(()=>{
-    },[])
-    // for (let x of );
-    //  console.log(tierNames,tierNames.length);
-    // console.log(tierFrames);
 
     return (<>
                 <h1>{props.label}</h1>
                 <div className={tierStyle.tierListContainer}> 
-                    {objectToMove}
+                    {draggingState?ghost:null}
                     {tiersData.map(x=>
                                                                                                                                   /* we are calculating the height of single tier based on how many objects it has  
                                                                                                                                  (howManyObjectsPerTierToChangeHeight+1) -> +1 because size of all objects in tier exceeds the tier length itself, so we make it resize if it really exceeds the tier length
@@ -49,25 +46,31 @@ function TierList(props)
                                     {x.data?.length>0&&x.data.map((x,y)=><img key={y} src={x} className={tierStyle.img} style={{width:`${imageWidth}%`,height:`${tiersVH/props.tiers.length}vh`}}/>)}
                                 </div>
                         </div>)}
+                        <p>{draggingState?"true":"false"}</p>
                     <div className={tierStyle.dataContainer}>
                         {/* <img src='/public/sunset.png' className={tierStyle.img} style={{width:imageWidth}}/> */}
                         
-                        {dataToBeTiered.map(x=><img onMouseMove={(e)=>tryToDrag(e,x)} onMouseDown={()=>{setDraggingState(1)}} onMouseUp={()=>{setDraggingState(0)}} key={x.index} src={x.src} className={tierStyle.img} style={{width:`${imageWidth}%`,height:`${tiersVH/props.tiers.length}vh`}}/>)}
+                        {dataToBeTiered.map(x=><img onMouseMove={(e)=>tryToDrag(e,x)} onMouseDown={()=>{setDraggingState(true)}} onMouseUp={()=>{setDraggingState(false)}} key={x.index} src={x.src} className={tierStyle.img} style={{width:`${imageWidth}%`,height:`${tiersVH/props.tiers.length}vh`}}/>)}
                     </div>
                 </div>
             </>)
+            
         function tryToDrag(e,x)
         {
-            let xx=e.clientX;
-            let yy=e.clientY;
-            let offsetX=25//`${imageWidth/2}%`;
-            let offsetY=25//`${(tiersVH/props.tiers.length)/2}vh`;
             
-            if(draggingState==1)
+            if(draggingState==true)
             {
-                let obj = <img onMouseMove={(e)=>tryToDrag(e,x)} onMouseDown={()=>{setDraggingState(1)}} key={x.index} src={x.src} className={tierStyle.img} style={{width:`${imageWidth}%`,height:`${tiersVH/props.tiers.length}vh`,position:"absolute",top:`${yy-offsetY}px`,left:`${xx-offsetX}px`}}/>
-                setObjectToMove(obj);
+                setDataToBeTiered(dataToBeTiered.filter(z=>x.index!==z.index)); //usuwamy z tablicy
+                //ale moze byc tez w tierach~! 
+                //wiec trzeba przeszukac gdzie jest 
+                setGhost(<div onMouseMove={(e)=>tryToDrag(e,x)} onMouseDown={()=>{setDraggingState(true)}} onMouseUp={()=>{setDraggingState(false)}} key={x.index} src={x.src} className={tierStyle.img} style={{backgroundImage:`url(${x.src})`,backgroundSize:"cover",position:"absolute",top: `${e.clientY-30}px`,left:`${e.clientX-30}px`,width:`${imageWidth}%`,height:`${tiersVH/props.tiers.length}vh`}}/>)
             }
+            else
+            {
+                setGhost();
+            }
+            // let newDataToBeTiered=dataToBeTiered.map(z=>)
+            // setDataToBeTiered(newDataToBeTiered)
         }
 }
 export default TierList;
