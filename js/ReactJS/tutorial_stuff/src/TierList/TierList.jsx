@@ -42,20 +42,23 @@ function TierList(props)
                                     <h1 style={{fontSize:x.fontSize}}>{x.text}</h1>
                                 </div>
                                 <div className={tierStyle.dataOfTier}>
-                                    {x.data?.length>0&&x.data.map(x=><img onMouseMove={(e)=>tryToDrag(e,x)} onMouseDown={handlePutObject} onMouseUp={()=>handlePutObject(x)} key={x.index} src={x.src} className={tierStyle.img} style={{width:`${imageWidth}%`,height:`${tiersVH/props.tiers.length}vh`}}/>)}
+                                    {x.data?.length>0&&x.data.map(x=><img  onMouseMove={(e)=>tryToDrag(e,x)} onMouseDown={()=>setDraggingState(true)} onMouseUp={()=>handlePutObject(x)} key={x.index} src={x.src} className={tierStyle.img} style={{width:`${imageWidth}%`,height:`${tiersVH/props.tiers.length}vh`}}/>)}
                                 </div>
                         </div>)}
                         <p>{whereToPutSelectedObjectRef.current}</p>
                     <div className={tierStyle.dataContainer}>
                         {/* <img src='/public/sunset.png' className={tierStyle.img} style={{width:imageWidth}}/> */}
                         
-                        {dataToBeTiered.map(x=><img onMouseMove={(e)=>tryToDrag(e,x)} onMouseDown={()=>{setDraggingState(true)}} onMouseUp={()=>handlePutObject(x)} key={x.index} src={x.src} className={tierStyle.img} style={{width:`${imageWidth}%`,height:`${tiersVH/props.tiers.length}vh`}}/>)}
+                        {dataToBeTiered.map(x=><img onMouseMove={(e)=>tryToDrag(e,x)} onMouseDown={()=>setDraggingState(true)} onMouseUp={()=>handlePutObject(x)} key={x.index} src={x.src} className={tierStyle.img} style={{width:`${imageWidth}%`,height:`${tiersVH/props.tiers.length}vh`}}/>)}
                     </div>
                 </div>
             </>)
         
         function handlePutObject(x)
         {
+            
+            
+
             if(whereToPutSelectedObjectRef.current>=tiersData.length)
             {
                 //out of tiers so we put it into DataToBeTiered
@@ -71,8 +74,8 @@ function TierList(props)
             }
             
             //disable ghost 
-            whereToPutSelectedObjectRef.current=undefined;
             setGhost();
+            whereToPutSelectedObjectRef.current=undefined;
 
         }
         function tryToDrag(e,x)
@@ -81,7 +84,7 @@ function TierList(props)
             {
                 //ale moze byc tez w tierach~! 
                 //wiec trzeba przeszukac gdzie jest                                                                                                                                                                                                                                                  /* take scroll into account */
-                setGhost(<div onMouseMove={(e)=>tryToDrag(e,x)} onMouseDown={()=>{setDraggingState(true)}} onMouseUp={()=>handlePutObject(x)} key={x.index} src={x.src} className={tierStyle.img} style={{backgroundImage:`url(${x.src})`,backgroundSize:"cover",position:"absolute",top: `${e.clientY-30+window.scrollY}px`,left:`${e.clientX-30}px`,width:`${imageWidth}%`,height:`${tiersVH/props.tiers.length}vh`}}/>)
+                setGhost(<div  onMouseMove={(e)=>tryToDrag(e,x)} onMouseDown={()=>setDraggingState(true)} onMouseUp={()=>handlePutObject(x)} key={x.index} src={x.src} className={tierStyle.img} style={{backgroundImage:`url(${x.src})`,backgroundSize:"cover",position:"absolute",top: `${e.clientY-30+window.scrollY}px`,left:`${e.clientX-30}px`,width:`${imageWidth}%`,height:`${tiersVH/props.tiers.length}vh`}}/>)
 
                 //now we need to know where to add element
                 //we will search, above which tier mouse is positioned
@@ -97,17 +100,30 @@ function TierList(props)
                         // console.log(x.index,"index przenoszonego!")
                         //we need to delete it from tier
                         let newTiersData=[...tiersData]
-                        newTiersData[i].data.filter(y=>x.index!==y.index);
-                        console.log("tiersdata :",tiersData," newTiersData: ",newTiersData,x);
-                        // console.log(i," index przenoszonego!")
+                        newTiersData[i].data.filter(p=>p!=x)
                         setTiersData(newTiersData);
+                        //NIE DZIALA, BO NAJWYRAZNIEJ KORZYSTA ZE STAREGO STANU!!!!!!!!!!!!!!
+                        //NIE DZIALA, BO NAJWYRAZNIEJ KORZYSTA ZE STAREGO STANU!!!!!!!!!!!!!!
+                        //NIE DZIALA, BO NAJWYRAZNIEJ KORZYSTA ZE STAREGO STANU!!!!!!!!!!!!!!
+                        //NIE DZIALA, BO NAJWYRAZNIEJ KORZYSTA ZE STAREGO STANU!!!!!!!!!!!!!!
+                        
+
                         return;
                     }
                 }
                 //the mouse is positioned somewhere else so we will put object back to 'dataToBeTiered'
                 whereToPutSelectedObjectRef.current=i;
                 // console.log(i," index przenoszonego!")
-                setDataToBeTiered(dataToBeTiered.filter(z=>x.index!==z.index)); //usuwamy z tablicy 'dataToBeTiered'
+
+                //TO DZIALA A TO DZIWNE W SUMIE
+                // setDataToBeTiered(dataToBeTiered.filter(z=>x.index!==z.index)); //usuwamy z tablicy 'dataToBeTiered'
+
+                // !!!!NIE DZIALA A POWINNO!!!
+                // whereToPutSelectedObjectRef.current=i;
+                // // console.log(i," index przenoszonego!")
+                let newDataToBeTiered = [...dataToBeTiered];
+                newDataToBeTiered.filter(z=>x.index!==z.index)
+                setDataToBeTiered(newDataToBeTiered); //usuwamy z tablicy 'dataToBeTiered'
             }
             else
             {
