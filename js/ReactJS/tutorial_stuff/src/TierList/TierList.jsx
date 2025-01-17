@@ -18,14 +18,16 @@ function TierList(props)
 
     let [ghost,setGhost]=useState(); //movable object
 
-    let [dataToBeTiered,setDataToBeTiered]=useState(dummyDataToBeTiered.map((x,y)=>({index:y,src:x})));
+    let [dataToBeTiered,setDataToBeTiered]=useState(dummyDataToBeTiered.map((x,y)=>({index:y,src:x,shadow:false})));
     
+    //if we drag then we will show ghost object
     let [draggingState,setDraggingState]=useState(false);
 
+    //to know where to put ghost object and from which tier it was taken
     let whereToPutSelectedObjectRef = useRef();
 
-    let [showGhostShadow,setShowGhostShadow] = useState(false);
     
+    //to handle object deletion from tiers/dataToBeTiered
     let doneOnlyOnce = useRef(false);
     let doneOnlyOnce2 = useRef(false);
 
@@ -42,7 +44,7 @@ function TierList(props)
                                     <h1 style={{fontSize:x.fontSize}}>{x.text}</h1>
                                 </div>
                                 <div className={tierStyle.dataOfTier}>
-                                    {x.data?.length>0&&x.data.map(x=><img  onMouseMove={(e)=>tryToDrag(e,x)} onMouseDown={()=>setDraggingState(true)} onMouseUp={()=>handlePutObject(x)} key={x.index} src={x.src} className={tierStyle.img} style={{width:`${imageWidth}%`,height:`${tiersVH/props.tiers.length}vh`}}/>)}
+                                    {x.data?.length>0&&x.data.map(x=><img  onMouseMove={(e)=>tryToDrag(e,x)} onMouseDown={()=>setDraggingState(true)} onMouseUp={()=>handlePutObject(x)} key={x.index}  className={tierStyle.img} style={x.shadow?{backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)) ,url('${x.src}')`,backgroundSize: "cover", backgroundPosition: "center",backgroundRepeat: "no-repeat",width:`${imageWidth}%`,height:`${tiersVH/props.tiers.length}vh`}:{backgroundImage: `url('${x.src}')`,backgroundSize: "cover", backgroundPosition: "center",backgroundRepeat: "no-repeat",width:`${imageWidth}%`,height:`${tiersVH/props.tiers.length}vh`}}/>)}
                                 </div>
                         </div>)}
                     <div className={tierStyle.dataContainer}>
@@ -57,14 +59,16 @@ function TierList(props)
             doneOnlyOnce.current=false;
             doneOnlyOnce2.current=false;
 
+            let newTiersData=[...tiersData]
+
             if(whereToPutSelectedObjectRef.current>=tiersData.length)
             {
                 //out of tiers so we put it into DataToBeTiered
-                setDataToBeTiered(d=>[...d,{index:x.index,src:x.src}])
+                setDataToBeTiered(d=>[...d,{index:x.index,src:x.src,shadow:x.shadow}])
             }
             else
             {
-                let newTiersData=[...tiersData]
+               
 
                 //when we click we try to add data to  whereToPutSelectedObjectRef.current which is undefined at this state
                 //so we have to prevent that
@@ -74,12 +78,16 @@ function TierList(props)
                 if(whereToPutSelectedObjectRef.current!=undefined) 
                 {
                     //put object into tier
-                    newTiersData[whereToPutSelectedObjectRef.current].data.push({index:x.index,src:x.src});
-                    setTiersData(newTiersData);
+                    newTiersData[whereToPutSelectedObjectRef.current].data.push({index:x.index,src:x.src,shadow:x.shadow});   
                 }
                 
             }
-            
+            //delete shadows
+            for(let o of newTiersData)
+            {
+                o.data= o.data.filter(z=>z.shadow!=true);
+            }
+            setTiersData(newTiersData);
             //disable ghost 
             setGhost();
             whereToPutSelectedObjectRef.current=undefined;
@@ -105,13 +113,50 @@ function TierList(props)
 
                         //we need to delete it from tier
                         //but we need to delete it only once, not try to delete it every time!
+
+                        let newTiersData=[...tiersData];
                         if(doneOnlyOnce.current==false)
                         {
                             doneOnlyOnce.current=true;
-                            let newTiersData=[...tiersData]
+                            // let newTiersData=[...tiersData]
                             newTiersData[i].data=newTiersData[i].data.filter(p=>p!=x)
-                            setTiersData(newTiersData);
+                            // setTiersData(newTiersData);
                         }
+
+                        
+                        //now we will try to put a ghost shadow
+                        //first check if already exists
+                        let alreadyExists=false;
+                        for(let o of newTiersData[i].data)
+                        {
+                            //compare indexes not objects for now
+                            //bc we've put another source
+                            //soon it will have different property
+                            
+                            if(o.index==x.index)
+                            {
+                                alreadyExists=true;
+                                break;
+                                //already exists
+                            }
+                        }
+                        
+                        for(let j=0;j<newTiersData.length;++j)
+                        {
+                            //we know where we have put shadow of ghost
+                            //so we will delete this shadow from other tiers
+                            if(j!=i)
+                            {
+                                //delete
+                                newTiersData[j].data=newTiersData[j].data.filter(p=>p.index!=x.index)
+                            }
+                        }
+                        if(alreadyExists==false)
+                        {
+                            newTiersData[i].data.push({index:x.index,src:x.src,shadow:true});
+                        }
+
+                        setTiersData(newTiersData);
                         return;
                     }
                 }
