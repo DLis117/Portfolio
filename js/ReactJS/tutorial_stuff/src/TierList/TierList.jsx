@@ -23,7 +23,11 @@ function TierList(props)
     let [draggingState,setDraggingState]=useState(false);
 
     let whereToPutSelectedObjectRef = useRef();
+
+    let [showGhostShadow,setShowGhostShadow] = useState(false);
     
+    let doneOnlyOnce = useRef(false);
+    let doneOnlyOnce2 = useRef(false);
 
     return (<>
                 <h1>{props.label}</h1>
@@ -35,29 +39,23 @@ function TierList(props)
                                                                                                                                   Math.floor(x.data.length/(howManyObjectsPerTierToChangeHeight+1))+1 -> +1 because we want to calculate by how many times we have to resize and if we dont want to resize we need to put 1 instead of 0, floor to make sure its an Integer */
                         <div className={tierStyle.tier} id={x.index} style={{background:x.color,width:`${width}vw`,height:`${(tiersVH*(Math.floor(x.data.length/(howManyObjectsPerTierToChangeHeight+1))+1))/props.tiers.length}vh`}} /*onMouseOver={()=>console.log(x.index,x.data.length)}*/>
                                 <div className={tierStyle.flexComponent} style={{width:`${imageWidth}%`}}>
-
-                                    {/* if text is bigger, make font smaller and smaller */}
-                                    {/* if length of text is longer than 7 then font size gets negative value and becomes too large 
-                                        thats why we have to cap it */}
                                     <h1 style={{fontSize:x.fontSize}}>{x.text}</h1>
                                 </div>
                                 <div className={tierStyle.dataOfTier}>
                                     {x.data?.length>0&&x.data.map(x=><img  onMouseMove={(e)=>tryToDrag(e,x)} onMouseDown={()=>setDraggingState(true)} onMouseUp={()=>handlePutObject(x)} key={x.index} src={x.src} className={tierStyle.img} style={{width:`${imageWidth}%`,height:`${tiersVH/props.tiers.length}vh`}}/>)}
                                 </div>
                         </div>)}
-                        <p>{whereToPutSelectedObjectRef.current}</p>
                     <div className={tierStyle.dataContainer}>
-                        {/* <img src='/public/sunset.png' className={tierStyle.img} style={{width:imageWidth}}/> */}
-                        
                         {dataToBeTiered.map(x=><img onMouseMove={(e)=>tryToDrag(e,x)} onMouseDown={()=>setDraggingState(true)} onMouseUp={()=>handlePutObject(x)} key={x.index} src={x.src} className={tierStyle.img} style={{width:`${imageWidth}%`,height:`${tiersVH/props.tiers.length}vh`}}/>)}
                     </div>
                 </div>
             </>)
-        
+            
         function handlePutObject(x)
         {
-            
-            
+            setDraggingState(false);
+            doneOnlyOnce.current=false;
+            doneOnlyOnce2.current=false;
 
             if(whereToPutSelectedObjectRef.current>=tiersData.length)
             {
@@ -66,10 +64,20 @@ function TierList(props)
             }
             else
             {
-                //put object into tier
                 let newTiersData=[...tiersData]
-                newTiersData[whereToPutSelectedObjectRef.current].data.push({index:x.index,src:x.src});
-                setTiersData(newTiersData);
+
+                //when we click we try to add data to  whereToPutSelectedObjectRef.current which is undefined at this state
+                //so we have to prevent that
+                //BUT...! we have to compare it to undefined 
+                //bc if we leave it if(whereToPutSelectedObjectRef.current) then it will compare it to 0 and 
+                //on first tier items would disappear
+                if(whereToPutSelectedObjectRef.current!=undefined) 
+                {
+                    //put object into tier
+                    newTiersData[whereToPutSelectedObjectRef.current].data.push({index:x.index,src:x.src});
+                    setTiersData(newTiersData);
+                }
+                
             }
             
             //disable ghost 
@@ -80,9 +88,7 @@ function TierList(props)
         function tryToDrag(e,x)
         {
             if(draggingState==true)
-            {
-                //ale moze byc tez w tierach~! 
-                //wiec trzeba przeszukac gdzie jest                                                                                                                                                                                                                                                  /* take scroll into account */
+            {                                                                                                                                                                                                                                              /* take scroll into account */
                 setGhost(<div  onMouseMove={(e)=>tryToDrag(e,x)} onMouseDown={()=>setDraggingState(true)} onMouseUp={()=>handlePutObject(x)} key={x.index} src={x.src} className={tierStyle.img} style={{backgroundImage:`url(${x.src})`,backgroundSize:"cover",position:"absolute",top: `${e.clientY-30+window.scrollY}px`,left:`${e.clientX-30}px`,width:`${imageWidth}%`,height:`${tiersVH/props.tiers.length}vh`}}/>)
 
                 //now we need to know where to add element
@@ -96,28 +102,31 @@ function TierList(props)
                         //this will also work if we take already placed element.
                         //we know the boundary cords so we know where it was and where will it be placed
                         whereToPutSelectedObjectRef.current=i;
-                        // console.log(x.index,"index przenoszonego!")
+
                         //we need to delete it from tier
-                        let newTiersData=[...tiersData]
-                        newTiersData[i].data=newTiersData[i].data.filter(p=>p!=x)
-                        setTiersData(newTiersData);
+                        //but we need to delete it only once, not try to delete it every time!
+                        if(doneOnlyOnce.current==false)
+                        {
+                            doneOnlyOnce.current=true;
+                            let newTiersData=[...tiersData]
+                            newTiersData[i].data=newTiersData[i].data.filter(p=>p!=x)
+                            setTiersData(newTiersData);
+                        }
                         return;
                     }
                 }
                 //the mouse is positioned somewhere else so we will put object back to 'dataToBeTiered'
+                //because i is var we can do it after the loop
                 whereToPutSelectedObjectRef.current=i;
-                // console.log(i," index przenoszonego!")
-
-                //TO DZIALA A TO DZIWNE W SUMIE
-                setDataToBeTiered(d=>d.filter(z=>x.index!==z.index)); //usuwamy z tablicy 'dataToBeTiered'
-
-                // whereToPutSelectedObjectRef.current=i;
-                // // console.log(i," index przenoszonego!")
-                let newDataToBeTiered = [...dataToBeTiered];
-                newDataToBeTiered=newDataToBeTiered.filter(z=>x.index!==z.index)
-                setDataToBeTiered(newDataToBeTiered); //usuwamy z tablicy 'dataToBeTiered'
-                // console.log(newDataToBeTiered.length);
-                
+                if(doneOnlyOnce2.current==false)
+                {
+                    //make sure it will happen only once
+                    doneOnlyOnce2.current=true;
+                    let newDataToBeTiered = [...dataToBeTiered];
+                     //deleting chosen object from 'dataToBeTiered' array
+                    newDataToBeTiered=newDataToBeTiered.filter(z=>x.index!==z.index)
+                    setDataToBeTiered(newDataToBeTiered);
+                }
             }
             else
             {
@@ -125,8 +134,6 @@ function TierList(props)
                 //we dont want that so we will reset ghost
                 setGhost();
             }
-            // let newDataToBeTiered=dataToBeTiered.map(z=>)
-            // setDataToBeTiered(newDataToBeTiered)
         }
 }
 export default TierList;
