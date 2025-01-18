@@ -34,7 +34,6 @@
     justify-content: center;
     float: left;
     overflow: hidden;
-    width: 50%;
     border-right: solid 4px black;
     /* background: blue;; */
 }
@@ -46,10 +45,10 @@ h1
 .dataOfTier
 {
     display: inline-block;
-    width: 90%;
+    /* width: 90%; */
     height: 100%;
     background: rgb(170, 63, 63);
-    float: right;
+    float: left;
 }
 
 .img

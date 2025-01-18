@@ -36,9 +36,8 @@ function TierList(props)
                                 <div className={tierStyle.flexComponent} style={{background:x.color,minHeight:`${Math.floor(mainVH/props.tiers.length)}vh`,width:`${Math.floor(mainVH/props.tiers.length)}vh`}}>
                                     <h1 style={{fontSize:x.fontSize}}>{x.text}</h1>
                                 </div>
-                                <div className={tierStyle.dataOfTier} style={{minHeight:`${Math.floor(mainVH/props.tiers.length)}vh`}}>
                                     {x.data?.length>0&&x.data.map(x=><img  onMouseMove={(e)=>tryToDrag(e,x)} onMouseDown={()=>setDraggingState(true)} onMouseUp={()=>handlePutObject(x)} key={x.index}  className={tierStyle.img} style={x.shadow?{backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)) ,url('${x.src}')`,backgroundSize: "cover", backgroundPosition: "center",backgroundRepeat: "no-repeat",width:`${Math.floor(mainVH/props.tiers.length)}vh`,height:`${Math.floor(mainVH/props.tiers.length)}vh`}:{backgroundImage: `url('${x.src}')`,backgroundSize: "cover", backgroundPosition: "center",backgroundRepeat: "no-repeat",width:`${Math.floor(mainVH/props.tiers.length)}vh`,height:`${Math.floor(mainVH/props.tiers.length)}vh`}}/>)}
-                                </div>
+                                
                         </div>)}
                     <div className={tierStyle.dataContainer} style={{minHeight:`${Math.floor(mainVH/props.tiers.length)}vh`}}>
                     {dataToBeTiered.map(x=><img onMouseMove={(e)=>tryToDrag(e,x)} onMouseDown={()=>setDraggingState(true)} onMouseUp={()=>handlePutObject(x)} key={x.index} className={tierStyle.img} style={{backgroundImage: `url('${x.src}')`,backgroundSize: "cover", backgroundPosition: "center",backgroundRepeat: "no-repeat",width:`${Math.floor(mainVH/props.tiers.length)}vh`,height:`${Math.floor(mainVH/props.tiers.length)}vh`}}/>)}</div>
