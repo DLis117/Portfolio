@@ -1,23 +1,30 @@
+*
+{
+    margin:0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
 .tierListContainer
 {
     width: 80vw;
-    min-height: 94vh;
+    /* min-height: 94vh; */
     display: inline-block;
     background: black;
+    border: solid 4px black;
 }
 .dataContainer
 {
     min-height: 20vh;
+    background: gray;
     /* height: calc(var(--tierListComponentHeight) - 60vh); between - and value must be a SPACE! */
-    background: red;
 }
 .tier
 {
     display: inline-block;
-    /* margin-bottom: 2%; */
-    /* text-align: center; */
-    border: solid black 2px;
-    /* height: 20vh; */
+    border-bottom: solid black 2px;
+    width: 100%;
+    background: gray;
 }
 .flexComponent
 {
@@ -26,8 +33,9 @@
     align-items: center;
     justify-content: center;
     float: left;
-    height: 100%;
     overflow: hidden;
+    width: 50%;
+    border-right: solid 4px black;
     /* background: blue;; */
 }
 h1
@@ -38,9 +46,9 @@ h1
 .dataOfTier
 {
     display: inline-block;
-    width: 95%;
+    width: 90%;
     height: 100%;
-    background: gray;
+    background: rgb(170, 63, 63);
     float: right;
 }
 

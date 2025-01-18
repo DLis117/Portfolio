@@ -3,17 +3,12 @@ import tierStyle from '/src/TierList/TierList.module.css'
 function TierList(props)
 {
     //let dummyTieredData=['/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png']
-    let dummyDataToBeTiered=['/public/autumn.png','/public/field.png','/public/sunset.png']
-    const mainVH=80;                                //viewHeight percentage of all tiers combined
-    const dataVH=10;                                //viewHeight percentage of all 'images to be tiered' combined
-    const tiersVH=mainVH-dataVH;                    //calculated default single tier height
+    let dummyDataToBeTiered=['/public/autumn.png','/public/field.png','/public/sunset.png','/public/autumn.png','/public/field.png','/public/sunset.png','/public/autumn.png','/public/field.png','/public/sunset.png']
+    const mainVH=75;                                //viewHeight percentage of all tiers combined
     const fontSize=300;
-    const width=80;
-    const imageWidth=5;                             //percentage width of single image (based on single tier width)
-    const howManyObjectsPerTierToChangeHeight=20;   //defined number to know when to change the size of single tier
-    
+
     let [tiersData,setTiersData]=useState(                                                                   /* font size will be scaled to fit the tier square*/
-        props.tiers.map((x,y)=>({index:y,text:x.tier,color:x.color,height:`${tiersVH/props.tiers.length}vh`,fontSize:x.tier.length>6?`${fontSize-200}%`:x.tier.length>2?`${fontSize-150}%`:`${fontSize}%`,data:[]}))
+        props.tiers.map((x,y)=>({index:y,text:x.tier,color:x.color,height:`${mainVH/props.tiers.length}vh`,fontSize:x.tier.length>6?`${fontSize-200}%`:x.tier.length>2?`${fontSize-150}%`:`${fontSize}%`,data:[]}))
     )
 
     let [ghost,setGhost]=useState(); //movable object
@@ -36,20 +31,17 @@ function TierList(props)
                 <div className={tierStyle.tierListContainer}> 
                     {draggingState?ghost:null}
                     {tiersData.map(x=>
-                                                                                                                                  /* we are calculating the height of single tier based on how many objects it has  
-                                                                                                                                 (howManyObjectsPerTierToChangeHeight+1) -> +1 because size of all objects in tier exceeds the tier length itself, so we make it resize if it really exceeds the tier length
-                                                                                                                                  Math.floor(x.data.length/(howManyObjectsPerTierToChangeHeight+1))+1 -> +1 because we want to calculate by how many times we have to resize and if we dont want to resize we need to put 1 instead of 0, floor to make sure its an Integer */
-                        <div className={tierStyle.tier} id={x.index} style={{background:x.color,width:`${width}vw`,height:`${(tiersVH*(Math.floor(x.data.length/(howManyObjectsPerTierToChangeHeight+1))+1))/props.tiers.length}vh`}} /*onMouseOver={()=>console.log(x.index,x.data.length)}*/>
-                                <div className={tierStyle.flexComponent} style={{width:`${imageWidth}%`}}>
+                                                                                                                                  
+                        <div className={tierStyle.tier} id={x.index} style={{minHeight:`${Math.floor(mainVH/props.tiers.length)}vh`}} /*onMouseOver={()=>console.log(x.index,x.data.length)}*/>
+                                <div className={tierStyle.flexComponent} style={{background:x.color,minHeight:`${Math.floor(mainVH/props.tiers.length)}vh`,width:`${Math.floor(mainVH/props.tiers.length)}vh`}}>
                                     <h1 style={{fontSize:x.fontSize}}>{x.text}</h1>
                                 </div>
-                                <div className={tierStyle.dataOfTier}>
-                                    {x.data?.length>0&&x.data.map(x=><img  onMouseMove={(e)=>tryToDrag(e,x)} onMouseDown={()=>setDraggingState(true)} onMouseUp={()=>handlePutObject(x)} key={x.index}  className={tierStyle.img} style={x.shadow?{backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)) ,url('${x.src}')`,backgroundSize: "cover", backgroundPosition: "center",backgroundRepeat: "no-repeat",width:`${imageWidth}%`,height:`${tiersVH/props.tiers.length}vh`}:{backgroundImage: `url('${x.src}')`,backgroundSize: "cover", backgroundPosition: "center",backgroundRepeat: "no-repeat",width:`${imageWidth}%`,height:`${tiersVH/props.tiers.length}vh`}}/>)}
+                                <div className={tierStyle.dataOfTier} style={{minHeight:`${Math.floor(mainVH/props.tiers.length)}vh`}}>
+                                    {x.data?.length>0&&x.data.map(x=><img  onMouseMove={(e)=>tryToDrag(e,x)} onMouseDown={()=>setDraggingState(true)} onMouseUp={()=>handlePutObject(x)} key={x.index}  className={tierStyle.img} style={x.shadow?{backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)) ,url('${x.src}')`,backgroundSize: "cover", backgroundPosition: "center",backgroundRepeat: "no-repeat",width:`${Math.floor(mainVH/props.tiers.length)}vh`,height:`${Math.floor(mainVH/props.tiers.length)}vh`}:{backgroundImage: `url('${x.src}')`,backgroundSize: "cover", backgroundPosition: "center",backgroundRepeat: "no-repeat",width:`${Math.floor(mainVH/props.tiers.length)}vh`,height:`${Math.floor(mainVH/props.tiers.length)}vh`}}/>)}
                                 </div>
                         </div>)}
-                    <div className={tierStyle.dataContainer}>
-                        {dataToBeTiered.map(x=><img onMouseMove={(e)=>tryToDrag(e,x)} onMouseDown={()=>setDraggingState(true)} onMouseUp={()=>handlePutObject(x)} key={x.index} src={x.src} className={tierStyle.img} style={{width:`${imageWidth}%`,height:`${tiersVH/props.tiers.length}vh`}}/>)}
-                    </div>
+                    <div className={tierStyle.dataContainer} style={{minHeight:`${Math.floor(mainVH/props.tiers.length)}vh`}}>
+                    {dataToBeTiered.map(x=><img onMouseMove={(e)=>tryToDrag(e,x)} onMouseDown={()=>setDraggingState(true)} onMouseUp={()=>handlePutObject(x)} key={x.index} className={tierStyle.img} style={{backgroundImage: `url('${x.src}')`,backgroundSize: "cover", backgroundPosition: "center",backgroundRepeat: "no-repeat",width:`${Math.floor(mainVH/props.tiers.length)}vh`,height:`${Math.floor(mainVH/props.tiers.length)}vh`}}/>)}</div>
                 </div>
             </>)
             
@@ -97,7 +89,7 @@ function TierList(props)
         {
             if(draggingState==true)
             {                                                                                                                                                                                                                                              /* take scroll into account */
-                setGhost(<div  onMouseMove={(e)=>tryToDrag(e,x)} onMouseDown={()=>setDraggingState(true)} onMouseUp={()=>handlePutObject(x)} key={x.index} src={x.src} className={tierStyle.img} style={{backgroundImage:`url(${x.src})`,backgroundSize:"cover",position:"absolute",top: `${e.clientY-30+window.scrollY}px`,left:`${e.clientX-30}px`,width:`${imageWidth}%`,height:`${tiersVH/props.tiers.length}vh`}}/>)
+                setGhost(<div  onMouseMove={(e)=>tryToDrag(e,x)} onMouseDown={()=>setDraggingState(true)} onMouseUp={()=>handlePutObject(x)} key={x.index} src={x.src} className={tierStyle.img} style={{backgroundImage:`url(${x.src})`,backgroundSize:"cover",position:"absolute",top: `${e.clientY-30+window.scrollY}px`,left:`${e.clientX-30}px`,width:`${Math.floor(mainVH/props.tiers.length)}vh`,height:`${Math.floor(mainVH/props.tiers.length)}vh`}}/>)
 
                 //now we need to know where to add element
                 //we will search, above which tier mouse is positioned
