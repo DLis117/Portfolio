@@ -3,7 +3,7 @@ import tierStyle from '/src/TierList/TierList.module.css'
 function TierList(props)
 {
     //let dummyTieredData=['/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png']
-    let dummyDataToBeTiered=['/public/autumn.png','/public/field.png','/public/sunset.png','/public/autumn.png','/public/field.png','/public/sunset.png','/public/autumn.png','/public/field.png','/public/sunset.png']
+    let dummyDataToBeTiered=['/public/autumn.png','/public/field.png','public/mountain.png','/public/sunset.png','public/vite.svg']
     const mainVH=75;                                //viewHeight percentage of all tiers combined
     const fontSize=300;
 
