@@ -1,0 +1,8 @@
+.navBar
+{
+    width: 20vw;
+    height: 100vh;
+    background: rgba(43, 39, 96, 0.527);
+    float: left;
+    position: fixed;
+}

@@ -1,0 +1,69 @@
+.WelcomePageContainer
+{
+    height: 92%;
+    width: 100%;
+    /* background: rgba(194, 80, 80, 0.374); */
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    color: rgba(255, 255, 255, 0.79);
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.WelcomePageContainer h1
+{
+    display: inline-block;
+}
+.WelcomePageContainer h1
+{
+    margin-top: 15%;
+    font-size: 600%;
+}
+.WelcomePageContainer h2
+{
+    font-size: 300%;
+    margin-bottom: 2%;
+}
+.WelcomePageContainer button
+{
+    width: 15%;
+    height: 8%;
+    border-radius: 10px;
+    margin-right: 2%;
+    border: solid 5px white;
+    background: rgba(108, 45, 179, 0.674);
+    color: white;
+    font-size: 150%;
+    font-weight: bold;
+    cursor: pointer;
+}
+.DownArrowContainer
+{
+    width: 98%;
+    height: 34.5%;
+    /* background: red; */
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+.DownArrowContainer h3
+{
+    cursor: pointer;
+    font-size: 1700%;
+    animation: infinite 3s arrowAnimation;
+}
+@keyframes arrowAnimation 
+{
+ 0%
+ {
+    line-height: 210px;
+ }  
+ 50%
+ {
+    line-height: 287px;
+ }  
+ 100%
+ {
+    line-height: 210px;
+ } 
+}
