@@ -3,7 +3,6 @@
   margin: 0;
   padding: 0;
   border: 0;
-  box-sizing: border-box;
 }
 
 :root 
@@ -11,13 +10,16 @@
    width: 100vw;
    height: 100vh;
 }
-
+html, body
+{
+  overflow-x: hidden;
+}
 body 
 {
   background: rgb(30,9,52);
   background-image: url('public/polyBackground.png');
   background-size: cover;
   background-repeat: no-repeat;
-  /* width: 100vw;
-  height: 100vh; */
+  height: 100vh;
+  width: 100vw;
 }
