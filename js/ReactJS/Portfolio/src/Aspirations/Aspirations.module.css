@@ -1,3 +1,11 @@
+.AspirationsPage
+{
+    width: 100vw;
+    height: 100vh;
+    background-image: url('bluePolyBackground.png');
+    background-size: cover;
+    float: left;
+}
 .AspirationsContainer
 {
     width: 100vw;
@@ -12,6 +20,9 @@
     height: 50vh;
     width: 79.35vw;
     background: rgba(222, 0, 247, 0.216);
+    background: linear-gradient(180deg, #59189a75, #4362ee81);
+    background: linear-gradient(180deg, #59189a7e, #9d4edd82, #4362ee92);
+
     float: right;
 
     color: rgba(255, 255, 255, 0.8);
@@ -21,7 +32,7 @@
     cursor:default;
     font-size: 170%;
 }
-.quote
+.aspirations .quote
 {
     font-family: "Tangerine", serif;
     font-weight: bold;

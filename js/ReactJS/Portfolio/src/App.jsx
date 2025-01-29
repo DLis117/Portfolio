@@ -7,6 +7,10 @@ function App()
     return (<>
                 <Content/>
                 <AboutMe/>
+                {/* <div className='test'>
+                    <div className='one'></div>
+                    <div className='two'></div>
+                </div> */}
                 <Aspirations/>
             </>)
 }
