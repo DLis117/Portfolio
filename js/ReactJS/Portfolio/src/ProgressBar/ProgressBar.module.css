@@ -1,18 +1,28 @@
 .ProgressBarContainer
 {
-    /* width: 100%; */
-    /* height: 15vh; */
-    /* background: purple; */
-    overflow: hidden;
+    display: inline-block;
     /* background: rgba(255, 255, 255, 0.734); */
-    margin-left: 1%;
+    margin-top: 4%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    cursor:default;
+}
+.progressArrowContainer
+{
+    /* background: red; */
+    display: inline-block;
+}
+.progressArrow
+{
+    display: inline-block;
+    font-size: 80%;
+    float: left;
+    margin-left: 27.5%;
 }
 .flexComponent
 {
     display: flex;
     float: left;
     align-items: center;
-    /* background: blue; */
 }
 .filledBall,.emptyBall,.filledLine,.emptyLine,.halfLine
 {
@@ -25,17 +35,13 @@
 {
     border-radius: 5px;
     margin: 0 4%;
-    border: solid 3px;
-    border-color: var(--color2);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 50%;
 }
 .filledBall
 {
     background: var(--color);
-    border-color: var(--color);
 }
 .emptyBall
 {
@@ -56,4 +62,21 @@
 .halfLine
 {
     background: linear-gradient(to right, var(--color) 50%, var(--color2) 50%);
+}
+.ballFlexComponent
+{
+    display: flex;
+    align-items: center;
+    float: left;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+    font-size: 15px;
+    margin-top: 10%;
+}
+.all
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
