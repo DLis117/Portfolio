@@ -135,7 +135,7 @@ function App() {
           {/* <ApiDataGallery url={urlForGallery} limit={10}/> */}
           {/* <Test/> */}
           {/* <LoadMoreData url={urlForGallery} limit={10}/> */}
-          {/* <RecursiveNavBar data={navBarData}/> */}
+          <RecursiveNavBar data={navBarData}/>
           {/* <ThemedComponent/> */}
           {/* <ProgressScrollBar url={`https://jsonplaceholder.typicode.com/posts`}/> */}
           {/* <PopupComponent/> */}
@@ -143,7 +143,7 @@ function App() {
           {/* <AutocompleteData/> */}
           {/* <TicTacToe/> */}
           {/* <UseFetchCustomHookComponent/> */}
-          <TierList tiers={[{tier:'S',color:'#fefefe'},{tier:'A',color:'#a0a0a0'},{tier:'B',color:'#343434'},{tier:'C',color:'#00ffff'},{tier:'D',color:'#ff00ff'}]} label={`tier list`}/>
+          {/* <TierList tiers={[{tier:'S',color:'#fefefe'},{tier:'A',color:'#a0a0a0'},{tier:'B',color:'#343434'},{tier:'C',color:'#00ffff'},{tier:'D',color:'#ff00ff'}]} label={`tier list`}/> */}
           </>
         )
 }

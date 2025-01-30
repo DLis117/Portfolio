@@ -1,0 +1,50 @@
+.navBarMain
+{   display: inline-block;
+    background: rgba(43, 39, 96, 0.527);
+    float: left;
+    position: fixed;
+    width: 20vw;
+    min-height: 100vh;
+
+    color: rgba(255, 255, 255, 0.79);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 150%;
+}
+.NavBarContainer
+{
+    margin-top: 5%;
+    display: inline-block;
+}
+
+.NavBarContainer ul
+{
+    float: left;
+    
+    /* margin: 0; */
+}
+.NavBarContainer li
+{
+    float: left;
+    margin-left: 25px;
+    /* display: block; */
+    width: 100%;
+    display: inline-block;
+}
+.NavBarContainer p
+{
+    margin-bottom: 5%;
+    cursor: pointer;
+    display: inline-block;
+}
+.rotated
+{
+    display: inline-block; /*it has to be inline-block: inline to rotate by center, block to respect rotation*/
+    transform: rotate(-90deg);
+    transition: transform 1s ease;
+}
+.normal
+{
+    display: inline-block; /*it has to be inline-block: inline to rotate by center, block to respect rotation*/
+    transform: rotate(0deg);
+    transition: transform 1s ease;
+}
