@@ -7,12 +7,14 @@ function ProgressBar()
                         {item: 'react3',started: false,finished: false},
                         {item: 'react4',started: false,finished: false},
                         {item: 'react5',started: false,finished: false},
-                        {item: 'finish',started: false,finished: false}
+                        {item: 'react5',started: false,finished: false},
+                        {item: 'react5',started: false,finished: false},
                     ];
 
     let howManyComponents = progressData.length;
     let widthOfProgressBar = 100;//%
     let widthOfFlexComponent = Math.floor(widthOfProgressBar/howManyComponents);
+    console.log(widthOfFlexComponent);
     let ballSize = widthOfFlexComponent*1.9;
     let lineWidth = widthOfFlexComponent*9;
     let height= 15;// vh
@@ -21,7 +23,7 @@ function ProgressBar()
     function returnDiv(x,y)
     {
         let filledBall = <div className={style.filledBall} style={{width:`${ballSize}px`,height:`${ballSize}px`}}>✓</div>;
-        let emptyBall  = <div className={style.emptyBall}  style={{width:`${ballSize}px`,height:`${ballSize}px`}}>{y}</div>;
+        let emptyBall  = <div className={style.emptyBall}  style={{width:`${ballSize}px`,height:`${ballSize}px`}}></div>;
         let filledLine = <div className={style.filledLine} style={{width:`${lineWidth}px`,height:`${ballSize/8}px`}}/>;
         let emptyLine  = <div className={style.emptyLine}  style={{width:`${lineWidth}px`,height:`${ballSize/8}px`}}/>;
         let halfLine   = <div className={style.halfLine}   style={{width:`${lineWidth}px`,height:`${ballSize/8}px`}}/>;

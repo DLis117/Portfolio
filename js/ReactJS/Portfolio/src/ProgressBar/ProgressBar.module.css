@@ -16,30 +16,30 @@
 }
 .filledBall,.emptyBall,.filledLine,.emptyLine,.halfLine
 {
+    --color: #8edc54;
+    --color2 : #ffffff9d;
     float: left;
     margin-right: 2%;
 }
 .filledBall,.emptyBall
 {
-    border-radius: 50%;
+    border-radius: 5px;
     margin: 0 4%;
     border: solid 3px;
-    border-color: lightgray;
+    border-color: var(--color2);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 70%;
+    font-size: 50%;
 }
 .filledBall
 {
-    background: green;
-    border-color: green;
-    /* margin-right: 2%; */
-    /* border: solid green 2px; */
+    background: var(--color);
+    border-color: var(--color);
 }
 .emptyBall
 {
-    background: white;
+    background: rgba(255, 255, 255, 0.532);
 }
 .filledLine,.emptyLine,.halfLine
 {
@@ -47,13 +47,13 @@
 }
 .filledLine
 {
-    background: green;
+    background: var(--color);
 }
 .emptyLine
 {
-    background: lightgray;
+    background: var(--color2);
 }
 .halfLine
 {
-    background: linear-gradient(to right, green 50%, lightgray 50%);
+    background: linear-gradient(to right, var(--color) 50%, var(--color2) 50%);
 }
