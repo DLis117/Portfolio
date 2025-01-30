@@ -2,6 +2,16 @@ import propTypes from 'prop-types';
 import style from './ProgressBar.module.css'
 function ProgressBar(props)
 {
+    ProgressBar.propTypes=
+    {
+        data:propTypes.arrayOf(propTypes.shape({item:propTypes.string,stared: propTypes.bool,finished:propTypes.bool})),
+        indicatorLeftMargin:propTypes.number,
+    }
+    ProgressBar.defaultProps=
+    {
+        data:[],
+        indicatorLeftMargin:0
+    }
     let howManyComponents = props.data.length;
     let widthOfProgressBar = 90;//%
     let widthOfFlexComponent = Math.floor(widthOfProgressBar/howManyComponents);
@@ -52,21 +62,14 @@ function ProgressBar(props)
             }
         }
     }
-    ProgressBar.propTypes=
-    {
-        data:propTypes.arrayOf(propTypes.shape({item:propTypes.string,stared: propTypes.bool,finished:propTypes.bool}))
-    }
-    ProgressBar.defaultProps=
-    {
-        data:[]
-    }
+    
     return(<>
-                <div className={style.ProgressBarContainer}>
-                        <div className={style.progressArrowContainer} style={{width:`${widthOfFlexComponent*howManyComponents}%`,height:`5vh`}}><h3 className={style.progressArrow}>⬐ i am currently here</h3></div>
+                {howManyComponents>0&&<div className={style.ProgressBarContainer}>
+                        <div className={style.progressArrowContainer} style={{width:`${widthOfFlexComponent*howManyComponents}%`,height:`5vh`}}><h3 className={style.progressArrow} style={{marginLeft:`${props.indicatorLeftMargin}px`}}>⬐ i am currently here</h3></div>
                         <div className={style.all}>
                             {props.data.map((x,y)=><div className={style.flexComponent} style={{width: `${widthOfFlexComponent}%`,height: `${height*0.4}vh`}}>{returnDiv(x,y)}</div>)}
                         </div>
-                </div>
+                </div>}
             </>)
 }
 export default ProgressBar;

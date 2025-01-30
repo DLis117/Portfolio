@@ -1,15 +1,14 @@
 import './index.css'
 import Content from "./Content/Content"
-import AboutMe from "./AboutMe/AboutMe"
-import Aspirations from  "./Aspirations/Aspirations"
-import LearningPath from './LearningPath/LearningPath'
+import Header from './Header/Header'
+import NavBar from './NavBar/NavBar'
 function App() 
 {
     return (<>
-                {/* <Content/> */}
-                {/* <AboutMe/> */}
-                <Aspirations/>
-                {/* <LearningPath/> */}
+                {/* <Header/> */}
+                <NavBar/>
+                <Content/>
+                
             </>)
 }
 

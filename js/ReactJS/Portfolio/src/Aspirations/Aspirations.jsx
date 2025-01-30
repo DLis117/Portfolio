@@ -25,7 +25,7 @@ function Aspirations()
                                 To begin my journey, I have chosen to start with React.js for front-end web development. Next, I will expand into React Native for mobile development, followed by Node.js for both. Meanwhile, I am also learning embedded systems.
                             </h2>
                             <h3>
-                                <ProgressBar data={progressData}/>
+                                <ProgressBar data={progressData} indicatorLeftMargin={295}/>
                             </h3>
                 </div>
             </>)

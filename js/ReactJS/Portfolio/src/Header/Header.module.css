@@ -1,8 +1,7 @@
 .mainHeader
 {
-    width: 78%;
-    height: 8%;
+    width: 80%;
+    height: 8vh;
     /* background: rgba(138, 22, 22, 0.259); */
     float: right;
-    margin-right: 1%;
 }

@@ -1,14 +1,16 @@
 import style from './Content.module.css'
-import Header from '../Header/Header';
 import WelcomePage from '../WelcomePage/WelcomePage';
-import NavBar from '../NavBar/NavBar';
+import AboutMe from '../AboutMe/AboutMe';
+import Aspirations from  "../Aspirations/Aspirations";
+import Projects from '../Projects/Projects';
 function Content()
 {
     return (<>
                 <div className={style.content}>
-                    {/* <Header/> */}
-                    <NavBar/>
-                    <WelcomePage/>
+                    {/* <WelcomePage/> */}
+                    {/* <AboutMe/> */}
+                    {/* <Aspirations/> */}
+                    <Projects/>
                 </div>
             </>)
 }

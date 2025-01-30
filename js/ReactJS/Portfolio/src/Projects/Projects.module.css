@@ -1,0 +1,8 @@
+.projectsPage
+{
+    display: inline-block;
+    background: rgba(255, 0, 0, 0.358);
+    width: 79vw;
+    min-height: 100vh;
+    float: right;
+}

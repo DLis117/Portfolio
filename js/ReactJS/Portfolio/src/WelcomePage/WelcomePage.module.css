@@ -1,29 +1,41 @@
 .WelcomePageContainer
 {
     height: 92%;
-    width: 80%;
+    width: 55%;
     /* background: rgba(80, 194, 80, 0.374); */
     color: rgba(255, 255, 255, 0.79);
     text-align: center;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     cursor:default;
     float: right;
+    /* margin-top: 15%; */
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-130%,80%);
 }
 .WelcomePageContainer h1
 {
     display: inline-block;
-    margin-top: 15%;
     font-size: 600%;
 }
 .WelcomePageContainer h2
 {
     font-size: 300%;
-    margin-bottom: 2%;
+    margin-bottom: 3%;
+}
+.WelcomePageContainer .buttonsContainer
+{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
 }
 .WelcomePageContainer button
 {
-    width: 27%;
-    height: 10%;
+    display: inline-block;
+    width: 30%;
+    height: 9vh;
     border-radius: 10px;
     border: solid 5px white;
     background: rgba(108, 45, 179, 0.674);
@@ -34,6 +46,6 @@
 }
 .WelcomePageContainer .confettiButton
 {
-    width: 15%;
+    
     margin-left: 2%;
 }
