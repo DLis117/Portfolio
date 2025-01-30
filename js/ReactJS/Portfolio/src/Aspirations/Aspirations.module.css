@@ -1,29 +1,11 @@
 .AspirationsPage
 {
-    width: 100vw;
+    width: 79vw;
     height: 100vh;
-    background-image: url('bluePolyBackground.png');
+    /* background-image: url('bluePolyBackground.png'); */
     background-size: cover;
-    float: left;
-}
-.AspirationsContainer
-{
-    width: 100vw;
-    height: 50vh;
-    float: left;
-    margin-bottom: 5%;
-}
-.aspirations
-{
-    border: solid white 5px;
-    border-radius: 10px;
-    height: 50vh;
-    width: 79.35vw;
-    background: rgba(222, 0, 247, 0.216);
-    background: linear-gradient(180deg, #59189a75, #4362ee81);
-    background: linear-gradient(180deg, #59189a7e, #9d4edd82, #4362ee92);
-
     float: right;
+    background: linear-gradient(180deg, #59189a7e, #9d4edd82, #4362ee92);
 
     color: rgba(255, 255, 255, 0.8);
     text-align: center;
@@ -32,20 +14,20 @@
     cursor:default;
     font-size: 170%;
 }
-.aspirations .quote
+.AspirationsPage .quote
 {
     font-family: "Tangerine", serif;
     font-weight: bold;
     font-style: normal;
-    margin-bottom: 2%;
+    margin: 2% 0;
 }
-.aspirations h2
+.AspirationsPage h2
 {
     color: rgba(255, 255, 255, 0.79);
     text-align: center;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     cursor:default;
-    text-align: left;
+    /* text-align: left; */
     margin-left: 1%;
-    font-size: 135%;
+    font-size: 125%;
 }

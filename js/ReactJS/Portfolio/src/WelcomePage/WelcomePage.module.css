@@ -22,10 +22,9 @@
 }
 .WelcomePageContainer button
 {
-    width: 15%;
-    height: 8%;
+    width: 27%;
+    height: 10%;
     border-radius: 10px;
-    margin-right: 2%;
     border: solid 5px white;
     background: rgba(108, 45, 179, 0.674);
     color: white;
@@ -33,33 +32,8 @@
     font-weight: bold;
     cursor: pointer;
 }
-.DownArrowContainer
+.WelcomePageContainer .confettiButton
 {
-    width: 98%;
-    height: 34.5%;
-    /* background: red; */
-    display: flex;
-    justify-content: center;
-    overflow: hidden;
-}
-.DownArrowContainer h3
-{
-    cursor: pointer;
-    font-size: 1700%;
-    animation: infinite 3s arrowAnimation;
-}
-@keyframes arrowAnimation 
-{
- 0%
- {
-    margin-top: -60px;
- }  
- 50%
- {
-    margin-top: -30px;
- }  
- 100%
- {
-    margin-top: -60px;
- } 
+    width: 15%;
+    margin-left: 2%;
 }

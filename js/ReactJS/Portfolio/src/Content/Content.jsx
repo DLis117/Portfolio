@@ -6,7 +6,7 @@ function Content()
 {
     return (<>
                 <div className={style.content}>
-                    <Header/>
+                    {/* <Header/> */}
                     <NavBar/>
                     <WelcomePage/>
                 </div>
