@@ -2,6 +2,16 @@ import style from "./Aspirations.module.css"
 import ProgressBar from "../ProgressBar/ProgressBar";
 function Aspirations()
 {
+    let progressData=[  
+        {item: 'start',started: true,finished: true},
+        {item: 'React.js',started: true,finished: false},
+        {item: 'React_Native',started: false,finished: false},
+        {item: 'Node.js',started: false,finished: false},
+        {item: 'IoT/embedded',started: false,finished: false},
+        {item: 'and more...',started: false,finished: false},
+    ];
+    
+
     return( <>
                 <div className={style.AspirationsPage}>
                             <h1 className={style.quote}>
@@ -15,7 +25,7 @@ function Aspirations()
                                 To begin my journey, I have chosen to start with React.js for front-end web development. Next, I will expand into React Native for mobile development, followed by Node.js for both. Meanwhile, I am also learning embedded systems.
                             </h2>
                             <h3>
-                                <ProgressBar/>
+                                <ProgressBar data={progressData}/>
                             </h3>
                 </div>
             </>)

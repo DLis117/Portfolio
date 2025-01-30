@@ -1,16 +1,8 @@
+import propTypes from 'prop-types';
 import style from './ProgressBar.module.css'
-function ProgressBar()
+function ProgressBar(props)
 {
-    let progressData=[  
-                        {item: 'start',started: true,finished: true},
-                        {item: 'React.js',started: true,finished: false},
-                        {item: 'React_Native',started: false,finished: false},
-                        {item: 'Node.js',started: false,finished: false},
-                        {item: 'IoT/embedded',started: false,finished: false},
-                        {item: 'finish',started: false,finished: false},
-                    ];
-
-    let howManyComponents = progressData.length;
+    let howManyComponents = props.data.length;
     let widthOfProgressBar = 90;//%
     let widthOfFlexComponent = Math.floor(widthOfProgressBar/howManyComponents);
     let ballSize = widthOfFlexComponent*1.9;
@@ -27,7 +19,7 @@ function ProgressBar()
         let emptyLine  = <div className={style.emptyLine}  style={{width:`${lineWidth}px`,height:`${ballSize/8}px`}}/>;
         let halfLine   = <div className={style.halfLine}   style={{width:`${lineWidth}px`,height:`${ballSize/8}px`}}/>;
 
-        if(y===progressData.length-1)
+        if(y===props.data.length-1)
         {
             if(x.finished===true)
             {
@@ -60,11 +52,19 @@ function ProgressBar()
             }
         }
     }
+    ProgressBar.propTypes=
+    {
+        data:propTypes.arrayOf(propTypes.shape({item:propTypes.string,stared: propTypes.bool,finished:propTypes.bool}))
+    }
+    ProgressBar.defaultProps=
+    {
+        data:[]
+    }
     return(<>
                 <div className={style.ProgressBarContainer}>
                         <div className={style.progressArrowContainer} style={{width:`${widthOfFlexComponent*howManyComponents}%`,height:`5vh`}}><h3 className={style.progressArrow}>⬐ i am currently here</h3></div>
                         <div className={style.all}>
-                            {progressData.map((x,y)=><div className={style.flexComponent} style={{width: `${widthOfFlexComponent}%`,height: `${height*0.4}vh`}}>{returnDiv(x,y)}</div>)}
+                            {props.data.map((x,y)=><div className={style.flexComponent} style={{width: `${widthOfFlexComponent}%`,height: `${height*0.4}vh`}}>{returnDiv(x,y)}</div>)}
                         </div>
                 </div>
             </>)
