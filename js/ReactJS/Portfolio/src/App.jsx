@@ -1,7 +1,6 @@
 import './index.css'
 import Content from "./Content/Content"
 import Header from './Header/Header'
-import NavBar from './NavBar/NavBar'
 import RecursiveNavBar from './RecursiveNavBar/RecursiveNavBar'
 function App() 
 {
@@ -86,7 +85,6 @@ function App()
     return (<>
                 {/* <Header/> */}
                 <RecursiveNavBar data={navBarData}/>
-                {/* <NavBar/> */}
                 <Content/>
                 
             </>)
