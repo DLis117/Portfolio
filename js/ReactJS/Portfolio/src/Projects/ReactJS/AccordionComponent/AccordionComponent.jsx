@@ -32,7 +32,6 @@ function AccordionComponent(props)
     <>
     <div className={style.accordionListBox}>
         <div className={style.header}>
-            <h1>this is simple accordion like List</h1>
             <button onClick={handleMultipleInfosToggled}>{multipleInfosToggled?"click to activate multiple selection":"click to activate single selection"}</button>
         </div>
         <ul>

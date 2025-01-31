@@ -1,21 +1,18 @@
 .accordionListBox
 {
-  width: 36%;
+  width: 90%;
   border: solid white 3px;
-  margin: 10px;
 }
 .accordionListBox .header
 {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  justify-content: right;  
 }
-.accordionListBox .header h1
+.accordionListBox .header button
 {
-  width: 66%;
-  float: left;
-  font-size: 25px;
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  float: right;
+  margin: 10px;
 }
 .accordionListBox button
 {
@@ -23,13 +20,17 @@
   font-size: 20px;
   border-radius: 5px;
   width: 30%;
+ 
 }
 .accordionListBox button:hover
 {
   background: rgb(108, 253, 149);
   transition: ease 0.5s;
 }
-
+.accordionListBox ul
+{
+  list-style-type: none;
+}
 .accordionListBox ul li
 {
   cursor: pointer;
@@ -38,7 +39,6 @@
   background: rgba(168, 237, 146, 0.625);
   border-radius: 5px;
   width: 100%;
-  /* text-decoration: none; */
 }
 .accordionListBox ul li h2
 {

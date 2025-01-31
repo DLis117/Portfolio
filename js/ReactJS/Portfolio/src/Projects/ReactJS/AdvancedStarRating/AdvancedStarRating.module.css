@@ -1,0 +1,19 @@
+.starRatingContainer
+{
+    display: flex;
+    font-size: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 12vw;
+}
+.starsContainer
+{
+    display: inline-block;
+}
+.singleStar
+{
+    font-size: 35px;
+    float: left;
+    cursor: pointer;
+}

@@ -5,7 +5,7 @@
 .wrapTogether
 {
     display: inline-block;
-    /* border: solid red 5px; */
+    border: solid red 5px;
     margin-left: 2%;
     width: 87%;
 }

@@ -8,13 +8,33 @@ import ShoppingForm from './ShoppingForm/ShoppingForm.jsx';
 import Stopwatch from './Stopwatch/Stopwatch.jsx';
 import ToDoList from './ToDoList/ToDoList.jsx';
 import AccordionComponent from './AccordionComponent/AccordionComponent.jsx';
+import StarRating from './StarRating/StarRating.jsx';
+import AdvancedStarRating from './AdvancedStarRating/AdvancedStarRating.jsx';
+import ApiDataGallery from './ApiDataGallery/ApiDataGallery.jsx';
+import AutocompleteData from './AutocompleteData/AutocompleteData.jsx';
 let mountainpic='/mountain.png';
 let fieldpic='/field.png';
 
 
-  let watch1Style={backgroundImage: 'url("/watch1.png")'}
-  let watch2Style={backgroundImage: 'url("/watch2.png")'}
-  let watch3Style={backgroundImage: 'url("/watch3.png")'}
+let watch1Style={backgroundImage: 'url("/watch1.png")'}
+let watch2Style={backgroundImage: 'url("/watch2.png")'}
+let watch3Style={backgroundImage: 'url("/watch3.png")'}
+
+let accordionComponentInfo = [
+{info: 'Mercury is the planet nearest to the Sun',
+    additionalInfo: "and the smallest planet in our solar system",
+    additionalInfoActivated: false},
+
+{info: 'Venus is the second planet from the Sun',
+additionalInfo: "and the sixth largest planet",
+additionalInfoActivated: false},
+
+{info: 'Earth – our home planet – is the third planet from the Sun',
+additionalInfo: "and the fifth largest planet",
+additionalInfoActivated: false,}
+]
+let urlForGallery=`https://picsum.photos/v2/list?page=${1}`;
+
 function ReactJS()
 {
     return (<>
@@ -40,7 +60,17 @@ function ReactJS()
                         <ProjectWrapper project={<ToDoList/>} description='To Do List'/>
                     </div>
                     
-                    <ProjectWrapper project={<AccordionComponent/>} description='AccordionComponent'/>
+                    <div className={style.wrapTogether}>
+                        <ProjectWrapper project={<AccordionComponent info={accordionComponentInfo}/>} description='accordion like List'/>
+                        <ProjectWrapper project={<StarRating/>} description='star rating'/>
+                        <ProjectWrapper project={<AdvancedStarRating/>} description='advanced star rating'/>
+                    </div>
+
+                    <div className={style.wrapTogether}>
+                    <ProjectWrapper project={<ApiDataGallery url={urlForGallery} limit={10}/>} description='gallery from API data'/>
+                        <ProjectWrapper project={<AutocompleteData/>} description='display only filtered data'/>
+                        
+                    </div>
 
                     <Description text={`smaple text`}/>
                 </div>

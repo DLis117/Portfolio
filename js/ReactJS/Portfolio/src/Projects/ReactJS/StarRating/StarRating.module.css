@@ -1,0 +1,26 @@
+.starRatingContainer
+{
+    display: inline-block;
+    text-align: center;
+}
+.starsContainerFlex
+{
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+}
+.starRatingContainer p
+{
+    font-size: 35px;
+    float: left;
+    cursor: pointer;
+}
+.yellowStar
+{
+    color: yellow;
+}
+.blackStar
+{
+    color: white;
+}

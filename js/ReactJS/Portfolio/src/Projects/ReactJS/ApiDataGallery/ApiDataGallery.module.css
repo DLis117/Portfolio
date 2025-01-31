@@ -1,0 +1,94 @@
+.frame {
+    width: 30vw;
+    height: 60vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.photoContainer {
+    display: flex; /* Align photos horizontally */
+    transition: transform 0.5s ease;
+    height: 100%;
+}
+
+.photoContainer .photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure the image covers its box */
+    object-position: center;
+    flex-shrink: 0; /*photo is full and matched size*/
+}
+
+.dotsContainer
+{
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    width: 50%;
+    height: 3%;
+    top: 95%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 1;
+}
+.whiteDot,.grayDot
+{
+    background: gray;
+    width: 3%;
+    border-radius: 50%;
+    border: solid gray 3px;
+    margin-right: 1%;
+    cursor: pointer;
+}
+.whiteDot
+{
+    border: solid white 3px;
+    background: white;
+}
+
+.left,.right
+{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+
+    color: rgba(255, 255, 255, 0.453);
+    width: 30px;
+    height: 30px;
+    font-size: 30px;
+    position: absolute;
+    top: 50%;
+    transform: translate(0%,-50%);
+    z-index: 1;
+    cursor: pointer;
+}
+.right
+{
+    left: 91%;
+    /* transform: translate(20%,1/0%); */
+}
+
+.loading
+{
+    color: white;
+    font-size: 1500%;
+    position: absolute;
+    top: 20%;
+    left: 30%;
+    transform: translate(-50%,-50%);
+}
+
+
+@keyframes rotateAnimation {
+    0% {
+      transform: rotate(0deg);  /* Initial state */
+    }
+    100% {
+      transform: rotate(360deg);  /* End state */
+    }
+  }
+  
+  .loading {
+    animation: rotateAnimation 2s linear infinite; /* 2 seconds duration, linear timing, infinite loop */
+  }

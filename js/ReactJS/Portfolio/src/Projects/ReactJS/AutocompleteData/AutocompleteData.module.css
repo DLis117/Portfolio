@@ -1,0 +1,32 @@
+.AutocompleteDataContainer
+{
+    width: 20vw;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.AutocompleteDataContainer .input
+{
+    /* width: ; */
+    border-radius: 5px;
+    height: 5vh;
+    margin-bottom: 2%;
+}
+.AutocompleteDataContainer .names
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+
+
+}
+.names .name
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}

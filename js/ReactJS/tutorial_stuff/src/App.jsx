@@ -135,7 +135,7 @@ function App() {
           {/* <ApiDataGallery url={urlForGallery} limit={10}/> */}
           {/* <Test/> */}
           {/* <LoadMoreData url={urlForGallery} limit={10}/> */}
-          <RecursiveNavBar data={navBarData}/>
+          {/* <RecursiveNavBar data={navBarData}/> */}
           {/* <ThemedComponent/> */}
           {/* <ProgressScrollBar url={`https://jsonplaceholder.typicode.com/posts`}/> */}
           {/* <PopupComponent/> */}
