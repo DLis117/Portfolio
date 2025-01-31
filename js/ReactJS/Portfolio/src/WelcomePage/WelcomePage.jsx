@@ -1,4 +1,5 @@
 import style from './WelcomePage.module.css'
+import ConfettiComponent from './ConfettiComponent';
 function WelcomePage()
 {
     return (<>
@@ -7,11 +8,12 @@ function WelcomePage()
                     <h2>and this is my portfolio</h2>
                     <div className={style.buttonsContainer}>
                         <button>Proffesional Background</button>
-                        <button className={style.confettiButton}>🎉 time!</button>
+                        <ConfettiComponent/>
                     </div>
                     {/* <div className={style.DownArrowContainer}>
                         <h3>⇩</h3>
                     </div> */}
+                    
                 </div>
             </>)
 }

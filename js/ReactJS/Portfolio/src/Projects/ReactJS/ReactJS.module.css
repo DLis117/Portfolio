@@ -1,0 +1,16 @@
+.reactJsProjectsContainer
+{
+    display: inline-block;
+}
+.projectWrapper
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: solid 4px rgb(255, 255, 255);
+    border-radius: 10px;
+    margin: 0.5% 2%;
+    float: left;
+    min-width: 20%;
+    min-height: 20vh;
+}

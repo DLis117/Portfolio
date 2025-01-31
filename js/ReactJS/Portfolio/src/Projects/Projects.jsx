@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import style from './Projects.module.css'
+import ReactJS from './ReactJS/ReactJS';
 function Projects()
 {
     let [technologies,setTechnologies]= useState([
@@ -18,12 +19,13 @@ function Projects()
         })
         
     }
+    
     return( <>
                 <div className={style.projectsPage}>
                     <div className={style.technologiesBar}>
                         {technologies.map((x,y)=><button key={y} onClick={()=>handleActivation(y)} className={style.technologyButton} style={x.activated?{background: `rgba(108, 45, 179, 0.674)`}:null}>{x.name}</button>)}
                     </div>
-
+                    <ReactJS/>
                 </div>
             </>)
 }

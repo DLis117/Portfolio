@@ -1,0 +1,14 @@
+#clockContainer
+{
+  backdrop-filter: blur(20px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background: red; */
+}
+#clockContainer h1
+{
+  display: inline-block;
+  font-size: 80px;
+  color: rgba(255, 255, 255, 0.508);
+}

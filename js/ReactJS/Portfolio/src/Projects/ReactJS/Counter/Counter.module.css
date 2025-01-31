@@ -1,0 +1,41 @@
+.num {
+    font-size: 3.2em;
+    display: inline-block;
+    height: 75%;
+    position: relative;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%,0);
+  }
+  
+ #buttonsContainer button {
+    border-radius: 8px;
+    border: 1px solid transparent;
+    font-size: 1em;
+    font-weight: bold;
+    font-family: inherit;
+    background-color: #4830e4;
+    cursor: pointer;
+    transition: border-color 0.25s;
+    width: 33.33333%;
+    height: 100%;
+    color: white;
+  }
+  
+  #buttonsContainer button:hover {
+    border-color: #646cff;
+  }
+  #counterContainer
+  {
+    background: #959bff;
+    width: 20vw;
+    height: 20vh;
+    border-radius: 20px;
+  }
+  
+  #buttonsContainer
+  {
+    display: block;
+    height: 25%;
+    /* background: red; */
+  }
