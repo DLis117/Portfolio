@@ -7,10 +7,10 @@ function Content()
 {
     return (<>
                 <div className={style.content}>
-                    <WelcomePage/>
+                    {/* <WelcomePage/> */}
                     {/* <AboutMe/> */}
                     {/* <Aspirations/> */}
-                    {/* <Projects/> */}
+                    <Projects/>
                 </div>
             </>)
 }

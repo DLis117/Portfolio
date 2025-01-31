@@ -1,0 +1,146 @@
+.Creds,.giftcardCreds,.Creds2
+{
+  height: 17%;
+  width: 100%;
+  margin-bottom: 5%;
+}
+.cardCredsName,#cardCredsNumber,#cardCredsCVV,#giftCardNumber,#address,#postalCode,#address2,#postalCode2
+{
+  width: 100%;
+  height: 33.3333%;
+}
+#cardCredsNumber
+{
+  width: 70%;
+}
+#cardCredsCVV
+{
+  width: 25%;
+  float: right;
+}
+.giftcardCreds
+{
+  height: 6%;
+}
+#giftCardNumber
+{
+ height: 100%;
+}
+.Creds2
+{
+ height: 11%;
+}
+#address2,#postalCode2
+{
+  height: 50%;
+}
+.form
+{
+  margin: 0% 1%;
+  background: rgba(0, 0, 0, 0.69);
+  width: 20vw;
+  height: 93%;
+  border-radius: 10px;
+  border: solid 3px white;
+  float: left;
+  overflow: hidden;
+}
+#itemQuant
+{
+  width: 100%;
+  height: 22%;
+}
+.element
+{
+  color:rgb(255, 255, 255);
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  /* float: right; */
+  margin-left: 30%;
+  display: inline-block;
+}
+.itemContainer
+{
+  width: 25%;
+  height: 10vh;
+  background-image: url('/uranium.png');
+  background-size: cover;
+  border: solid 5px white;
+  border-radius: 10px;
+  float: left;
+  margin-right: 5%;
+  margin-bottom: 2%;
+}
+#quantity
+{
+  margin-top: 5%;
+  width: 15%;
+  height: 30%;
+}
+#radioHolders
+{
+  height: 10%;
+}
+#radioHolders input.radio
+{
+  height: 4vh;
+}
+
+
+.form button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1.2em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #e9c023;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  width: 70%;
+  font-weight: bold;
+
+  border-radius: 10px;
+  border: solid 4px white;
+  margin-left: 15%;
+}
+
+.form button:hover {
+  background:  #f7d963;
+  transition: ease 0.5s;
+}
+
+
+
+.form input,.form select
+{
+  width: 80%;
+  height: 5%;
+  border-radius: 5px;
+  border: solid 3px white;
+  background: #e9c023;
+  color: black;
+  margin-bottom: 2%;
+}
+.paragraph
+{
+  color: rgb(182, 182, 182);
+}
+select
+{
+  width: 45%;
+}
+label
+{
+  margin-top: 2%;
+  width: 35%;
+  float: left;
+  font-size: 20px;
+  margin-left: 10%;
+  color: white;
+}
+.submitButton
+{
+  margin-bottom: 2%;
+}
+
+

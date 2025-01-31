@@ -3,8 +3,14 @@ import style from './ReactJS.module.css'
 import CardComponent from "./Card/Card.jsx"
 import Counter from './Counter/Counter.jsx';
 import Clock from './DigitalClock/Clock.jsx';
+import ShoppingForm from './ShoppingForm/ShoppingForm.jsx';
 let mountainpic='/mountain.png';
 let fieldpic='/field.png';
+
+
+  let watch1Style={backgroundImage: 'url("/watch1.png")'}
+  let watch2Style={backgroundImage: 'url("/watch2.png")'}
+  let watch3Style={backgroundImage: 'url("/watch3.png")'}
 function ReactJS()
 {
     return (<>
@@ -20,8 +26,14 @@ function ReactJS()
                     <div className={style.projectWrapper}>
                         <Clock/>
                     </div>
-                   
-                    <Description text={`idzie Ola do przedszkola. za nią Ala - zapierdala :)`}/>
+
+                    <div className={style.projectWrapper}>
+                        <ShoppingForm element="omega constelation" styles={watch1Style}/>
+                        <ShoppingForm element="omega speedmaster" styles={watch2Style}/>
+                        <ShoppingForm element="rolex daytona" styles={watch3Style}/>
+                    </div>
+                    
+                    <Description text={`smaple text`}/>
                 </div>
             </>)
 }
