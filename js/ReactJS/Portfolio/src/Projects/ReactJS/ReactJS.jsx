@@ -12,6 +12,10 @@ import StarRating from './StarRating/StarRating.jsx';
 import AdvancedStarRating from './AdvancedStarRating/AdvancedStarRating.jsx';
 import ApiDataGallery from './ApiDataGallery/ApiDataGallery.jsx';
 import AutocompleteData from './AutocompleteData/AutocompleteData.jsx';
+import GithubUserFinder from './GithubUserFinder/GithubUserFinder.jsx';
+import ThemedComponent from './LightDarkModeTheme/ThemedComponent.jsx';
+import Popup from './PopupComponent/Popup.jsx';
+import PopupComponent from './PopupComponent/PopupComponent.jsx';
 let mountainpic='/mountain.png';
 let fieldpic='/field.png';
 
@@ -39,22 +43,26 @@ function ReactJS()
 {
     return (<>
                 <div className={style.reactJsProjectsContainer}>
-                    <ProjectWrapper project={<>
-                                                <CardComponent pic={mountainpic} desc='mountains' name='mountain card' id={0}/>
-                                                <CardComponent pic={fieldpic} desc='fields' name='fields card' id={1}/>
-                                                <CardComponent/>
-                                            </>} description='Card Components'/>
-                    <ProjectWrapper project={<Counter/>} description='Counter'/>
-                    <ProjectWrapper project={<Clock/>} description='Clock'/>
-                    
-                    <ProjectWrapper project={<>
-                                                <ShoppingForm element="omega constelation"  styles={watch1Style}/>
-                                                <ShoppingForm element="omega speedmaster"   styles={watch2Style}/>
-                                                <ShoppingForm element="rolex daytona"       styles={watch3Style}/>
-                                             </>} description='conditional rendering'/>
-                    
                     {/* if the there is more than one component, and there is resizeable component we want to wrap those in single row
                     to prevent unknown behaviour if it start to overlap next components and move them unintentionally*/}
+                    <div className={style.wrapTogether}>
+                        <ProjectWrapper project={<>
+                                                    <CardComponent pic={mountainpic} desc='mountains' name='mountain card' id={0}/>
+                                                    <CardComponent pic={fieldpic} desc='fields' name='fields card' id={1}/>
+                                                    <CardComponent/>
+                                                </>} description='Card Components'/>
+                        <ProjectWrapper project={<Counter/>} description='Counter'/>
+                        <ProjectWrapper project={<Clock/>} description='Clock'/>
+                    </div>
+                    
+                    <div className={style.wrapTogether}>
+                        <ProjectWrapper project={<>
+                                                    <ShoppingForm element="omega constelation"  styles={watch1Style}/>
+                                                    <ShoppingForm element="omega speedmaster"   styles={watch2Style}/>
+                                                    <ShoppingForm element="rolex daytona"       styles={watch3Style}/>
+                                                    </>} description='conditional rendering'/>
+                    </div>
+                    
                     <div className={style.wrapTogether}>
                         <ProjectWrapper project={<Stopwatch/>} description='Stopwatch'/>
                         <ProjectWrapper project={<ToDoList/>} description='To Do List'/>
@@ -70,6 +78,14 @@ function ReactJS()
                     <ProjectWrapper project={<ApiDataGallery url={urlForGallery} limit={10}/>} description='gallery from API data'/>
                         <ProjectWrapper project={<AutocompleteData/>} description='display only filtered data'/>
                         
+                    </div>
+                    <div className={style.wrapTogether}>
+                        <ProjectWrapper project={<GithubUserFinder/>} description='Github User Finder'/>
+                        <ProjectWrapper project={<ThemedComponent/>} description='theme which remembers state after refresh'/>
+                    </div>
+                    <div className={style.wrapTogether}>
+                        
+                        <ProjectWrapper project={<PopupComponent/>} description='popup toggler'/>
                     </div>
 
                     <Description text={`smaple text`}/>

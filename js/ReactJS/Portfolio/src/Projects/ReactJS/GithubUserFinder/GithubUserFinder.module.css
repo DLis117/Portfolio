@@ -1,0 +1,89 @@
+.GithubUserFinderComponent
+{
+    display: inline-block;
+    width: 30vw;
+}
+.GithubUserFinderHeader
+{
+    height: 5vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.GithubUserFinderHeader input
+{
+    display: inline-block;
+    min-width: 50%;
+    height: 100%;
+    border-radius: 5px;
+}
+.GithubUserFinderHeader button
+{
+    width: 10%;
+    margin-left: 0.5%;
+    height: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.GithubUserFinderComponent .GithubUserFinderHeader h1,.GithubUserFinderComponent .GithubUserFinderHeader p
+{
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+}
+
+.frame
+{
+    width: 100%;
+    height: 100%;
+    /* background: rgb(89, 89, 89); */
+    border-radius: 5px;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.frame h1,.frame p
+{
+    display: inline-block;
+    width: 100%;
+    color: white;
+}
+.frame img
+{
+    width: 150px;
+    height: 150px;
+    background-size: cover;
+    border-radius: 50%;
+}
+.errContainer
+{
+    width: 100%;
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.err
+{
+    margin-top: 2%;
+    display: inline-block;
+}
+.accountInfoWrapper
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 67%;
+}
+.accountInfo
+{
+    /* background: red; */
+    display: inline-block;
+    width: 10%;
+    /* width: 2vw; */
+}

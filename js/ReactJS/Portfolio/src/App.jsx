@@ -2,8 +2,6 @@ import './index.css'
 import Content from "./Content/Content"
 import Header from './Header/Header'
 import RecursiveNavBar from './RecursiveNavBar/RecursiveNavBar'
-import ApiDataGallery from '/src/Projects/ReactJS/ApiDataGallery/ApiDataGallery.jsx';
-                    
                     
 function App() 
 {
