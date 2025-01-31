@@ -1,0 +1,58 @@
+.stopwatchBox
+{
+  background: rgb(183, 183, 183);
+  border: solid 5px rgb(96, 90, 255);
+  width: 20vw;
+  height: 20vh;
+  border-radius: 5px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  margin: 2%;
+}
+.stopwatchHalf
+{
+  /* background: black; */
+  height: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+}
+.timer
+{
+  color: white;
+  font-weight: bold;
+  /* background: yellow; */
+  font-size: 250%;
+}
+.buttonContainer
+{
+  /* background: red; */
+  width: 90%;
+  height: 60%;
+  display: flex;
+  justify-content: center;
+}
+.buttonContainer button
+{
+  cursor: pointer;
+  width: 30%;
+  margin: 0 2%;
+  font-weight: bold;
+  font-size: 25px;
+  border-radius: 5px;
+  border: solid white 3px;
+  color: rgb(0, 0, 0);
+}
+.start
+{
+  background: rgb(106, 246, 106);
+}
+.reset
+{
+  background: rgb(78, 78, 232);
+}
+.stop
+{
+  background: rgb(250, 41, 41);
+}

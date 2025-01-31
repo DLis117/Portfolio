@@ -1,0 +1,96 @@
+#toDoContainerFrame
+{
+  width: 35vw;
+  margin: 0 auto;
+}
+#inputContainer
+{
+  display: flex;
+  justify-content: center;
+  height: 5vh;
+  margin: 3% 0%;
+}
+#inputContainer input
+{
+  border-radius: 2px;
+  color: black;
+  font-size: 25px;
+  width: 30%;
+}
+#inputContainer button
+{
+  font-weight: bold;
+  width: 7%;
+  border-radius: 2px;
+  background: rgba(0, 128, 0, 0.844);
+  color: white;
+}
+
+
+
+#liContainerFlex
+{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2%;
+  height: 8vh;
+}
+#liContainerFlex #liContainer
+{
+  background: rgb(255, 255, 255);
+  width: 25vw;
+  list-style-type: none;
+  font-size: 25px;
+  height: 100%;
+  border-radius: 10px;
+}
+#liContainerFlex #liContainer li
+{
+  width:15vw;
+  background: rgb(255, 255, 255);
+  height: 80%;
+  border-radius: 5px;
+  position: relative;
+  top: 50%;
+  transform: translate(0%,-50%);
+  display: inline-block;
+  margin-left: 1%;
+  color: black;
+  overflow: hidden;
+  float: left;
+}
+ul #buttonsContainer
+{
+  width: 39%;
+  float: right;
+  height: 80%;
+  border-radius: 5px;
+  position: relative;
+  top: 50%;
+  transform: translate(0%,-50%);
+}
+ul #buttonsContainer button
+{
+  height: 100%;
+  border-radius: 5px;
+  font-size: 25px;
+  cursor: pointer;
+}
+.blue
+{
+  background: rgb(55, 193, 252);
+  width: 28%;
+  height: 100%;
+  border-radius: 5px;
+  font-size: 25px;
+  margin-right: 3%;
+}
+#red
+{
+  background: red;
+  width: 35%;
+  height: 100%;
+  border-radius: 5px;
+  font-size: 25px;
+  margin-right: 3%;
+}
