@@ -82,10 +82,11 @@ function ReactJS()
                     <div className={style.wrapTogether}>
                         <ProjectWrapper project={<GithubUserFinder/>} description='Github User Finder'/>
                         <ProjectWrapper project={<ThemedComponent/>} description='theme which remembers state after refresh'/>
+                        <ProjectWrapper project={<PopupComponent/>} description='popup toggler'/>
                     </div>
                     <div className={style.wrapTogether}>
                         
-                        <ProjectWrapper project={<PopupComponent/>} description='popup toggler'/>
+                        
                     </div>
 
                     <Description text={`smaple text`}/>

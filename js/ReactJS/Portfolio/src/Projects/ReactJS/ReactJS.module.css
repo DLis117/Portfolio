@@ -1,11 +1,12 @@
 .reactJsProjectsContainer
 {
     display: inline-block;
+    margin-top: 8%;
 }
 .wrapTogether
 {
     display: inline-block;
     border: solid red 5px;
     margin-left: 2%;
-    width: 87%;
+    width: 95%;
 }

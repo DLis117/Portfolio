@@ -1,6 +1,42 @@
+.technologiesBar
+{
+    /* margin-top: 1%; */
+    /* display: inline; */
+    display: inline-block;
+    width: 79.2%;
+    min-height: 1vh;
+    /* background: red; */
+    /* border-bottom: solid 5px white; */
+    border: solid 5px rgba(255, 255, 255, 0.855);
+    border-bottom: none;
+    position: fixed;
+    background: rgb(121, 71, 247);
+    z-index: 9999999;;
+}
+.technologyButton
+{
+    min-width: 10%;
+    min-height: 50%;
+    float: left;
+    border-radius: 5px;
+
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.859);
+    background: rgb(93, 28, 191);
+    font-size: 150%;
+    margin: 0.1% 0.25%;
+    transition: 0.5s ease-in-out;
+    cursor: pointer;
+}
+.technologyButton:hover
+{
+    background: rgb(80, 0, 217);
+}
+
 .projectsPage
 {
-    margin-top: 1%;
+    /* margin-top: 1%; */
     display: inline-block;
     /* background: rgba(255, 0, 0, 0.358); */
     width: 78.4vw;
@@ -11,36 +47,5 @@
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: bold;
     color: rgb(255, 255, 255);
-    
 }
-.technologiesBar
-{
-    /* margin-top: 1%; */
-    /* display: inline; */
-    display: inline-block;
-    width: 100%;
-    min-height: 1vh;
-    /* background: red; */
-    border-bottom: solid 5px white;
-}
-.technologyButton
-{
-    min-width: 10%;
-    min-height: 50%;
-    float: left;
-    border: solid 5px rgba(10, 13, 238, 0);
-    border-radius: 5px;
 
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-weight: bold;
-    color: rgba(255, 255, 255, 0.859);
-    background: rgba(108, 45, 179, 0.308);
-    font-size: 150%;
-    margin: 0.1% 0.25%;
-    transition: 0.5s ease-in-out;
-    cursor: pointer;
-}
-.technologyButton:hover
-{
-    background: rgba(108, 45, 179, 0.495);
-}
