@@ -12,7 +12,7 @@ function GallerySlider(props)
 
     // later using that variable we will change urls of photos to resize them before downloading 
     // and this way make loading faster, but photos will have worse quallity
-    let photoSizeInPixels = 800;
+    let photoSizeInPixels = 432;
     
     async function fetchData()
     {

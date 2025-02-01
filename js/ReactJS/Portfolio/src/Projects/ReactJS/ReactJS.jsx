@@ -14,8 +14,8 @@ import ApiDataGallery from './ApiDataGallery/ApiDataGallery.jsx';
 import AutocompleteData from './AutocompleteData/AutocompleteData.jsx';
 import GithubUserFinder from './GithubUserFinder/GithubUserFinder.jsx';
 import ThemedComponent from './LightDarkModeTheme/ThemedComponent.jsx';
-import Popup from './PopupComponent/Popup.jsx';
 import PopupComponent from './PopupComponent/PopupComponent.jsx';
+import TicTacToe from './TicTacToe/TicTacToe.jsx';
 let mountainpic='/mountain.png';
 let fieldpic='/field.png';
 
@@ -85,7 +85,7 @@ function ReactJS()
                         <ProjectWrapper project={<PopupComponent/>} description='popup toggler'/>
                     </div>
                     <div className={style.wrapTogether}>
-                        
+                    <ProjectWrapper project={<TicTacToe/>} description='Tic Tac Toe'/>
                         
                     </div>
 
