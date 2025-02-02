@@ -12,9 +12,13 @@
 }
 .starRatingContainer p
 {
-    font-size: 35px;
+    font-size: 2.5vw;
     float: left;
     cursor: pointer;
+}
+.starRatingContainer h2
+{
+    font-size: 1.6vw;
 }
 .yellowStar
 {

@@ -2,6 +2,9 @@ import style from './AutocompleteData.module.css'
 import { useEffect, useState } from "react";
 function AutocompleteData()
 {
+    let [err,setErr]=useState();
+
+
     function handleSearch(e)
     {
         //if data is empty it will show everything since '' includes ''
@@ -19,7 +22,6 @@ function AutocompleteData()
                 else 
                 {
                     setData([])
-                    setErr('data load failed!');
                     throw new Error('data load failed!');
                 }
             }
@@ -41,6 +43,7 @@ function AutocompleteData()
             catch(e)
             {
                 console.log(e);
+                setErr('data load failed!');
             }
         }
 
@@ -54,9 +57,18 @@ function AutocompleteData()
     return(<>
             <div className={style.AutocompleteDataContainer}>
                 <input className={style.input} type="text" placeholder="put name to filter" onChange={handleSearch}/>
-                <div className={style.names}>
-                    {dataToDsiplay.map((x,y)=><div className={style.name}><h1 key={y}>{x.name}</h1></div>)}
-                </div>
+                {err?
+                    <div className={style.errContainer}>
+                        <h1 className={style.err}>{err}</h1>
+                    </div>:
+                    <>
+                        <div className={style.names}>{dataToDsiplay.map((x,y)=>
+                            <div className={style.name}>
+                                <h1 key={y}>{x.name}</h1>
+                            </div>)}
+                        </div>
+                    </>
+                }
             </div>
     </>)
 }

@@ -24,6 +24,7 @@
   font-weight: bold;
   /* background: yellow; */
   font-size: 250%;
+  font-size: 3vw;
 }
 .buttonContainer
 {
@@ -39,7 +40,7 @@
   width: 30%;
   margin: 0 2%;
   font-weight: bold;
-  font-size: 25px;
+  font-size: 1.5vw;
   border-radius: 5px;
   border: solid white 3px;
   color: rgb(0, 0, 0);

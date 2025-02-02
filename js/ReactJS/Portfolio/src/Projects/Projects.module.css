@@ -4,7 +4,7 @@
     /* display: inline; */
     display: inline-block;
     width: 79.2%;
-    min-height: 1vh;
+    min-height: 10%;
     /* background: red; */
     /* border-bottom: solid 5px white; */
     border: solid 5px rgba(255, 255, 255, 0.855);
@@ -16,7 +16,7 @@
 .technologyButton
 {
     min-width: 10%;
-    min-height: 50%;
+    min-height: 1vh;
     float: left;
     border-radius: 5px;
 
@@ -24,7 +24,7 @@
     font-weight: bold;
     color: rgba(255, 255, 255, 0.859);
     background: rgb(93, 28, 191);
-    font-size: 150%;
+    font-size: 1.7vw;
     margin: 0.1% 0.25%;
     transition: 0.5s ease-in-out;
     cursor: pointer;

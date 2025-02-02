@@ -1,5 +1,5 @@
 .num {
-    font-size: 3.2em;
+    font-size: 3.3vw;
     display: inline-block;
     height: 75%;
     position: relative;
@@ -11,7 +11,7 @@
  #buttonsContainer button {
     border-radius: 8px;
     border: 1px solid transparent;
-    font-size: 1em;
+    font-size: 1vw;
     font-weight: bold;
     font-family: inherit;
     background-color: #4830e4;

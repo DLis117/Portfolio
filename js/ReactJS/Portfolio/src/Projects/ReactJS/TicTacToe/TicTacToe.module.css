@@ -17,16 +17,17 @@
 {
     display: inline-block;
     width: 100%;
+    font-size: 1vw;
 }
 .reset
 {
     position: relative;
-    top: -60%;
+    top: -65%;
     left: 0;
     width: 40%;
     height: 15%;
     border-radius: 5px;
-    font-size: 200%;
+    font-size: 2vw;
     font-weight: bold;
     border: black solid 2px;
     background: rgba(255, 255, 255, 0.701);
@@ -36,12 +37,6 @@
     transition: 0.5s ease;
     background: rgb(255, 255, 255);
 }
-
-
-
-
-
-
 
 .row
 {
@@ -55,8 +50,9 @@
     float: left;
     width: 31.9%;
     height: 100%;
-    border: solid white 2.18px;
-    font-size: 450%;
+    /* border: solid white 2.18px; */
+    border: solid white 0.16vw;
+    font-size: 5vw;
 
     display: flex;
     justify-content: center;

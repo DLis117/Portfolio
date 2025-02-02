@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Popup from "./Popup";
 import style from './PopupComponent.module.css'
 import { useRef } from "react";

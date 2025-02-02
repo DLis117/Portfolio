@@ -1,9 +1,74 @@
+.form
+{
+  margin: 0% 2%;
+  background: rgba(0, 0, 0, 0.69);
+  width: 22vw;
+  height: 93%;
+  border-radius: 10px;
+  border: solid 3px white;
+  float: left;
+  overflow: hidden;
+}
+
+.form select
+{
+  width: 45%;
+  font-size: 1vw;
+}
+#itemQuant
+{
+  width: 100%;
+  height: 22%;
+}
+
+.element
+{
+  color:rgb(255, 255, 255);
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  /* float: right; */
+  margin-left: 30%;
+  display: inline-block;
+  font-size: 1vw;
+}
+
+.itemContainer
+{
+  width: 25%;
+  height: 10vh;
+  background-size: cover;
+  border: solid 5px white;
+  border-radius: 10px;
+  float: left;
+  margin-right: 5%;
+  margin-bottom: 2%;
+}
+#quantity
+{
+  margin-top: 5%;
+  width: 2.8vw;
+  height: 2.1vh;
+  font-size: 0.9vw;
+}
+
+.form input,.form select
+{
+  width: 80%;
+  height: 5%;
+  border-radius: 5px;
+  border: solid 3px white;
+  background: #e9c023;
+  color: black;
+  margin-bottom: 2%;
+  font-size: 1vw;
+}
+
 .Creds,.giftcardCreds,.Creds2
 {
   height: 17%;
   width: 100%;
   margin-bottom: 5%;
 }
+
 .cardCredsName,#cardCredsNumber,#cardCredsCVV,#giftCardNumber,#address,#postalCode,#address2,#postalCode2
 {
   width: 100%;
@@ -34,48 +99,11 @@
 {
   height: 50%;
 }
-.form
-{
-  margin: 0% 2%;
-  background: rgba(0, 0, 0, 0.69);
-  width: 22vw;
-  height: 93%;
-  border-radius: 10px;
-  border: solid 3px white;
-  float: left;
-  overflow: hidden;
-}
-#itemQuant
-{
-  width: 100%;
-  height: 22%;
-}
-.element
-{
-  color:rgb(255, 255, 255);
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  /* float: right; */
-  margin-left: 30%;
-  display: inline-block;
-}
-.itemContainer
-{
-  width: 25%;
-  height: 10vh;
-  background-image: url('/uranium.png');
-  background-size: cover;
-  border: solid 5px white;
-  border-radius: 10px;
-  float: left;
-  margin-right: 5%;
-  margin-bottom: 2%;
-}
-#quantity
-{
-  margin-top: 5%;
-  width: 15%;
-  height: 30%;
-}
+
+
+
+
+
 #radioHolders
 {
   height: 10%;
@@ -90,7 +118,7 @@
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
-  font-size: 1.2em;
+  font-size: 1.3vw;
   font-weight: 500;
   font-family: inherit;
   background-color: #e9c023;
@@ -111,30 +139,19 @@
 
 
 
-.form input,.form select
-{
-  width: 80%;
-  height: 5%;
-  border-radius: 5px;
-  border: solid 3px white;
-  background: #e9c023;
-  color: black;
-  margin-bottom: 2%;
-}
+
 .paragraph
 {
   color: rgb(182, 182, 182);
 }
-select
-{
-  width: 45%;
-}
+
 label
 {
   margin-top: 2%;
   width: 35%;
   float: left;
-  font-size: 20px;
+  /* font-size: 20px; */
+  font-size: 1.35vw;
   margin-left: 10%;
   color: white;
 }

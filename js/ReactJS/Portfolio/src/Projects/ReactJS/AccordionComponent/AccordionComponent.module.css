@@ -7,17 +7,17 @@
 {
   display: flex;
   flex-wrap: wrap;
-  justify-content: right;  
+  justify-content: right; 
 }
 .accordionListBox .header button
 {
   float: right;
   margin: 10px;
+  font-size: 1.2vw;
 }
 .accordionListBox button
 {
   cursor: pointer;
-  font-size: 20px;
   border-radius: 5px;
   width: 30%;
  
@@ -34,7 +34,7 @@
 .accordionListBox ul li
 {
   cursor: pointer;
-  font-size: 25px;
+  font-size: 1.5vw;
   margin-bottom: 1%;
   background: rgba(168, 237, 146, 0.625);
   border-radius: 5px;
@@ -42,6 +42,7 @@
 }
 .accordionListBox ul li h2
 {
-  font-size: 20px;
+  /* font-size: 20px; */
+  font-size: 1.5vw;
   background: rgba(109, 238, 66, 0.625);
 }

@@ -8,6 +8,7 @@
 {
   width: 70%;
   margin: 0 auto;
+  font-size: 1vw;
 }
 .nameContainer {
   height: 20%;
@@ -17,11 +18,15 @@
   justify-content: center;
   align-items: center;
 }
+.nameContainer h1
+{
+  font-size: 1.3vw;
+}
 
 .card
 {
-  height: 130px;
-  width: 90px;
+  height: 17vh;
+  width: 6vw;
   
   background: rgba(136, 245, 194, 0.725);
   background-size: cover;
@@ -34,16 +39,11 @@
 }
 .card img
 {
-  height: 35px;
-  width: 35px;
+  height: 5vh;
+  width: 2.5vw;
   border-radius: 60%;
   position: absolute;
   top: 2%;
   left: 25%;
   background-size: cover;
-}
-h1
-{
-  font-size: 20px;
-  display: inline-block;
 }

@@ -16,6 +16,7 @@ import GithubUserFinder from './GithubUserFinder/GithubUserFinder.jsx';
 import ThemedComponent from './LightDarkModeTheme/ThemedComponent.jsx';
 import PopupComponent from './PopupComponent/PopupComponent.jsx';
 import TicTacToe from './TicTacToe/TicTacToe.jsx';
+import TierList from './TierList/TierList.jsx';
 let mountainpic='/mountain.png';
 let fieldpic='/field.png';
 
@@ -39,6 +40,19 @@ additionalInfoActivated: false,}
 ]
 let urlForGallery=`https://picsum.photos/v2/list?page=${1}`;
 
+let tiers = [
+                    {tier:'wwwwwwww',color:'#949'},
+                    {tier:'WWWWWWWW',color:'#a0a0a0'},
+                    {tier:'123456789',color:'#343434'},
+                    {tier:'1234567890',color:'#00ffff'},
+                    {tier:'12345678901',color:'#00ffff'},
+                    {tier:'123456789012',color:'#ff00ff'}
+                   ]
+let dataToBeTiered =['/public/autumn.png','/public/field.png','public/mountain.png','/public/sunset.png','public/vite.svg',
+    '/public/autumn.png','/public/field.png','public/mountain.png','/public/sunset.png','public/vite.svg',
+    '/public/autumn.png','/public/field.png','public/mountain.png','/public/sunset.png','public/vite.svg',
+    '/public/autumn.png','/public/field.png','public/mountain.png','/public/sunset.png','public/vite.svg'
+]
 function ReactJS()
 {
     return (<>
@@ -60,7 +74,7 @@ function ReactJS()
                                                     <ShoppingForm element="omega constelation"  styles={watch1Style}/>
                                                     <ShoppingForm element="omega speedmaster"   styles={watch2Style}/>
                                                     <ShoppingForm element="rolex daytona"       styles={watch3Style}/>
-                                                    </>} description='conditional rendering'/>
+                                                    </>} description='conditional rendering card components'/>
                     </div>
                     
                     <div className={style.wrapTogether}>
@@ -85,9 +99,10 @@ function ReactJS()
                         <ProjectWrapper project={<PopupComponent/>} description='popup toggler'/>
                     </div>
                     <div className={style.wrapTogether}>
-                    <ProjectWrapper project={<TicTacToe/>} description='Tic Tac Toe'/>
-                        
+                        <ProjectWrapper project={<TicTacToe/>} description='Tic Tac Toe'/>
+                        <ProjectWrapper project={<TierList tiers={tiers} data={dataToBeTiered} label={`tier list`}/>} description='Tier List'/>    
                     </div>
+                    
 
                     <Description text={`smaple text`}/>
                 </div>

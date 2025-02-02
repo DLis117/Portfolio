@@ -101,10 +101,10 @@ function ShoppingForm (props)
         
         <>
         <form action="submit" className={style.form}>
-            <div id="itemQuant">
-            <h1 className={style.element}>{props.element}</h1>
+            <div id={style.itemQuant}>
+                <h1 className={style.element}>{props.element}</h1>
                 <br/>
-            <div className={style.itemContainer} style={props.styles}></div>
+                <div className={style.itemContainer} style={props.styles}></div>
                 
                 <input id={style.quantity} type="number" onChange={(e)=>updateNumber(e)} placeholder="qty"></input>
             </div>

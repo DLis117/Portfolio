@@ -1,0 +1,49 @@
+.tierListContainer
+{
+    width: 47vw;
+    display: inline-block;
+    background: gray;
+    border: solid 4px black;
+}
+
+.tier
+{
+    display: inline-block;
+    border-bottom: solid black 3px;
+    width: 100%;
+    background: gray;
+    float: left;
+}
+.flexComponent
+{
+    display: inline-block;
+    float: left;
+    overflow: hidden;
+    word-wrap: break-word;
+    border-right: solid 3px black;
+    text-align: center;
+}
+.dataOfTier
+{
+    display: inline-block;
+    /* width: 90%; */
+    height: 100%;
+    float: left;
+}
+
+.img
+{
+    float: left;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 0;
+}
+.dataContainer
+{
+    min-width:100%;
+    display:inline-block;
+    float:left;
+    /* min-height: 20vh; */
+    /* height: calc(var(--tierListComponentHeight) - 60vh); between - and value must be a SPACE! */
+}

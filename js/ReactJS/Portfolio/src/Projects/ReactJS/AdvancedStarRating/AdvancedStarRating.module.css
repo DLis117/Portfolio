@@ -1,11 +1,11 @@
 .starRatingContainer
 {
     display: flex;
-    font-size: 12px;
+    font-size: 0.9vw;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    width: 12vw;
+    width: 13vw;
 }
 .starsContainer
 {
@@ -13,7 +13,7 @@
 }
 .singleStar
 {
-    font-size: 35px;
+    font-size: 2.35vw;
     float: left;
     cursor: pointer;
 }

@@ -3,11 +3,14 @@ function Popup(props)
 {
     return (<>
                 
-                    <div className={style.popup}>
+                    <div className={style.popup} >
                         <header>
                             <span onClick={props.onClose}>x</span>
                         </header>
-                        <h1>{props.info}</h1>
+                        <div className={style.infoContainer}>
+                            <h1>{props.info}</h1>
+                        </div>
+                        
                     </div>
     </>)
 }
