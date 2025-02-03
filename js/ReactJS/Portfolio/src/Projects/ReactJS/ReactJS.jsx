@@ -49,11 +49,18 @@ let tiers = [
                     {tier:'F',color:'#9b42f5'}
                    ]
 
-let dataToBeTiered =['/public/autumn.png','/public/field.png','public/mountain.png','/public/sunset.png','public/vite.svg',
-    '/public/autumn.png','/public/field.png','public/mountain.png','/public/sunset.png','public/vite.svg',
-    '/public/autumn.png','/public/field.png','public/mountain.png','/public/sunset.png','public/vite.svg',
-    '/public/autumn.png','/public/field.png','public/mountain.png','/public/sunset.png','public/vite.svg'
-]
+
+
+let dataToBeTiered =[
+                        "/TierListItems/1.png", "/TierListItems/2.png", "/TierListItems/3.png",
+                        "/TierListItems/4.png", "/TierListItems/5.png", "/TierListItems/6.png",
+                        "/TierListItems/7.png", "/TierListItems/8.png", "/TierListItems/9.png",
+                        "/TierListItems/10.png", "/TierListItems/11.png", "/TierListItems/12.png",
+                        "/TierListItems/13.png", "/TierListItems/14.png", "/TierListItems/15.png",
+                        "/TierListItems/16.png", "/TierListItems/17.png", "/TierListItems/18.png",
+                        "/TierListItems/19.png", "/TierListItems/20.png", "/TierListItems/21.png",
+                        "/TierListItems/22.png", "/TierListItems/23.png", "/TierListItems/24.png"
+                    ]
 
 let projectsData=   [
                         [//this will be wrapped together
@@ -314,7 +321,7 @@ let projectsData=   [
                                 </div>
                             ],
                             [  
-                                <TierList tiers={tiers} data={dataToBeTiered} label={`tier list`}/>,"Tier List",
+                                <TierList tiers={tiers} data={dataToBeTiered}/>,"Polish Sweets Tier List",
                                 <div className={style.description}>
                                     <p>This component provides a customizable tier list where the title and tier data can be set via props. It supports dynamic scaling, drag-and-drop functionality, and automatic resizing based on content.</p>
                                     <br />
@@ -376,7 +383,7 @@ function ReactJS()
                             <div className={style.wrapTogether}>
                                 {x.map((z,q)=>
                                     // <ProjectWrapper project={z[0]} description={z[1]}/>
-                                    <div className={style.projectWrapper} onClick={()=>handleShowDescription(y,q)}>
+                                    <div key={q} className={style.projectWrapper} onClick={()=>handleShowDescription(y,q)}>
                                         <div className={style.titleOfProjectContainer}>
                                             <h1 className={style.titleOfProject}>{z[1]}</h1>
                                         </div>

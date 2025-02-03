@@ -70,7 +70,7 @@ function TicTacToe()
     return(<>
             <div className={style.TicTacToeContainer}>
                 <div className={style.board}>
-                    {data.map(x=><div className={style.row}>{x.map(x=>(<div id={x.index}  onClick={winnerRef.current==''?()=>makeMove(x):null} className={style.tile} style={x.red===true?{color: "red"}:null}>{x.value}</div>))}</div>)} 
+                    {data.map((x,y)=><div key={y} className={style.row}>{x.map(x=>(<div id={x.index} key={x.index} onClick={winnerRef.current==''?()=>makeMove(x):null} className={style.tile} style={x.red===true?{color: "red"}:null}>{x.value}</div>))}</div>)} 
                 </div>
                 <div className={style.winnerContainer}>
                     <h1 className={style.winner}>{winnerRef.current==''?`now moves ${nowPlacesRef.current}`:winnerRef.current=='Tie'?`Tie!`:`${winnerRef.current} wins!`}</h1>

@@ -63,7 +63,7 @@ function AutocompleteData()
                     </div>:
                     <>
                         <div className={style.names}>{dataToDsiplay.map((x,y)=>
-                            <div className={style.name}>
+                            <div key={y} className={style.name}>
                                 <h1 key={y}>{x.name}</h1>
                             </div>)}
                         </div>

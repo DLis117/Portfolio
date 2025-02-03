@@ -4,7 +4,7 @@ function TierList(props)
 {
     //let dummyTieredData=['/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png','/public/sunset.png']
     
-    const mainVH=40;                                //viewHeight percentage of all tiers combined
+    const mainVH=50;                                //viewHeight percentage of all tiers combined
 
     let [tiersData,setTiersData]=useState(                                                                   /* font size will be scaled to fit the tier square*/
         props.tiers.map((x,y)=>({index:y,text:x.tier,color:x.color,height:`${mainVH/props.tiers.length}vh`,fontSize:letterSize(x.tier),data:[]}))
@@ -192,7 +192,7 @@ function TierList(props)
                 <div className={tierStyle.tierListContainer}> 
                     {draggingState?ghost:null}
                     {tiersData.map(x=>                                                                                       
-                        <div className={tierStyle.tier} id={x.index} style={{minHeight:`${Math.floor(mainVH/props.tiers.length)}vh`}} /*onMouseOver={()=>console.log(x.index,x.data.length)}*/>
+                        <div key={x.index} className={tierStyle.tier} id={x.index} style={{minHeight:`${Math.floor(mainVH/props.tiers.length)}vh`}} /*onMouseOver={()=>console.log(x.index,x.data.length)}*/>
                                 <div className={tierStyle.flexComponent} style={{background:x.color,minHeight:`${Math.floor(mainVH/props.tiers.length)}vh`,width:`${Math.floor(mainVH/props.tiers.length)}vh`}}>
                                     <h1 style={{fontSize:x.fontSize, width:`${Math.floor(mainVH/props.tiers.length)}vh`,height:`${Math.floor(mainVH/props.tiers.length)}vh`}}>{x.text}</h1>
                                 </div>

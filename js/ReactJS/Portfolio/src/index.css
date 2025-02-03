@@ -17,7 +17,7 @@ html, body
 body 
 {
   background: rgb(30,9,52);
-  background-image: url('public/polyBackground.png');
+  background-image: url('/polyBackground.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
