@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import style from './Projects.module.css'
-import ReactJS from './ReactJS/ReactJS';
 import ProgressScrollBar from './ProgressScrollBar/ProgressScrollBar';
+import ReactJS from './ReactJS/ReactJS';
+import Embedded from './Embedded/Embedded';
 function Projects()
 {
     let [technologies,setTechnologies]= useState([
@@ -28,6 +29,8 @@ function Projects()
                         <ProgressScrollBar/>
                     </div>
                     <ReactJS/>
+                    {/* <Embedded/> */}
+
                 </div>
             </>)
 }
