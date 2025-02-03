@@ -3,11 +3,11 @@
     /* margin-top: 1%; */
     /* display: inline; */
     display: inline-block;
-    width: 79.2%;
+    width: 79.15%;
     min-height: 10%;
     /* background: red; */
     /* border-bottom: solid 5px white; */
-    border: solid 5px rgba(255, 255, 255, 0.855);
+    border-top: solid rgba(255, 255, 255, 0.855) 5px;
     border-bottom: none;
     position: fixed;
     background: rgb(121, 71, 247);
@@ -42,7 +42,7 @@
     width: 78.4vw;
     min-height: 90vh;
     border: solid rgba(255, 255, 255, 0.855) 5px;
-    border-radius: 10px;
+    border-top: 0;
 
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: bold;

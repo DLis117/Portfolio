@@ -3,16 +3,19 @@
     display: inline-block;
     margin-top: 8%;
 }
+.reactJsProjectsContainerHeaderContainer
+{
+    font-size: 1.7vw;
+    display: flex;
+    justify-content: center;
+}
 .wrapTogether
 {
     display: inline-block;
-    border: solid red 5px;
+    /* border: solid red 5px; */
     margin-left: 2%;
     width: 95%;
 }
-
-
-
 
 
 /*PROJECT WRAPPER STUFF */
@@ -43,4 +46,27 @@
     display: inline-block;
     color: white;
     font-size: 1.35vw;
+}
+
+.description
+{
+    font-size: 1.35vw;
+    display: inline-block;
+}
+.description p,.description h1,.description ul
+{
+    margin-left: 0.5%;
+}
+.description h1
+{
+    display: inline-block;
+    font-size: 1.7vw;
+}
+.description ul
+{
+    list-style-type: none;
+}
+.description span
+{
+    color: rgb(166, 0, 255);
 }

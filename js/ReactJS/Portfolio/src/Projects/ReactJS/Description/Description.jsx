@@ -4,7 +4,7 @@ function Description(props)
     return( <>
                 <div className={style.descriptionContainer}>
                     <div className={style.description}>
-                        <p>{props.text}</p>
+                        {props.info}
                     </div>
                 </div>
             </>)

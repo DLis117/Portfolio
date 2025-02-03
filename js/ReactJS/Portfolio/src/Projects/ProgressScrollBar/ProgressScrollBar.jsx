@@ -7,7 +7,7 @@ function ProgressScrollBar()
     window.onscroll=()=>
     {
         let maxForScroll= (document.documentElement.scrollHeight-document.documentElement.clientHeight)
-        setScrollVar(Math.floor((document.documentElement.scrollTop*100)/maxForScroll))
+        setScrollVar(Math.round((document.documentElement.scrollTop*100)/maxForScroll))
     }
     return(<>
                 <div className={style.scrollBarContainer} >

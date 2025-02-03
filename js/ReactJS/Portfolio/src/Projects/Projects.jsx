@@ -22,12 +22,11 @@ function Projects()
     }
     
     return( <>
-                <div className={style.technologiesBar}>
-                    {technologies.map((x,y)=><button key={y} onClick={()=>handleActivation(y)} className={style.technologyButton} style={x.activated?{background: `rgb(65, 3, 136)`}:null}>{x.name}</button>)}
-                    <ProgressScrollBar/>
-                </div>
                 <div className={style.projectsPage}>
-                    
+                    <div className={style.technologiesBar}>
+                        {technologies.map((x,y)=><button key={y} onClick={()=>handleActivation(y)} className={style.technologyButton} style={x.activated?{background: `rgb(65, 3, 136)`}:null}>{x.name}</button>)}
+                        <ProgressScrollBar/>
+                    </div>
                     <ReactJS/>
                 </div>
             </>)

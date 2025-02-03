@@ -1,9 +1,9 @@
 .descriptionContainer
 {
-    display: flex;
-    width: 79vw;
+    width: 77vw;
     min-height: 20vh;
-    justify-content: center;
+    display: inline-block;
+    margin: 0% 2%;
 }
 .description
 {
@@ -11,7 +11,6 @@
     display: inline-block;
     color: white;
     border-radius: 5px;
-    font-size: 20px;
     width: 97%;
     min-height: 20vh;
     float: left;
