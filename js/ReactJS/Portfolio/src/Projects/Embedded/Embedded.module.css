@@ -18,6 +18,7 @@
 }
 
 
+
 /*PROJECT WRAPPER STUFF */
 .projectWrapper
 {
@@ -54,6 +55,13 @@
     display: inline-block;
     width: 100%;
 }
+.descriptionTitle
+{
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    font-size: 1.7vw;
+}
 .description p,.description h1,.description ul
 {
     margin-left: 0.5%;
@@ -67,7 +75,53 @@
 {
     list-style-type: none;
 }
+.description ol
+{
+    margin-left: 2%;
+}
 .description span
 {
     color: rgb(166, 0, 255);
+}
+
+.description .img,.imgDescriptionBig .img
+{
+    width: 25%;
+    height: 25%;
+    float: left;
+    border-radius: 5px;
+}
+.imgDescription,.imgDescriptionBig
+{
+    display: flex;
+    align-items: center;
+}
+
+
+
+.imgDescriptionBig .img
+{
+    width: 50%;
+    height: 50%;
+}
+
+
+.twoCodes
+{
+    background: rgb(0, 0, 0);
+    display: inline-block;
+    width: 100%;
+}
+.twoCodes .codeTitleContainer
+{
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+}
+
+.code
+{
+    font-size: 1vw;
+    font-family:monospace;
+    color: green;
 }

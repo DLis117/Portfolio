@@ -1,12 +1,7 @@
 .technologiesBar
 {
-    /* margin-top: 1%; */
-    /* display: inline; */
     display: inline-block;
     width: 79.15%;
-    min-height: 10%;
-    /* background: red; */
-    /* border-bottom: solid 5px white; */
     border-top: solid rgba(255, 255, 255, 0.855) 5px;
     border-bottom: none;
     position: fixed;
