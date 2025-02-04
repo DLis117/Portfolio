@@ -7,7 +7,6 @@ import Confetti from "react-confetti"
 function ConfettiComponent()
 {
     let [confettiToggled, setToggleConfetti]=useState(false);
-    let ableToClickButtonRef = useRef(true);
     
     function toggleConfetti()
     {

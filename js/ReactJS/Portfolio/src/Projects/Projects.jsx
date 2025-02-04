@@ -1,14 +1,20 @@
 import { useState } from 'react';
 import style from './Projects.module.css'
 import ProgressScrollBar from './ProgressScrollBar/ProgressScrollBar';
-import ReactJS from './ReactJS/ReactJS';
-import Embedded from './Embedded/Embedded';
-function Projects()
+import { technologiesArray } from '../Content/Content';
+function Projects(props)
 {
-    let [technologies,setTechnologies]= useState([
-        {name: 'react',activated:true, page:<ReactJS/>},{name: 'embedded',activated:false,page: <Embedded/>},
-        
-       ])
+    //we could hardcode finding the index of Technologies label on navBar ...but just in case...
+    
+
+    let [technologies,setTechnologies]= useState(()=>{
+            //we assume that "Technologies" children do not have any children
+            if(props.defaultPage)
+            {
+                return (technologiesArray.children.map(x=>({name:x.label,activated:x.label===props.defaultPage,page:x.page})));
+            }
+            return (technologiesArray.children.map((x,y)=>({name:x.label,activated:y===0,page:x.page})));       
+    })
 
     function handleActivation(y)
     {

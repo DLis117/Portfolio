@@ -1,12 +1,12 @@
 .technologiesBar
 {
     display: inline-block;
-    width: 79.15%;
+    width: 78.8%;
     border-top: solid rgba(255, 255, 255, 0.855) 5px;
     border-bottom: none;
     position: fixed;
     background: rgb(121, 71, 247);
-    z-index: 9999999;;
+    z-index: 9999999;
 }
 .technologyButton
 {
@@ -31,10 +31,10 @@
 
 .projectsPage
 {
-    /* margin-top: 1%; */
+    margin-left: 20%;
     display: inline-block;
     /* background: rgba(255, 0, 0, 0.358); */
-    width: 78.4vw;
+    width: 78%;
     min-height: 90vh;
     border: solid rgba(255, 255, 255, 0.855) 5px;
     border-top: 0;
