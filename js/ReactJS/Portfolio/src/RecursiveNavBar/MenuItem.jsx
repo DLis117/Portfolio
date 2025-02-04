@@ -1,10 +1,10 @@
 import { useState } from "react";
 import MenuList from "./MenuList";
 import style from '/src/RecursiveNavBar/RecursiveNavBar.module.css'
+// import { navBarData } from "../Content/Content";
 function MenuItem(props) 
 {
     let [activated,setActivated]=useState(true);
-
     
     function toggleChildren()
     {
@@ -30,5 +30,4 @@ function MenuItem(props)
         
     );
 }
-
 export default MenuItem;

@@ -22,25 +22,3 @@ body
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
-.test
-{
-  width: 100vw;
-  height: 30vh;
-float: left;
-}
-.one, .two
-{
-  width: 100vw;
-  height: 15vh;
-
-}
-.one
-{
-  background: linear-gradient(116deg, rgba(3,19,90,1) 0%, rgba(8,59,122,1) 98%);
-  background: linear-gradient(180deg, #59189a75, #4362ee81);
-
-}
-.two
-{
-  background: linear-gradient(105deg, rgba(24,18,28,1) 0%, rgba(56,20,107,1) 100%);
-}
