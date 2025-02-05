@@ -5,7 +5,7 @@ import Aspirations from  "../Aspirations/Aspirations";
 import RecursiveNavBar from '../RecursiveNavBar/RecursiveNavBar';
 import ReactJS from '../Projects/ReactJS/ReactJS';
 import Embedded from '../Projects/Embedded/Embedded';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 export let navBarData = [
   {
     id: 0,
@@ -136,7 +136,9 @@ for(let d of navBarData)
 function Content()
 {
   let [page, setPage]= useState(navBarDataPages[0].page); //welcome page
+  useEffect(()=>{
 
+  },[page])
     return (<>
                 {/* <Header/> */}
                 <RecursiveNavBar data={navBarData} setPage={setPage}/>

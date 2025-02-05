@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import style from './Projects.module.css'
 import ProgressScrollBar from './ProgressScrollBar/ProgressScrollBar';
 import { technologiesArray } from '../Content/Content';
@@ -6,15 +6,26 @@ function Projects(props)
 {
     //we could hardcode finding the index of Technologies label on navBar ...but just in case...
     
-
-    let [technologies,setTechnologies]= useState(()=>{
-            //we assume that "Technologies" children do not have any children
+    function changeTechnology()
+    {
             if(props.defaultPage)
             {
                 return (technologiesArray.children.map(x=>({name:x.label,activated:x.label===props.defaultPage,page:x.page})));
             }
-            return (technologiesArray.children.map((x,y)=>({name:x.label,activated:y===0,page:x.page})));       
+            return (technologiesArray.children.map((x,y)=>({name:x.label,activated:y===0,page:x.page})));
+    }
+    let [technologies,setTechnologies]= useState(()=>{
+            //we assume that "Technologies" children do not have any children
+           return changeTechnology();
     })
+
+    //to enable changes when we click on one technology after another we have to check if the state of props.defaultPage
+    //changed and if so, then we have to trigger the rerender
+    useEffect(()=>{
+        setTechnologies(()=>{
+            return changeTechnology();
+        })
+    },[props.defaultPage])
 
     function handleActivation(y)
     {
