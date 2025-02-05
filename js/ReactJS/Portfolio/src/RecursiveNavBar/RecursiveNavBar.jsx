@@ -15,7 +15,15 @@ function RecursiveNavBar(props)
             {
                 if(label===technology.label)
                 {
-                    props.setPage(<Projects defaultPage={label}/>)
+                    /*  Clicking a technology from the navbar correctly updates the Projects component.
+                        Clicking a technology inside the Projects component updates its internal state (technologies), re-rendering Projects.
+                        Clicking the same technology from the navbar does nothing because React does not detect a state change (it sees the same state being set again). 
+
+                        If setPage in RecursiveNavBar sets <Projects defaultPage="ReactJS" /> but defaultPage is already "ReactJS", React does not re-render because it thinks nothing changed.
+
+                        Instead of just passing <Projects defaultPage="ReactJS" />, add a unique key that forces React to treat it as a new instance:
+                    */
+                    props.setPage(<Projects key={label + Date.now()} defaultPage={label}/>)
                     return;
                 }
             }
