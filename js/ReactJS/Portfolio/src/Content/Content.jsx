@@ -6,6 +6,7 @@ import RecursiveNavBar from '../RecursiveNavBar/RecursiveNavBar';
 import ReactJS from '../Projects/ReactJS/ReactJS';
 import Embedded from '../Projects/Embedded/Embedded';
 import { useEffect, useState } from 'react';
+import React from 'react';
 export let navBarData = [
   {
     id: 0,
@@ -143,7 +144,18 @@ function Content()
                 {/* <Header/> */}
                 <RecursiveNavBar data={navBarData} setPage={setPage}/>
                 <div className={style.content}>
-                    {page}
+                  {/* redirect to pages are made with setPage setter
+                    we want button from WelcomePage to be able to redirect to other pages
+                    but we cannot add this setter function as a prop in navBarData, because it is set here
+                    and it would be undefined if we set it above Content
+
+                    that's why we clone the element with React.cloneElement() function
+                    and this way we can give it setter function as props
+
+                    then in WelcomePage.jsx button will simply call the setter and it will pass new page
+                    which will set it here
+                    */}
+                  {React.cloneElement(page, setPage={setPage})}
                 </div>
                 
             </>)

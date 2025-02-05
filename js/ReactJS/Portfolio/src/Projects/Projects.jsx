@@ -8,11 +8,11 @@ function Projects(props)
     
     function changeTechnology()
     {
-            if(props.defaultPage)
-            {
-                return (technologiesArray.children.map(x=>({name:x.label,activated:x.label===props.defaultPage,page:x.page})));
-            }
-            return (technologiesArray.children.map((x,y)=>({name:x.label,activated:y===0,page:x.page})));
+        if(props.defaultPage)
+        {
+            return (technologiesArray.children.map(x=>({name:x.label,activated:x.label===props.defaultPage,page:x.page})));
+        }
+        return (technologiesArray.children.map((x,y)=>({name:x.label,activated:y===0,page:x.page})));
     }
     let [technologies,setTechnologies]= useState(()=>{
             //we assume that "Technologies" children do not have any children
