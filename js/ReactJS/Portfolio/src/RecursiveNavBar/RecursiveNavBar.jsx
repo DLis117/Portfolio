@@ -1,50 +1,49 @@
 import MenuList from "./MenuList";
 import style from '/src/RecursiveNavBar/RecursiveNavBar.module.css'
-
 import Projects from "../Projects/Projects";
-import { useState } from "react";
-import { navBarDataPages,technologiesArray } from "../Content/Content";
-
+import { technologiesArray } from "../Content/Content";
 
 function RecursiveNavBar(props) 
 {
-    //always display first (welcome) page
-    let [page,setPage]= useState(navBarDataPages[0].page);
 
-    function handleChangePage(e)
-    { 
-        //go through all pages
-        for (page of navBarDataPages)
+    
+    function recursivelyFindIndexOfPage(d,label)
+    {
+        if(d.label===label)
         {
-            //check which page was clicked
-            if(e.target.innerHTML.trim()===page.label)
+            for(let technology of technologiesArray.children)
             {
-                //check if the page belongs to Projects/Technology parent
-                for (let technology of technologiesArray.children)
+                if(label===technology.label)
                 {
-                    if(technology.label===page.label)
-                    {
-                        // render Projects Component with clicked technology
-                        setPage(<Projects defaultPage={page.label}/>)
-                        return;
-                    }
+                    props.setPage(<Projects defaultPage={label}/>)
+                    return;
                 }
-                //render clicked page
-                setPage(page.page)
-                return;
+            }
+            props.setPage(d.page)
+            return;
+        }
+        if(d.children)
+        {
+            for(let child of d.children)
+            {
+                recursivelyFindIndexOfPage(child,label);
             }
         }
     }
-    
+    function handlePageChange(e)
+    {
+        for (let d of props.data)
+        {
+            recursivelyFindIndexOfPage(d,e.target.innerHTML.trim())
+        }
+
+    }
     return (
-        <>
-            <div className={style.navBarMain} onClick={handleChangePage}>
-                <div className={style.NavBarContainer}>
-                    <MenuList data={props.data}/>
-                </div>
+        <div className={style.navBarMain} onClick={handlePageChange}>
+            <div className={style.NavBarContainer}>
+                <MenuList data={props.data}/>
             </div>
-            {page}
-        </>
+        </div>
     );
 }
 
