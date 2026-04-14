@@ -19,7 +19,7 @@
 #include "my_millis.h"
 
 uint32_t last_blink_time = 0;
-const int BLINK_DURATION = 1000;
+const uint16_t BLINK_DURATION = 1000;
 
 int main()
 {

@@ -5,8 +5,8 @@
 uint32_t last_blink_time = 0;
 uint32_t last_button_state_change_time = 0;
 uint8_t last_button_state = 1; // IDLE STATE HIGH
-const int BLINK_DURATION = 1000;
-const int BUTTON_DEBOUNCE_DURATION = 5;
+const uint16_t BLINK_DURATION = 1000;
+const uint8_t BUTTON_DEBOUNCE_DURATION = 5;
 
 int main()
 {

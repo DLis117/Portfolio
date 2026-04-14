@@ -13,8 +13,8 @@ void my_millis_init()
     // to have more control over counter we will use CTC mode.
 
     TCCR0A |= (1 << WGM01);
-    TCCR0A & ~(1 << WGM00);
-    TCCR0A & ~(1 << WGM02);
+    TCCR0A &= ~(1 << WGM00);
+    TCCR0A &= ~(1 << WGM02);
 
     // PRESCALER
     // we need to use prescaler to slow down MCU's clock
