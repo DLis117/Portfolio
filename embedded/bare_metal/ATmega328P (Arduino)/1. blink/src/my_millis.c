@@ -14,7 +14,7 @@ void my_millis_init()
 
     TCCR0A |= (1 << WGM01);
     TCCR0A &= ~(1 << WGM00);
-    TCCR0A &= ~(1 << WGM02);
+    TCCR0B &= ~(1 << WGM02);
 
     // PRESCALER
     // we need to use prescaler to slow down MCU's clock
