@@ -1,12 +1,11 @@
-![wristwatch demo](/embedded/docs/gifs/ATmega328P_Wristwatch/wristwatch.gif)
-
+![wristwatch demo](/embedded/docs/ATmega328P%20(Standalone)/wristwatch/wristwatch.gif)
 
 This is a complete guide to building a wristwatch based on a standalone ATmega328P microcontroller.
 
 The design was inspired by 1970s LED watches and a steampunk-style project described here:
 https://akademiaelektroniki.com/blog/wyswietlacz-7-segmentowy-w-klimatach-steampunku-budujemy-zegarek/
 
-![wristwatch components](/embedded/docs/photos/ATmega328P_Wristwatch/components.jpg)
+![wristwatch components](/embedded/docs/ATmega328P%20(Standalone)/wristwatch/components.jpg)
 
 ### 1. Electronic Components:
 
@@ -41,7 +40,7 @@ Programming and charging are handled via Dupont pin headers, which serve as both
 
 ---
 
-![wristwatch pcb](/embedded/docs/photos/ATmega328P_Wristwatch/pcbs.png)
+![wristwatch pcb](/embedded/docs/ATmega328P%20(Standalone)/wristwatch/pcbs.png)
 
 ### 2. PCB Design (KiCad)
 
@@ -70,7 +69,7 @@ In order to set fuses for standalone configuration I needed to burn a bootloader
 
 One common way to burn a it onto an AVR microcontroller is by using the ICSP (In-Circuit Serial Programming) interface with another Arduino acting as the programmer. 
 
-![wristwatch connections](/embedded/docs/photos/ATmega328P_Wristwatch/connections.png)
+![wristwatch connections](/embedded/docs/ATmega328P%20(Standalone)/wristwatch/connections.png)
 
 <b>🔌 4.1. Connections instruction</b> 
 
@@ -105,7 +104,7 @@ https://mcudude.github.io/MiniCore/package_MCUdude_MiniCore_index.json
 - Open Tools → Board → Boards Manager
 - Search for MiniCore and install it  
 
-![wristwatch minicore_config](/embedded/docs/photos/ATmega328P_Wristwatch/minicore_config.png)
+![wristwatch minicore_config](/embedded/docs/ATmega328P%20(Standalone)/wristwatch/minicore_config.png)
 
 <h4 style="margin-bottom:0">4.4.2. Select Board Settings</h4>
 
@@ -124,7 +123,7 @@ This will set fuse bits.
 
 ---
 
-![wristwatch components trimmed](/embedded/docs/photos/ATmega328P_Wristwatch/components_trimmed.jpg)
+![wristwatch components trimmed](/embedded/docs/ATmega328P%20(Standalone)/wristwatch/components_trimmed.jpg)
 
 ### 5. Assembly
 Next, the ATmega328P was removed from an Arduino Nano using hot air desoldering.  
@@ -141,21 +140,21 @@ At this stage, I soldered:
 - male board-to-board connection pins (on one board only),
 - female charging connectors.
 
-![wristwatch soldering](/embedded/docs/photos/ATmega328P_Wristwatch/soldering1.png)
+![wristwatch soldering](/embedded/docs/ATmega328P%20(Standalone)/wristwatch/soldering1.png)
 
 
 After that, I joined the two PCBs together by soldering the pin headers, effectively stacking them into a compact module. The battery was then connected, as shown in the photos.
 
 I modified the tactile switch by removing two of its legs and soldered it directly into the designated two-pin footprint. To ensure mechanical stability, I secured it with a small amount of super glue.
 
-![wristwatch plexi_cover](/embedded/docs/photos/ATmega328P_Wristwatch/plexi_cover.png)
+![wristwatch plexi_cover](/embedded/docs/ATmega328P%20(Standalone)/wristwatch/plexi_cover.png)
 
 to cover fragile components as well as give the watch more stylish look, I have ordered a black plexi glass cover. It's dimensions are 3.1 cm x 2.4 cm x 3 mm with the hole in the center of 1.53 cm x 0.8 cm.
 It is glued directly to the board with 3M VHB 4910 double-sided acrylic 1 mm foam tape.
 
 To hold the battery in place (so it is not vulnerable to vibrations from everyday use) I also guled it with double-sided acrylic tape.
 
-![wristwatch tape](/embedded/docs/photos/ATmega328P_Wristwatch/tape.png)
+![wristwatch tape](/embedded/docs/ATmega328P%20(Standalone)/wristwatch/tape.png)
 
 The MCU was secured by applying two layers of 10 mm-wide, 1 mm-thick double-sided foam mounting tape. This also helped level the back of the watch, as the battery had made it uneven.
 
@@ -289,7 +288,7 @@ So in case of clock.cpp file containing `__TIME__`, when the clock.cpp has alrea
 
 ---
 
-![wristwatch use cases](/embedded/docs/photos/ATmega328P_Wristwatch/scenarios.png)
+![wristwatch use cases](/embedded/docs/ATmega328P%20(Standalone)/wristwatch/scenarios.png)
 
 ### 8. Use cases
 
@@ -409,4 +408,4 @@ This design prioritizes energy efficiency and simplicity, relying on firmware-le
 
 <i>🚀 Apart from that, it is very reliable and performs its function well in everyday use!</i>
 
-![wristwatch finished](/embedded/docs/photos/ATmega328P_Wristwatch/showcase.png)
+![wristwatch finished](/embedded/docs/ATmega328P%20(Standalone)/wristwatch/showcase.png)
