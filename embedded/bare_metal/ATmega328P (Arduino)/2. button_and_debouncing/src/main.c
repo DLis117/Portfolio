@@ -2,11 +2,14 @@
 #include <avr/interrupt.h>
 #include "my_millis.h"
 
-uint32_t last_blink_time = 0;
+const uint8_t BUTTON_DEBOUNCE_DURATION = 10;
 uint32_t last_button_state_change_time = 0;
-uint8_t last_button_state = 1; // IDLE STATE HIGH
+uint8_t current_raw_button_state = 1; // IDLE STATE HIGH
+uint8_t last_raw_button_state;        // IDLE STATE HIGH
+uint8_t current_stable_button_state = 1;      // IDLE STATE HIGH
+
 const uint16_t BLINK_DURATION = 1000;
-const uint8_t BUTTON_DEBOUNCE_DURATION = 5;
+uint32_t last_blink_time = 0;
 
 int main()
 {
@@ -29,41 +32,37 @@ int main()
       last_blink_time = time;
     }
 
-    // BUTTON
-    
-    // if (!(PINB & (1 << PB4))) // if button is pressed PIND will read LOW, so we negate to get 1 -> ON, 0 -> OFF
-    // {
-    //   PORTB |= (1 << PB3);
-    // }
-    // else
-    // {
-    //   PORTB &= ~(1 << PB3);
-    // }
+    // BUTTON & DEBOUNCING
+    current_raw_button_state = (PINB & (1 << PB4)) ? 1 : 0;
 
-    // BUTTON WITH DEBOUNCING
-    // debouncing can be handled by capacitor or code
-    uint8_t current_button_state = (PINB & (1 << PB4)) ? 1 : 0;
-
-    // if button state changed
-    if (current_button_state != last_button_state)
+    // edge detection
+    if (current_raw_button_state != last_raw_button_state)
     {
-      // note when it happened
+      // change when it happened
       last_button_state_change_time = time;
 
-      // note last button state
-      last_button_state = current_button_state;
+      // state is only updated when it differs from last
+      last_raw_button_state = current_raw_button_state;
     }
 
-    // we read the state of a button only if button exceeded set debounce time
-    if ((time - last_button_state_change_time) > BUTTON_DEBOUNCE_DURATION)
+    // if we dont detect state changes during debounce duration we assume the state is stable
+    if ((time - last_button_state_change_time) >= BUTTON_DEBOUNCE_DURATION)
     {
-      if (current_button_state == 0)
+
+      // we assume that current state is the opposite of last one
+      if (current_stable_button_state != current_raw_button_state)
       {
-        PORTB |= (1 << PB3);
-      }
-      else
-      {
-        PORTB &= ~(1 << PB3);
+        current_stable_button_state = current_raw_button_state;
+        if (current_stable_button_state == 0)
+        {
+          // press
+          PORTB |= (1 << PB3);
+        }
+        else if (current_stable_button_state == 1)
+        {
+          // release
+          PORTB &= ~(1 << PB3);
+        }
       }
     }
   }
