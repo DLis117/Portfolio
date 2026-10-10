@@ -1,0 +1,16 @@
+#ifndef i2C_STATUS_H
+#define i2C_STATUS_H
+
+typedef enum
+{
+    I2C_OK,
+    I2C_PRESCALER_ERROR,
+    I2C_TIMEOUT,
+    I2C_START_ERROR,
+    I2C_CONNECTION_MODE_ERROR,
+    I2C_CONNECTION_ERROR,
+    I2C_TRANSMITTION_ERROR,
+    I2C_RECEPTION_ERROR,
+} i2c_status;
+
+#endif
