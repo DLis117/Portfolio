@@ -39,8 +39,8 @@ The firmware was developed using **PlatformIO**.
 
 ## Circuit Diagram
 
-![I2C half-duplex communication circuit diagram](/embedded/docs/ATmega328P%20(Arduino)/5.%20I2C_half_duplex/I2C_half_duplex.png)
+![I2C half-duplex communication circuit diagram](/embedded/docs/ATmega328P%20(Arduino)/5.%20I2C%20half_duplex/I2C_half_duplex.png)
 
 ## Demo
 
-![I2C_half_duplex communication demo](/embedded/docs/ATmega328P%20(Arduino)/5.%20I2C_half_duplex/I2C_half_duplex.gif)
+![I2C_half_duplex communication demo](/embedded/docs/ATmega328P%20(Arduino)/5.%20I2C%20half_duplex/I2C_half_duplex.gif)
