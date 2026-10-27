@@ -1,6 +1,6 @@
 # I2C Half-Duplex Communication
 
-This project demonstrates half-duplex communication between an I2C master and a slave using an ATmega328P microcontroller.
+This project demonstrates half-duplex communication between an I2C master and a slave using ATmega328P microcontrollers.
 
 ## Master-to-Slave Communication
 
